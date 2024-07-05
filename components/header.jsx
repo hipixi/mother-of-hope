@@ -18,7 +18,7 @@ const Header = () => {
           {/* <img src="/logo.png" alt="MOHF Logo" width={100} height={50} /> */}
           <h1 className="text-xl md:text-2xl font-bold">
             <Link href="/" aria-label="MOHF Home">
-              MOHF
+              MOHFU
             </Link>
           </h1>
         </div>
@@ -52,7 +52,7 @@ const Header = () => {
 
         <div className="flex gap-4   items-center  md:gap-6 ml-auto">
           <Search className="w-5 md:w-6 h-5 md:h-6" />
-          <Button className="font-bold bg-rose-600 hover:bg-rose-700 rounded-none text-base md:text-lg transition-colors h-9  px-5 md:h-11 md:px-8">
+          <Button className="font-bold bg-green-600 hover:bg-rose-700 rounded-none text-base md:text-lg transition-colors h-9  px-5 md:h-11 md:px-8">
             Donate
           </Button>
 
