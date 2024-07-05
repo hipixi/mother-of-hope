@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Button } from "./ui/button";
 
 export default function Component() {
   return (
@@ -20,16 +21,14 @@ export default function Component() {
               transformation for individuals who grapple with economic and
               social disadvantages.
             </p>
+
+            <Button
+              className="bg-yellow-400 hover:bg-yellow-500 rounded-none text-gray-950 transition duration-300 ease-in-out transform hover:scale-105 font-bold text-lg"
+              size="lg"
+            >
+              Read The Story
+            </Button>
           </div>
-          {/* <div className="relative h-64 sm:h-80 lg:h-full">
-            <Image
-              src="https://live.staticflickr.com/65535/53836574558_ff18fdda7c_z.jpg"
-              alt="Our mission in action"
-              layout="fill"
-              objectFit="cover"
-              className="rounded-lg shadow-md"
-            />
-          </div> */}
         </div>
       </div>
     </section>

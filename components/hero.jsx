@@ -20,7 +20,7 @@ const Hero = () => {
             Creating a community that thrives despite economic and
             sustainability challenges
           </p>
-          <Button className="mt-6 bg-yellow-400 hover:bg-orange-600 text-gray-900 font-semibold px-6 py-3 rounded-none transition duration-300 ease-in-out transform hover:scale-105">
+          <Button className="mt-6 bg-yellow-400 hover:bg-orange-600 text-lg text-gray-900 font-semibold px-6 py-3 rounded-none transition duration-300 ease-in-out transform hover:scale-105">
             Join Our Mission
           </Button>
         </div>
