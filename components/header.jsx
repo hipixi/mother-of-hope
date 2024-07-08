@@ -1,4 +1,4 @@
-import { AlignJustify, Search } from "lucide-react";
+import { AlignJustify, Heart, Search } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import {
@@ -13,7 +13,7 @@ import {
 const Header = () => {
   return (
     <header className="h-24 border-b flex items-center justify-center bg-white sticky top-0 right-0 left-0 z-50">
-      <nav className="w-full mx-auto flex items-center gap-16 max-w-screen-xl px-4 lg:px-8">
+      <nav className="w-full mx-auto flex items-center justify-between gap-8 md:gap-16 max-w-screen-xl px-4 lg:px-8">
         <div className="flex-shrink-0 mr-8">
           {/* <img src="/logo.png" alt="MOHF Logo" width={100} height={50} /> */}
           <h1 className="text-xl md:text-2xl font-bold">
@@ -52,7 +52,8 @@ const Header = () => {
 
         <div className="flex gap-4   items-center  md:gap-6 ml-auto">
           <Search className="w-5 md:w-6 h-5 md:h-6" />
-          <Button className="font-bold bg-green-600 hover:bg-rose-700 rounded-none text-base md:text-lg transition-colors h-9  px-5 md:h-11 md:px-8">
+          <Button className="font-bold bg-green-600 hover:bg-rose-700 rounded-none text-base md:text-lg transition-colors h-9  px-4 sm:px-5 md:h-11 md:px-8 flex items-center gap-2">
+            <Heart className="w-4 h-4 md:w-5 md:h-5 animate-accordion-down text-white" />
             Donate
           </Button>
 
