@@ -1,14 +1,7 @@
 import { AlignLeft, Search } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "./ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { FaHeart } from "react-icons/fa";
 const Header = () => {
   return (
@@ -60,11 +53,8 @@ const Header = () => {
             <SheetTrigger>
               <AlignLeft className="w-6 md:w-7 h-6 md:h-7 lg:hidden ml-auto cursor-pointer" />
             </SheetTrigger>
-            <SheetContent side="left">
-              <SheetHeader>
-                <img src="./logo.svg" className="w-32 h-32" />
-              </SheetHeader>
-              <div className="flex flex-col  gap-6 uppercase font-semibold mt-6">
+            <SheetContent side="left" className="flex flex-col">
+              <div className="flex  flex-col  gap-6 uppercase font-semibold mt-6">
                 <Link
                   href="/who-we-are"
                   className="hover:text-rose-600 transition-colors"
@@ -113,6 +103,14 @@ const Header = () => {
                 >
                   Contact Us
                 </Link>
+              </div>
+
+              <div className="mt-auto bottom-0">
+                <img src="./logo.svg" className="w-36 h-36" />
+                <p className="text-sm text-gray-500 mt-2">
+                  © {new Date().getFullYear()} Mother of Hope Foundation Uganda.
+                  All rights reserved.
+                </p>
               </div>
             </SheetContent>
           </Sheet>
