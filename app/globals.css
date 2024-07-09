@@ -74,3 +74,17 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes heart-pump {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-heart-pump {
+  animation: heart-pump 0.8s ease-in-out infinite;
+}

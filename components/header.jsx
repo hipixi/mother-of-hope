@@ -1,4 +1,4 @@
-import { AlignJustify, Heart, Search } from "lucide-react";
+import { AlignLeft, Search } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import {
@@ -9,7 +9,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "./ui/sheet";
-
+import { FaHeart } from "react-icons/fa";
 const Header = () => {
   return (
     <header className="h-24 border-b flex items-center justify-center bg-white sticky top-0 right-0 left-0 z-50">
@@ -52,16 +52,18 @@ const Header = () => {
 
         <div className="flex gap-4   items-center  md:gap-6 ml-auto">
           <Search className="w-5 md:w-6 h-5 md:h-6" />
-          <Button className="font-bold bg-green-600 hover:bg-rose-700 rounded-none text-base md:text-lg transition-colors h-9  px-4 sm:px-5 md:h-11 md:px-8 flex items-center gap-2">
-            <Heart className="w-4 h-4 md:w-5 md:h-5 animate-accordion-down text-white" />
+          <Button className="font-bold bg-green-600 hover:bg-green-800 rounded-none text-base md:text-lg transition-colors h-10 px-4 sm:px-5 md:h-11 md:px-8 flex items-center gap-2">
+            <FaHeart className="text-white animate-heart-pump" />
             Donate
           </Button>
-
           <Sheet>
             <SheetTrigger>
-              <AlignJustify className="w-6 md:w-7 h-6 md:h-7 lg:hidden ml-auto cursor-pointer" />
+              <AlignLeft className="w-6 md:w-7 h-6 md:h-7 lg:hidden ml-auto cursor-pointer" />
             </SheetTrigger>
             <SheetContent side="left">
+              <SheetHeader>
+                <img src="./logo.svg" className="w-32 h-32" />
+              </SheetHeader>
               <div className="flex flex-col  gap-6 uppercase font-semibold mt-6">
                 <Link
                   href="/who-we-are"
