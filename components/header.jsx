@@ -6,7 +6,7 @@ import { FaHeart } from "react-icons/fa";
 const Header = () => {
   return (
     <header className="h-24 border-b flex items-center justify-center bg-white sticky top-0 right-0 left-0 z-50">
-      <nav className="w-full mx-auto flex items-center justify-between gap-8 md:gap-16 max-w-screen-xl px-4 lg:px-8">
+      <nav className="w-full mx-auto flex items-center justify-between gap-8 md:gap-16 max-w-screen-xl px-4 lg:px-0">
         <div className="flex-shrink-0 mr-8">
           {/* <img src="/logo.png" alt="MOHF Logo" width={100} height={50} /> */}
           <h1 className="text-xl md:text-2xl font-bold">

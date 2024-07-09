@@ -11,7 +11,7 @@ const Hero = () => {
       role="banner"
       aria-label="Building a resilient Kasese community"
     >
-      <div className="absolute inset-0 flex flex-col items-start justify-center bg-black bg-opacity-60 px-4 sm:px-6 lg:px-8">
+      <div className="absolute inset-0 flex flex-col items-start justify-center bg-black bg-opacity-50 px-4 sm:px-6 lg:px-8">
         <div className="w-full mx-auto md:mx-4 m-4 shadow-lg flex flex-col items-center bg-white max-w-xl rounded-md p-3 py-10 md:px-6 md:py-20 text-black">
           <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold  text-center max-w-4xl">
             Building a Resilient <span className="text-rose-600">Kasese</span>

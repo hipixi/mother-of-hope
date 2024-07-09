@@ -1,7 +1,11 @@
+import Blog from "@/components/blog";
+import ChatWidget from "@/components/chat";
 import Cores from "@/components/cores";
+import Featured from "@/components/featured";
+import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Hero from "@/components/hero";
-import Values from "@/components/values";
+import { Separator } from "@/components/ui/separator";
 import Component from "@/components/we-are";
 import WhatWeDo from "@/components/what-we-do";
 
@@ -11,9 +15,13 @@ export default function Home() {
       <Header />
       <Hero />
       <Component />
+      <Featured />
+      <Separator />
       <WhatWeDo />
       <Cores />
-      {/* <Values /> */}
+      <Blog />
+      <Footer />
+      <ChatWidget />
     </main>
   );
 }
