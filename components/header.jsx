@@ -3,17 +3,28 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { FaHeart } from "react-icons/fa";
-const Header = () => {
+import { getUser } from "@/app/actions/get-user";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+const Header = async () => {
+  const user = await getUser();
   return (
     <header className="h-24 border-b flex items-center justify-center bg-white sticky top-0 right-0 left-0 z-50">
-      <nav className="w-full mx-auto flex items-center justify-between gap-8 md:gap-16 max-w-screen-xl px-4 lg:px-0">
+      <nav className="w-full mx-auto flex items-center justify-between  md:gap-16 max-w-screen-xl px-4 lg:px-0">
         <div className="flex-shrink-0 mr-8">
-          {/* <img src="/logo.png" alt="MOHF Logo" width={100} height={50} /> */}
-          <h1 className="text-xl md:text-2xl font-bold">
-            <Link href="/" aria-label="MOHF Home">
-              MOHFU
-            </Link>
-          </h1>
+          <Link href="/">
+            <img
+              src="/logo.svg"
+              alt="MOHF Logo"
+              className="w-20 h-20 md:w-24 md:h-24"
+            />
+          </Link>
         </div>
 
         <div className="hidden md:flex items-center gap-10 uppercase font-semibold flex-1">
@@ -45,10 +56,38 @@ const Header = () => {
 
         <div className="flex gap-4   items-center  md:gap-6 ml-auto">
           <Search className="w-5 md:w-6 h-5 md:h-6" />
-          <Button className="font-bold bg-green-600 hover:bg-green-800 rounded-none text-base md:text-lg transition-colors h-10 px-4 sm:px-5 md:h-11 md:px-8 flex items-center gap-2">
+          <Button className="font-bold bg-green-600 hover:bg-green-800 rounded-none text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white">
             <FaHeart className="text-white animate-heart-pump" />
             Donate
           </Button>
+
+          {user && (
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <div className="w-8 h-8 md:w-12 md:h-12 bg-yellow-400 rounded-full text-base md:text-lg font-bold justify-center items-center flex uppercase">
+                  {user.fullname.split(" ")[0][0]}
+                </div>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" sideOffset={5}>
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Profile</DropdownMenuItem>
+                <DropdownMenuItem>Settings</DropdownMenuItem>
+                <DropdownMenuSeparator />
+
+                <DropdownMenuLabel>Dashboard</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+
+                <DropdownMenuItem>Users</DropdownMenuItem>
+                <DropdownMenuItem>Gallery</DropdownMenuItem>
+                <DropdownMenuItem>Blog</DropdownMenuItem>
+                <DropdownMenuItem>Team</DropdownMenuItem>
+                <DropdownMenuItem>Events</DropdownMenuItem>
+                <DropdownMenuItem>Contacts</DropdownMenuItem>
+                <DropdownMenuItem>Emails</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
           <Sheet>
             <SheetTrigger>
               <AlignLeft className="w-6 md:w-7 h-6 md:h-7 lg:hidden ml-auto cursor-pointer" />
@@ -106,11 +145,21 @@ const Header = () => {
               </div>
 
               <div className="mt-auto bottom-0">
-                <img src="./logo.svg" className="w-36 h-36" />
-                <p className="text-sm text-gray-500 mt-2">
-                  © {new Date().getFullYear()} Mother of Hope Foundation Uganda.
-                  All rights reserved.
-                </p>
+                {user ? (
+                  <>
+                    <div className="w-14 h-14 rounded-full bg-green-800 flex justify-center items-center text-white uppercase text-xl">
+                      {user.fullname.split(" ")[0][0]}
+                    </div>
+                    <div className="text-muted-foreground">signout</div>
+                  </>
+                ) : (
+                  <Link href="/login">
+                    <Button variant="outline" className="w-full">
+                      {" "}
+                      Login
+                    </Button>
+                  </Link>
+                )}
               </div>
             </SheetContent>
           </Sheet>
