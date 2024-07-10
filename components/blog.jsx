@@ -53,7 +53,7 @@ const Blog = () => {
       <div className="max-w-screen-xl px-3 md:px-6 lg:px-0 mx-auto">
         <div className="flex justify-center md:justify-start mb-12">
           <h2 className="text-3xl w-fit border-yellow-500 border-b-8 text-gray-900 text-center md:text-left font-bold">
-            Latest Updates
+            Blog Updates
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

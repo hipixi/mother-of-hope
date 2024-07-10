@@ -3,6 +3,7 @@ import ChatWidget from "@/components/chat";
 import Cores from "@/components/cores";
 import Featured from "@/components/featured";
 import Footer from "@/components/footer";
+import Gallery from "@/components/gallery";
 import Header from "@/components/header";
 import Hero from "@/components/hero";
 import { Separator } from "@/components/ui/separator";
@@ -20,6 +21,7 @@ export default function Home() {
       <WhatWeDo />
       <Cores />
       <Blog />
+      <Gallery />
       <Footer />
       <ChatWidget />
     </main>

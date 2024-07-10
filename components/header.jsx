@@ -12,6 +12,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import SignOut from "./signout";
+import { signOut } from "@/app/actions/auth.action";
 const Header = async () => {
   const user = await getUser();
   return (
@@ -22,7 +24,7 @@ const Header = async () => {
             <img
               src="/logo.svg"
               alt="MOHF Logo"
-              className="w-20 h-20 md:w-24 md:h-24"
+              className="w-[70px] h-[70px] md:w-24 md:h-24"
             />
           </Link>
         </div>
@@ -79,12 +81,19 @@ const Header = async () => {
                 <DropdownMenuSeparator />
 
                 <DropdownMenuItem>Users</DropdownMenuItem>
-                <DropdownMenuItem>Gallery</DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="/dashboard/gallery">Gallery</Link>
+                </DropdownMenuItem>
                 <DropdownMenuItem>Blog</DropdownMenuItem>
                 <DropdownMenuItem>Team</DropdownMenuItem>
                 <DropdownMenuItem>Events</DropdownMenuItem>
                 <DropdownMenuItem>Contacts</DropdownMenuItem>
                 <DropdownMenuItem>Emails</DropdownMenuItem>
+
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <SignOut signout={signOut} />
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           )}
@@ -147,10 +156,9 @@ const Header = async () => {
               <div className="mt-auto bottom-0">
                 {user ? (
                   <>
-                    <div className="w-14 h-14 rounded-full bg-green-800 flex justify-center items-center text-white uppercase text-xl">
+                    <div className="w-12 h-12 font-bold rounded-full bg-yellow-400 flex justify-center items-center text-black uppercase text-xl">
                       {user.fullname.split(" ")[0][0]}
                     </div>
-                    <div className="text-muted-foreground">signout</div>
                   </>
                 ) : (
                   <Link href="/login">
