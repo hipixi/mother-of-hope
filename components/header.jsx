@@ -21,11 +21,7 @@ const Header = async () => {
       <nav className="w-full mx-auto flex items-center justify-between  md:gap-16 max-w-screen-xl px-4 lg:px-0">
         <div className="flex-shrink-0 mr-8">
           <Link href="/">
-            <img
-              src="/logo.svg"
-              alt="MOHF Logo"
-              className="w-[70px] h-[70px] md:w-24 md:h-24"
-            />
+            <img src="/logo.svg" alt="MOHF Logo" className="w-24 md:h-24" />
           </Link>
         </div>
 
@@ -58,7 +54,11 @@ const Header = async () => {
 
         <div className="flex gap-4   items-center  md:gap-6 ml-auto">
           <Search className="w-5 md:w-6 h-5 md:h-6" />
-          <Button className="font-bold bg-green-600 hover:bg-green-800 rounded-none text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white">
+          <Button
+            className={`font-bold bg-green-600 hover:bg-green-800 rounded-none text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ${
+              user && "hidden md:flex"
+            }`}
+          >
             <FaHeart className="text-white animate-heart-pump" />
             Donate
           </Button>
@@ -66,7 +66,7 @@ const Header = async () => {
           {user && (
             <DropdownMenu>
               <DropdownMenuTrigger>
-                <div className="w-8 h-8 md:w-12 md:h-12 bg-yellow-400 rounded-full text-base md:text-lg font-bold justify-center items-center flex uppercase">
+                <div className="w-12 h-12 bg-yellow-400 rounded-full text-base md:text-lg font-bold justify-center items-center flex uppercase">
                   {user.fullname.split(" ")[0][0]}
                 </div>
               </DropdownMenuTrigger>
@@ -156,9 +156,10 @@ const Header = async () => {
               <div className="mt-auto bottom-0">
                 {user ? (
                   <>
-                    <div className="w-12 h-12 font-bold rounded-full bg-yellow-400 flex justify-center items-center text-black uppercase text-xl">
-                      {user.fullname.split(" ")[0][0]}
-                    </div>
+                    <Button className="font-bold w-full bg-green-600 hover:bg-green-800 rounded-none text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ">
+                      <FaHeart className="text-white animate-heart-pump" />
+                      Donate
+                    </Button>
                   </>
                 ) : (
                   <Link href="/login">
