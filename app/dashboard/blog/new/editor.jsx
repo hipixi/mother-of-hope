@@ -20,12 +20,13 @@ import {
   Bold,
   Highlighter,
   Italic,
+  List,
   Strikethrough,
 } from "lucide-react";
-import { useEffect } from "react";
 import { FaStrikethrough } from "react-icons/fa";
 import LinkDialog from "./link-dialog";
 import ImageUploadButton from "./image-upload";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Editor() {
   const editor = useEditor({
@@ -52,13 +53,15 @@ export default function Editor() {
       },
     },
   });
-  useEffect(() => {
-    if (!editor) {
-      return undefined;
-    }
-  }, [editor]);
 
-  if (!editor) return null;
+  if (!editor)
+    return (
+      <>
+        <Skeleton className="w-full max-w-prose h-12 bg-muted" />
+
+        <Skeleton className="w-full max-w-prose h-48 bg-slate-50" />
+      </>
+    );
 
   return (
     <div className="border w-full max-w-prose">
@@ -101,7 +104,7 @@ export default function Editor() {
       {editor && (
         <FloatingMenu
           className="flex bg-gray-200 gap-2 rounded px-2 py-[2px]"
-          tippyOptions={{ duration: 100 }}
+          tippyOptions={{ duration: 100, zIndex: 10 }}
           editor={editor}
         >
           <button
@@ -186,7 +189,7 @@ export default function Editor() {
                 : ""
             }
           >
-            Bullet list
+            <List className="w-4 h-4" />
           </button>
         </FloatingMenu>
       )}
