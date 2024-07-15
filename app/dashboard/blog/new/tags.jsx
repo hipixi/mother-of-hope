@@ -3,19 +3,24 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
-const Tags = () => {
+const Tags = ({ onTagsChange }) => {
   const [tags, setTags] = useState([]);
   const [currentTag, setCurrentTag] = useState("");
 
-  const addTag = () => {
+  const addTag = (e) => {
+    e.preventDefault();
     if (currentTag.trim() !== "" && !tags.includes(currentTag.trim())) {
-      setTags([...tags, currentTag.trim()]);
+      const newTags = [...tags, currentTag.trim()];
+      setTags(newTags);
       setCurrentTag("");
+      onTagsChange(newTags);
     }
   };
 
   const removeTag = (tagToRemove) => {
-    setTags(tags.filter((tag) => tag !== tagToRemove));
+    const newTags = tags.filter((tag) => tag !== tagToRemove);
+    setTags(newTags);
+    onTagsChange(newTags);
   };
 
   return (
@@ -27,7 +32,6 @@ const Tags = () => {
             placeholder="Add a tag"
             value={currentTag}
             onChange={(e) => setCurrentTag(e.target.value)}
-            onKeyPress={(e) => e.key === "Enter" && addTag()}
           />
           <Button onClick={addTag} className="ml-2 font-bold">
             Add

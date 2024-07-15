@@ -28,8 +28,12 @@ import LinkDialog from "./link-dialog";
 import ImageUploadButton from "./image-upload";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export default function Editor() {
+export default function Editor({ onContentChange }) {
   const editor = useEditor({
+    onUpdate: ({ editor }) => {
+      const html = editor.getHTML();
+      onContentChange(html);
+    },
     extensions: [
       StarterKit,
       Underline,
