@@ -99,7 +99,7 @@ const Header = async () => {
           )}
           <Sheet>
             <SheetTrigger>
-              <AlignLeft className="w-6 md:w-7 h-6 md:h-7 lg:hidden ml-auto cursor-pointer" />
+              <AlignLeft className="w-6 md:w-7 h-6 md:h-7  ml-auto cursor-pointer" />
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col">
               <div className="flex  flex-col  gap-6 uppercase font-semibold mt-6">
@@ -140,7 +140,7 @@ const Header = async () => {
                   Our Partners
                 </Link>
                 <Link
-                  href="/how-to-help"
+                  href="/gallery"
                   className="hover:text-rose-600  transition-colors"
                 >
                   Gallery

@@ -1,4 +1,5 @@
 import { getImages } from "@/app/actions/image.action";
+import Link from "next/link";
 
 const Gallery = async () => {
   const images = await getImages();
@@ -11,9 +12,12 @@ const Gallery = async () => {
             Our Gallery
           </h2>
 
-          <h3 className="font-semibold text-blue-600 border-b border-blue-600">
+          <Link
+            href="/gallery"
+            className="font-semibold text-blue-600 border-b border-blue-600"
+          >
             View all
-          </h3>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 gap-4 mt-3">
