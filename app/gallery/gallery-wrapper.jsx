@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Dialog from "./dialog";
 import Carousel from "./carousel";
 
@@ -16,17 +16,29 @@ const GalleryWrapper = ({ images }) => {
     setIsDialogOpen(false);
   };
 
+  useEffect(() => {
+    if (isDialogOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [isDialogOpen]);
+
   return (
     <>
       <section className="w-full my-4">
         <div className="max-w-screen-xl px-3 md:px-6 lg:px-0 mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 shadow gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 shadow-lg gap-6">
             {images.map((image, index) => (
               <div key={image._id} onClick={() => openDialog(index)}>
                 <img
                   src={image.url}
                   className="h-[200px] md:h-[300px] w-full object-cover rounded border cursor-pointer"
-                  alt={`Gallery image ${index + 1}`}
+                  alt=""
                 />
               </div>
             ))}

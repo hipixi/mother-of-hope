@@ -25,30 +25,30 @@ const Header = async () => {
           </Link>
         </div>
 
-        <div className="hidden md:flex items-center gap-10 uppercase font-semibold flex-1">
+        <div className="hidden md:flex items-center gap-10 font-semibold flex-1">
           <Link
             href="/who-we-are"
             className="hover:text-rose-600 transition-colors"
           >
-            Who we are
+            who we are
           </Link>
           <Link
             href="/what-we-do"
             className="hover:text-rose-600 transition-colors"
           >
-            What we do
+            what we do
           </Link>
           <Link
             href="/where-we-work"
             className="hover:text-rose-600 hidden lg:block transition-colors"
           >
-            Where we work
+            where we work
           </Link>
           <Link
             href="/how-to-help"
             className="hover:text-rose-600 hidden lg:block transition-colors"
           >
-            How to help
+            how to help
           </Link>
         </div>
 
@@ -70,7 +70,7 @@ const Header = async () => {
                   {user.fullname.split(" ")[0][0]}
                 </div>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" sideOffset={5}>
+              <DropdownMenuContent align="end" sideOffset={5} className="w-24">
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Profile</DropdownMenuItem>
@@ -102,54 +102,54 @@ const Header = async () => {
               <AlignLeft className="w-6 md:w-7 h-6 md:h-7  ml-auto cursor-pointer" />
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col">
-              <div className="flex  flex-col  gap-6 uppercase font-semibold mt-6">
+              <div className="flex  flex-col text-sm  gap-4   font-semibold mt-6">
                 <Link
                   href="/who-we-are"
                   className="hover:text-rose-600 transition-colors"
                 >
-                  Who we are
+                  who we are
                 </Link>
                 <Link
                   href="/what-we-do"
                   className="hover:text-rose-600 transition-colors"
                 >
-                  What we do
+                  what we do
                 </Link>
                 <Link
                   href="/where-we-work"
                   className="hover:text-rose-600 transition-colors"
                 >
-                  Where we work
+                  where we work
                 </Link>
                 <Link
                   href="/how-to-help"
                   className="hover:text-rose-600  transition-colors"
                 >
-                  How to help
+                  how to help
                 </Link>
                 <Link
                   href="/how-to-help"
                   className="hover:text-rose-600  transition-colors"
                 >
-                  Blog
+                  blog
                 </Link>
                 <Link
                   href="/how-to-help"
                   className="hover:text-rose-600  transition-colors"
                 >
-                  Our Partners
+                  our partners
                 </Link>
                 <Link
                   href="/gallery"
                   className="hover:text-rose-600  transition-colors"
                 >
-                  Gallery
+                  gallery
                 </Link>
                 <Link
                   href="/how-to-help"
                   className="hover:text-rose-600  transition-colors"
                 >
-                  Contact Us
+                  contact us
                 </Link>
               </div>
 

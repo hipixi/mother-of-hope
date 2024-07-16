@@ -1,3 +1,4 @@
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
 const Carousel = ({ images, initialIndex, onClose }) => {
@@ -16,12 +17,12 @@ const Carousel = ({ images, initialIndex, onClose }) => {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto  h-full flex items-center justify-center">
+    <div className="w-full  h-full flex items-center justify-center">
       <button
         onClick={goToPrevious}
-        className="absolute left-4 text-white text-4xl"
+        className="absolute left-4 bg-gray-950 rounded-full p-2 text-white text-4xl"
       >
-        &#8249;
+        <ChevronLeft className="w-5 h-5" />
       </button>
       <img
         src={images[currentIndex].url}
@@ -30,9 +31,9 @@ const Carousel = ({ images, initialIndex, onClose }) => {
       />
       <button
         onClick={goToNext}
-        className="absolute right-4 text-white text-4xl"
+        className="absolute right-4 bg-gray-950 p-2 rounded-full text-white text-4xl"
       >
-        &#8250;
+        <ChevronRight className="w-5 h-5" />
       </button>
     </div>
   );
