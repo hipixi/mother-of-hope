@@ -8,13 +8,13 @@ const Gallery = async () => {
     <section className="w-full  py-12 md:py-24 lg:py-32">
       <div className="max-w-screen-xl px-3 md:px-6 lg:px-0 mx-auto">
         <div className="flex justify-between items-center mb-12">
-          <h2 className="text-3xl w-fit border-yellow-500 border-b-8 text-gray-900 text-center md:text-left font-bold">
+          <h2 className="text-2xl w-fit border-yellow-500 border-b-4 text-gray-900 text-center md:text-left font-bold">
             Our Gallery
           </h2>
 
           <Link
             href="/gallery"
-            className="font-semibold text-blue-600 border-b border-blue-600"
+            className="font-bold text-sm text-sky-600 border-b border-sky-600"
           >
             View all
           </Link>
@@ -25,7 +25,7 @@ const Gallery = async () => {
             <img
               key={image.url}
               alt=""
-              className="transform   transition will-change-auto group-hover:brightness-110 w-full h-[250px] md:h-[300px] object-cover"
+              className="transform   transition will-change-auto group-hover:brightness-110 w-full h-[250px] rounded-lg shadow-md md:h-[300px] object-cover"
               style={{ transform: "translate3d(0, 0, 0)" }}
               src={image.url}
             />

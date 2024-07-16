@@ -13,23 +13,23 @@ export const addPost = async (values) => {
   };
 };
 
-// export const getImages = async () => {
-//   await dbConnect();
-//   try {
-//     const images = await Image.find({}).sort({ updatedAt: -1 }).lean();
+export const getPosts = async () => {
+  await dbConnect();
+  try {
+    const posts = await Post.find({}).sort({ updatedAt: -1 }).lean();
 
-//     const convertedImages = images.map((image) => ({
-//       ...image,
-//       _id: image._id.toString(),
-//     }));
+    const convertedPosts = posts.map((post) => ({
+      ...post,
+      _id: post._id.toString(),
+    }));
 
-//     return convertedImages;
-//   } catch (error) {
-//     console.log(error);
+    return convertedPosts;
+  } catch (error) {
+    console.log(error);
 
-//     return [];
-//   }
-// };
+    return [];
+  }
+};
 
 // export async function deleteImage(id) {
 //   await dbConnect();

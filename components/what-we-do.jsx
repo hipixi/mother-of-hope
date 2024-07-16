@@ -54,7 +54,7 @@ const WhatWeDo = () => {
           {activities.map((activity, index) => (
             <div
               key={index}
-              className="bg-white shadow rounded-lg ring-1 ring-gray-600  px-4 py-6 md:p-6 "
+              className="bg-white rounded-2xl border-slate-300 border  px-4 py-6 md:p-6 "
             >
               <div className="bg-gray-200 flex items-center justify-center rounded-full w-16 h-16 mx-auto my-4">
                 {activity?.icon}

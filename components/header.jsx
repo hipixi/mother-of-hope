@@ -55,7 +55,7 @@ const Header = async () => {
         <div className="flex gap-4   items-center  md:gap-6 ml-auto">
           <Search className="w-5 md:w-6 h-5 md:h-6" />
           <Button
-            className={`font-bold bg-green-600 hover:bg-green-800 rounded-none text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ${
+            className={`font-bold bg-green-600 rounded-full hover:bg-green-800 text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ${
               user && "hidden md:flex"
             }`}
           >
@@ -82,9 +82,15 @@ const Header = async () => {
 
                 <DropdownMenuItem>Users</DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Link href="/dashboard/gallery">Gallery</Link>
+                  <Link className="w-full" href="/dashboard/gallery">
+                    Gallery
+                  </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem>Blog</DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link className="w-full" href="/dashboard/blog">
+                    Blog
+                  </Link>
+                </DropdownMenuItem>
                 <DropdownMenuItem>Team</DropdownMenuItem>
                 <DropdownMenuItem>Events</DropdownMenuItem>
                 <DropdownMenuItem>Contacts</DropdownMenuItem>
@@ -101,62 +107,62 @@ const Header = async () => {
             <SheetTrigger>
               <AlignLeft className="w-6 md:w-7 h-6 md:h-7  ml-auto cursor-pointer" />
             </SheetTrigger>
-            <SheetContent side="left" className="flex flex-col">
-              <div className="flex  flex-col text-sm  gap-4   font-semibold mt-6">
+            <SheetContent side="left" className="flex  justify-center flex-col">
+              <div className="flex  flex-col text-sm  gap-4 mt-6">
                 <Link
                   href="/who-we-are"
                   className="hover:text-rose-600 transition-colors"
                 >
-                  who we are
+                  Who we are
                 </Link>
                 <Link
                   href="/what-we-do"
                   className="hover:text-rose-600 transition-colors"
                 >
-                  what we do
+                  What we do
                 </Link>
                 <Link
                   href="/where-we-work"
                   className="hover:text-rose-600 transition-colors"
                 >
-                  where we work
+                  Where we work
                 </Link>
                 <Link
                   href="/how-to-help"
                   className="hover:text-rose-600  transition-colors"
                 >
-                  how to help
+                  Wow to help
+                </Link>
+                <Link
+                  href="/blog"
+                  className="hover:text-rose-600  transition-colors"
+                >
+                  Blog
                 </Link>
                 <Link
                   href="/how-to-help"
                   className="hover:text-rose-600  transition-colors"
                 >
-                  blog
-                </Link>
-                <Link
-                  href="/how-to-help"
-                  className="hover:text-rose-600  transition-colors"
-                >
-                  our partners
+                  Our partners
                 </Link>
                 <Link
                   href="/gallery"
                   className="hover:text-rose-600  transition-colors"
                 >
-                  gallery
+                  Gallery
                 </Link>
                 <Link
                   href="/how-to-help"
                   className="hover:text-rose-600  transition-colors"
                 >
-                  contact us
+                  Contact us
                 </Link>
               </div>
 
               <div className="mt-auto bottom-0">
                 {user ? (
                   <>
-                    <Button className="font-bold w-full bg-green-600 hover:bg-green-800 rounded-none text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ">
+                    <Button className="font-bold w-full bg-green-600 hover:bg-green-800 rounded-full text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ">
                       <FaHeart className="text-white animate-heart-pump" />
                       Donate
                     </Button>

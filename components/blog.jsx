@@ -1,7 +1,8 @@
+import Link from "next/link";
 import { Card, CardContent } from "./ui/card";
 
 const BlogPost = ({ title, date, image }) => (
-  <Card>
+  <Card className="border-slate-300">
     <CardContent className="p-0">
       <img
         src={image}
@@ -51,10 +52,17 @@ const Blog = () => {
   return (
     <section className="w-full bg-muted py-12 md:py-24 lg:py-32">
       <div className="max-w-screen-xl px-3 md:px-6 lg:px-0 mx-auto">
-        <div className="flex justify-center md:justify-start mb-12">
-          <h2 className="text-3xl w-fit border-yellow-500 border-b-8 text-gray-900 text-center md:text-left font-bold">
-            Blog Updates
+        <div className="flex justify-between items-center mb-12">
+          <h2 className="text-2xl w-fit border-yellow-500 border-b-4 text-gray-900 text-center md:text-left font-bold">
+            Latest Updates
           </h2>
+
+          <Link
+            href="/blog"
+            className="font-bold text-sm text-sky-600 border-b border-sky-600"
+          >
+            View all
+          </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {blogPosts.map((post, index) => (

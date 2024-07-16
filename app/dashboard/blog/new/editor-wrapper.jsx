@@ -83,7 +83,6 @@ const EditorWrapper = () => {
     startTransition(() => {
       addPost(values).then((data) => {
         if (data?.success) {
-          form.reset();
           router.push("/dashboard/blog");
         }
       });
