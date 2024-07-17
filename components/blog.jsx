@@ -2,18 +2,17 @@ import Link from "next/link";
 import { Card, CardContent } from "./ui/card";
 
 const BlogPost = ({ title, date, image }) => (
-  <Card className="shadow-md">
+  <Card className="">
     <CardContent className="p-0">
       <img
         src={image}
         alt={title}
-        className="w-full h-48 object-cover rounded-t-lg"
+        className="w-full h-48 lg:h-60 object-cover rounded-t-lg"
       />
       <div>
-        <h3 className="text-base p-2 font-semibold mb-2">{title}</h3>
-        <p className="text-xs p-2 text-muted-foreground font-semibold border-t mb-2">
-          {date}
-        </p>
+        <h3 className="py-2 px-4 text-gray-950 text-lg font-semibold mb-2">
+          {title}
+        </h3>
       </div>
     </CardContent>
   </Card>
@@ -50,21 +49,14 @@ const Blog = () => {
   ];
 
   return (
-    <section className="w-full bg-gray-50 py-12 md:py-24 lg:py-32">
+    <section className="w-full bg-gray-100 py-12 md:py-24 lg:py-32">
       <div className="max-w-screen-xl px-3 md:px-6 lg:px-0 mx-auto">
-        <div className="flex justify-between items-center mb-12">
-          <h2 className="text-2xl w-fit border-b-2 text-gray-900 text-center md:text-left font-bold">
-            Story Updates
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-3xl text-gray-950 text-center md:text-left font-bold">
+            Latest Updates
           </h2>
-
-          <Link
-            href="/blog"
-            className="font-bold text-sm text-sky-600 border-b border-sky-600"
-          >
-            View all
-          </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post, index) => (
             <BlogPost key={index} {...post} />
           ))}
