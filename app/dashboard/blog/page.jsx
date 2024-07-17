@@ -22,6 +22,7 @@ import Footer from "@/components/footer";
 import ChatWidget from "@/components/chat";
 import { getUser } from "@/app/actions/get-user";
 import { redirect } from "next/navigation";
+import PostActions from "./post-actions";
 
 export default async function BlogDashboard() {
   const user = await getUser();
@@ -92,22 +93,7 @@ export default async function BlogDashboard() {
                             }).format(new Date(post.updatedAt))}
                           </TableCell>
                           <TableCell>
-                            <DropdownMenu>
-                              <DropdownMenuTrigger asChild>
-                                <Button
-                                  aria-haspopup="true"
-                                  size="icon"
-                                  variant="ghost"
-                                >
-                                  <MoveHorizontalIcon className="h-4 w-4" />
-                                  <span className="sr-only">Toggle menu</span>
-                                </Button>
-                              </DropdownMenuTrigger>
-                              <DropdownMenuContent align="end">
-                                <DropdownMenuItem>Edit</DropdownMenuItem>
-                                <DropdownMenuItem>Delete</DropdownMenuItem>
-                              </DropdownMenuContent>
-                            </DropdownMenu>
+                            <PostActions id={post._id} />
                           </TableCell>
                         </TableRow>
                       ))}

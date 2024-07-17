@@ -1,13 +1,10 @@
 "use client";
 import { Input } from "@/components/ui/input";
-import Tags from "./tags";
 import { Button } from "@/components/ui/button";
-import Editor from "./editor";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useTransition, useEffect } from "react";
-import FeaturedImage from "./featured-image";
 import {
   Form,
   FormField,
@@ -17,7 +14,10 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { useRouter } from "next/navigation";
-import { addPost } from "@/app/actions/blog.action";
+import { editPost } from "@/app/actions/blog.action";
+import Editor from "../../new/editor";
+import FeaturedImage from "../../new/featured-image";
+import Tags from "../../new/tags";
 const formSchema = z.object({
   title: z.string().min(3, {
     message: "Post title must be atleast 3 characters",
@@ -42,25 +42,25 @@ const formSchema = z.object({
     }),
 });
 
-const EditorWrapper = () => {
+const EditorWrapper = ({ initialData }) => {
   const [uploading, setUploading] = useState(false);
-  const [editorContent, setEditorContent] = useState("");
+  const [editorContent, setEditorContent] = useState(initialData.post.content);
   const [loading, startTransition] = useTransition();
 
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState(initialData.post.tags);
 
   const router = useRouter();
 
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: "",
-      description: "",
-      featuredImage: "",
-      author: "",
-      tags: [],
-      content: "",
-      slug: "",
+      title: initialData.post.title,
+      description: initialData.post.description,
+      featuredImage: initialData.post.featuredImage,
+      author: initialData.post.author,
+      tags: initialData.post.tags,
+      content: initialData.post.content,
+      slug: initialData.post.slug,
     },
   });
   useEffect(() => {
@@ -81,13 +81,14 @@ const EditorWrapper = () => {
 
   const onSubmit = (values) => {
     startTransition(() => {
-      addPost(values).then((data) => {
+      editPost(initialData.post._id, values).then((data) => {
         if (data?.success) {
           router.push("/dashboard/blog");
         }
       });
     });
   };
+
   const handleFormKeyDown = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -97,7 +98,6 @@ const EditorWrapper = () => {
   const handlePublishClick = () => {
     form.handleSubmit(onSubmit)();
   };
-
   return (
     <>
       <div className="mx-auto max-w-screen-xl px-2 py-8 lg:px-0 ">
@@ -109,7 +109,7 @@ const EditorWrapper = () => {
           >
             <div className="bg-white p-4 md:p-6 w-full lg:w-8/12 rounded-lg shadow-md border">
               <div className="mb-6 space-y-1">
-                <h1 className="text-xl font-semibold">Create New Post</h1>
+                <h1 className="text-xl font-semibold">Edit Post</h1>
               </div>
 
               <FormField
@@ -148,7 +148,10 @@ const EditorWrapper = () => {
 
               <div className="mb-4 mt-2">
                 <h3 className="font-semibold text-sm mb-1">Content</h3>
-                <Editor onContentChange={handleEditorContentChange} />
+                <Editor
+                  onContentChange={handleEditorContentChange}
+                  initialContent={initialData.post.content}
+                />
               </div>
             </div>
 
@@ -217,15 +220,18 @@ const EditorWrapper = () => {
                   )}
                 />
               </div>
-              <Tags onTagsChange={handleTagsChange} />
+              <Tags
+                onTagsChange={handleTagsChange}
+                initialTags={initialData.post.tags}
+              />
               <div className="mt-4">
                 <Button
                   type="submit"
                   disabled={loading}
-                  onClick={handlePublishClick}
                   className="w-full font-bold"
+                  onClick={handlePublishClick}
                 >
-                  Publish Post
+                  Update Post
                 </Button>
               </div>
             </div>

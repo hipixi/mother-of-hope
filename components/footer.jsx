@@ -56,7 +56,7 @@ const Footer = () => {
             <FaSquareXTwitter className="h-9 w-9 md:h-12 md:w-12" />
           </div>
 
-          <img src="./logo.svg" className="w-32 h-32" />
+          <img src="/logo.svg" className="w-32 h-32" />
         </div>
 
         <Separator className="mt-4" />

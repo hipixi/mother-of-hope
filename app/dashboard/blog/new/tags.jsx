@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
-const Tags = ({ onTagsChange }) => {
-  const [tags, setTags] = useState([]);
+const Tags = ({ onTagsChange, initialTags }) => {
+  const [tags, setTags] = useState(initialTags || []);
   const [currentTag, setCurrentTag] = useState("");
 
   const addTag = (e) => {

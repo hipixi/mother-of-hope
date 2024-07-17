@@ -31,14 +31,58 @@ export const getPosts = async () => {
   }
 };
 
-// export async function deleteImage(id) {
-//   await dbConnect();
+export const editPost = async (id, values) => {
+  await dbConnect();
+  try {
+    const updatedPost = await Post.findByIdAndUpdate(id, values, { new: true });
+    if (!updatedPost) {
+      return { error: "Post not found" };
+    }
+    return { success: "Post updated successfully", post: updatedPost };
+  } catch (error) {
+    console.error(error);
+    return { error: "Failed to update post" };
+  }
+};
 
-//   try {
-//     await Image.deleteOne({ _id: id });
-//     return { sucess: "deleted" };
-//   } catch (error) {
-//     console.log("failed to delete image", error);
-//     return;
-//   }
-// }
+export const deletePost = async (id) => {
+  await dbConnect();
+  try {
+    const deletedPost = await Post.findByIdAndDelete(id);
+    if (!deletedPost) {
+      return { error: "Post not found" };
+    }
+    return { success: "Post deleted successfully" };
+  } catch (error) {
+    console.error(error);
+    return { error: "Failed to delete post" };
+  }
+};
+
+export const getPostBySlug = async (id) => {
+  await dbConnect();
+  try {
+    const post = await Post.findById({ _id: id }).lean();
+    if (!post) {
+      return { error: "Post not found" };
+    }
+    return { post: { ...post, _id: post._id.toString() } };
+  } catch (error) {
+    console.error(error);
+    return { error: "Failed to fetch post" };
+  }
+};
+
+export const getSinglePost = async (slug) => {
+  await dbConnect();
+  try {
+    const post = await Post.findOne({ slug }).lean();
+    if (!post) {
+      return { error: "Post not found" };
+    }
+    return { post: { ...post, _id: post._id.toString() } };
+  } catch (error) {
+    console.error(error);
+    return { error: "Failed to fetch post" };
+  }
+};

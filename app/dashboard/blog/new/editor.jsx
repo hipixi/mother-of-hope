@@ -28,7 +28,7 @@ import LinkDialog from "./link-dialog";
 import ImageUploadButton from "./image-upload";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export default function Editor({ onContentChange }) {
+export default function Editor({ onContentChange, initialContent }) {
   const editor = useEditor({
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
@@ -49,7 +49,7 @@ export default function Editor({ onContentChange }) {
       Image,
     ],
 
-    content: ``,
+    content: initialContent || "",
     editorProps: {
       attributes: {
         class:
