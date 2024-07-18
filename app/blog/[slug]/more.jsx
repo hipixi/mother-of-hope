@@ -10,7 +10,7 @@ const More = async ({ id }) => {
   return (
     <div className="p-4 border rounded-lg  ">
       <div className="flex justify-between">
-        <h3 className="font-medium text-sm text-blue-700">{`More Stories`}</h3>
+        <h3 className=" uppercase font-bold text-sm text-blue-700">{`More Stories`}</h3>
       </div>
 
       <div className="mt-3">

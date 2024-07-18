@@ -1,8 +1,7 @@
-import Link from "next/link";
 import { Card, CardContent } from "./ui/card";
 
 const BlogPost = ({ title, date, image }) => (
-  <Card className="">
+  <Card>
     <CardContent className="p-0">
       <img
         src={image}

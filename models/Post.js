@@ -9,6 +9,7 @@ const blogSchema = new mongoose.Schema(
     author: { type: String, required: true, index: true },
     slug: { type: String, required: true, unique: true, index: true },
     tags: [{ type: String, index: true }],
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
   },
   { timestamps: true }
 );

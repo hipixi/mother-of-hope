@@ -2,6 +2,7 @@
 
 import dbConnect from "@/lib/dbConnect";
 import Post from "@/models/Post";
+import Comment from "@/models/Comment";
 
 export const addPost = async (values) => {
   await dbConnect();
@@ -76,11 +77,26 @@ export const getPostBySlug = async (id) => {
 export const getSinglePost = async (slug) => {
   await dbConnect();
   try {
-    const post = await Post.findOne({ slug }).lean();
+    const post = await Post.findOne({ slug })
+      .populate({
+        path: "comments",
+        model: "Comment",
+        options: { sort: { createdAt: -1 } },
+      })
+      .lean();
     if (!post) {
       return { error: "Post not found" };
     }
-    return { post: { ...post, _id: post._id.toString() } };
+    return {
+      post: {
+        ...post,
+        _id: post._id.toString(),
+        comments: post.comments?.map((comment) => ({
+          ...comment,
+          _id: comment._id.toString(),
+        })),
+      },
+    };
   } catch (error) {
     console.error(error);
     return { error: "Failed to fetch post" };

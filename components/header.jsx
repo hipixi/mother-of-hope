@@ -80,7 +80,11 @@ const Header = async () => {
                 <DropdownMenuLabel>Dashboard</DropdownMenuLabel>
                 <DropdownMenuSeparator />
 
-                <DropdownMenuItem>Users</DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link className="w-full" href="/dashboard/users">
+                    Users
+                  </Link>
+                </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Link className="w-full" href="/dashboard/gallery">
                     Gallery

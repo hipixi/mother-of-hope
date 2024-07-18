@@ -11,6 +11,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Blog | Mother of hope foundation Uganda",
@@ -18,7 +19,7 @@ export const metadata = {
 const Blog = async () => {
   const posts = await getPosts();
   return (
-    <main className="bg-slate-100">
+    <main className="bg-gray-100">
       <Header />
 
       <section className="mx-auto px-2 max-w-screen-xl my-6">
@@ -37,26 +38,21 @@ const Blog = async () => {
         </div>
         <div className="grid gap-6 grid-cols-1 md:grid-cols-3 sm:grid-cols-3 lg:grid-cols-3">
           {posts.map((post) => (
-            <Link
-              href={`/blog/${post.slug}`}
-              key={post._id}
-              className="bg-white shadow rounded"
-            >
-              <img
-                src={post.featuredImage}
-                className="h-[210px] object-cover w-full rounded-t md:h-[260px]"
-              />
-
-              <h1 className="font-semibold  py-3 text-lg px-2 leading-tight">
-                {post.title}
-              </h1>
-              <p className="text-xs py-2 px-2 text-muted-foreground">
-                {new Intl.DateTimeFormat("en-UK", {
-                  day: "2-digit",
-                  month: "short",
-                  year: "numeric",
-                }).format(new Date(post.updatedAt))}
-              </p>
+            <Link href={`/blog/${post.slug}`} key={post._id}>
+              <Card>
+                <CardContent className="p-0">
+                  <img
+                    src={post.featuredImage}
+                    alt={post.title}
+                    className="w-full h-48 lg:h-60 object-cover rounded-t-lg"
+                  />
+                  <div>
+                    <h3 className="py-2 px-4 text-gray-950 text-lg font-semibold mb-2">
+                      {post.title}
+                    </h3>
+                  </div>
+                </CardContent>
+              </Card>
             </Link>
           ))}
         </div>

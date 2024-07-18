@@ -8,7 +8,7 @@ import User from "@/models/User";
 
 export const signUp = async (values) => {
   await dbConnect();
-  const { email, password, fullname } = values;
+  const { email, password, fullname, role } = values;
   const hashedPassword = await bcrypt.hash(password, 10);
   const existingUser = await User.findOne({
     email,
@@ -22,6 +22,7 @@ export const signUp = async (values) => {
     email,
     password: hashedPassword,
     fullname,
+    role,
   });
 
   return {

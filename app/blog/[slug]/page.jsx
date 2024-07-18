@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { FaFacebook } from "react-icons/fa";
 import { FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 import { getSinglePost } from "@/app/actions/blog.action";
@@ -6,10 +5,11 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import ChatWidget from "@/components/chat";
 import More from "./more";
+import Comments from "./comments";
+import { Separator } from "@/components/ui/separator";
 
 export default async function PostPage({ params }) {
   const { post } = await getSinglePost(params.slug);
-
   return (
     <>
       <main>
@@ -29,11 +29,6 @@ export default async function PostPage({ params }) {
                 <p className="text-xs lg:text-xl font-bold  text-blue-600">
                   BY: {post.author.toUpperCase()}
                 </p>
-                {/* <Link href={`/category/${post?.category}`}>
-                  <p className="text-xs lg:text-xl font-bold ml-4  text-blue-600">
-                    {post?.category.toUpperCase()}
-                  </p>
-                </Link> */}
               </div>
               <p className="text-sm">
                 {new Intl.DateTimeFormat("en-UK", {
@@ -74,14 +69,14 @@ export default async function PostPage({ params }) {
             {post.title}
           </h1>
           <div className="mt-2 lg:mt-4 rounded-l-lg flex flex-col-reverse lg:flex-row   ">
-            <div className="w-full lg:w-[50%] relative aspect-[3/2]">
+            <div className="w-full lg:w-[70%] relative aspect-[2/1]">
               <img
                 className="w-full h-[250px] md:h-[400px] object-cover"
                 src={post.featuredImage}
               />
             </div>
 
-            <div className="lg:flex flex-col justify-between hidden lg:w-[50%]">
+            <div className="lg:flex flex-col justify-between hidden lg:w-[70%]">
               <p className="text-lg rounded-lg  p-3 border lg:text-xl ml-5">
                 {post.description}
               </p>
@@ -90,11 +85,6 @@ export default async function PostPage({ params }) {
                   <p className="text-base font-bold  text-blue-600">
                     BY: {post.author.toUpperCase()}
                   </p>
-                  {/* <Link href={`/category/${post?.category}`}>
-                    <p className="lg:text-base font-bold ml-4  text-blue-600">
-                      {post?.category.toUpperCase()}
-                    </p>
-                  </Link> */}
                 </div>
                 <p className="">
                   {new Intl.DateTimeFormat("en-UK", {
@@ -131,7 +121,7 @@ export default async function PostPage({ params }) {
           </div>
 
           <div className="lg:flex lg:flex-row w-full">
-            <div className="w-full lg:w-[50%]">
+            <div className="w-full lg:w-[60%]">
               <div className="w-full mb-8 flex">
                 <div
                   className="prose  prose-table:w-[100%] prose-table:text-base prose-h2:font-bold prose-p:text-lg lg:prose-lg lg:prose-p:text-xl prose-h2:text-2xl mt-7 prose-a:decoration-transparent prose-a:border-b-4 prose-a:border-b-indigo-600 prose-ul:font-semibold prose-blockquote:font-normal prose-blockquote:not-italic"
@@ -146,14 +136,10 @@ export default async function PostPage({ params }) {
                   </div>
                 ))}
               </div>
-              {/* <div>
-                <Separator />
-                <h1 className="text-xl font-semibold mt-3">Comments</h1>
-                <NewComment
-                  //@ts-ignore
-                  articleId={post?.id}
-                />
-              </div> */}
+
+              <Separator className="my-5" />
+
+              <Comments id={post._id} comments={post?.comments} />
             </div>
 
             <div className="h-full w-full lg:max-h-full lg:w-[380px] mt-8  text-gray-900 rounded-lg lg:ml-8 mb-10 md:w-[400px]">
