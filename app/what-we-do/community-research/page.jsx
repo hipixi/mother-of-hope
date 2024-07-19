@@ -80,8 +80,8 @@ const CommunityResearch = () => {
             Get Involved
           </h2>
           <p className="text-gray-600 mb-6">
-            We welcome volunteers and partners who share our vision for safer,
-            more informed communities. Here's how you can contribute:
+            {`We welcome volunteers and partners who share our vision for safer,
+            more informed communities. Here's how you can contribute:`}
           </p>
           <ul className="list-disc list-inside text-gray-600 mb-6">
             <li>Volunteer for our awareness campaigns</li>

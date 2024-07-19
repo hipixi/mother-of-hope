@@ -18,7 +18,7 @@ export default function Home() {
       <Component />
       {/* <Featured /> */}
       <Separator />
-      <WhatWeDo />
+      {/* <WhatWeDo /> */}
       <Blog />
       <Cores />
       <Gallery />
