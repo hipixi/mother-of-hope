@@ -1,5 +1,4 @@
 import { getImages } from "@/app/actions/image.action";
-import Link from "next/link";
 
 const Gallery = async () => {
   const images = await getImages();
@@ -7,17 +6,10 @@ const Gallery = async () => {
   return (
     <section className="w-full  py-12 md:py-24 lg:py-32">
       <div className="max-w-screen-xl px-3 md:px-6 lg:px-0 mx-auto">
-        <div className="flex justify-between items-center mb-12">
-          <h2 className="text-2xl w-fit border-yellow-500 border-b-4 text-gray-900 text-center md:text-left font-bold">
-            Our Gallery
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-3xl text-gray-950 text-center md:text-left font-bold">
+            Gallery
           </h2>
-
-          <Link
-            href="/gallery"
-            className="font-bold text-sm text-sky-600 border-b border-sky-600"
-          >
-            View all
-          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 gap-4 mt-3">

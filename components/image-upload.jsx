@@ -52,7 +52,11 @@ const ImageUpload = ({ value, onChange, onRemove, setUploading }) => {
           </button>
         </div>
       ) : (
-        <Input type="file" onChange={handleFileChange} />
+        <Input
+          type="file"
+          onChange={handleFileChange}
+          placeholder="choose image"
+        />
       )}
       {loading && <p>Uploading...</p>}
     </div>

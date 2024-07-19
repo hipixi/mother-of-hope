@@ -14,7 +14,6 @@ const EditPost = async ({ params }) => {
 
   return (
     <main className="bg-muted min-h-screen">
-      <Header />
       <EditorWrapper initialData={post} />
     </main>
   );

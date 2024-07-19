@@ -18,7 +18,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { MoveHorizontalIcon } from "lucide-react";
+import { Ellipsis } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -38,7 +38,7 @@ const PostActions = ({ id }) => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button aria-haspopup="true" size="icon" variant="ghost">
-              <MoveHorizontalIcon className="h-4 w-4" />
+              <Ellipsis className="h-4 w-4" />
               <span className="sr-only">Toggle menu</span>
             </Button>
           </DropdownMenuTrigger>

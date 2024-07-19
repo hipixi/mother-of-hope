@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import Dialog from "./dialog";
 import Carousel from "./carousel";
-import Loader from "./loader";
 
 const GalleryWrapper = ({ images }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);

@@ -9,15 +9,12 @@ import {
   TableCell,
 } from "@/components/ui/table";
 import { getPosts } from "@/app/actions/blog.action";
-import Header from "@/components/header";
 import { Plus } from "lucide-react";
-import Footer from "@/components/footer";
-import ChatWidget from "@/components/chat";
 import { getUser } from "@/app/actions/get-user";
 import { redirect } from "next/navigation";
 import PostActions from "./post-actions";
 
-export const metadat = {
+export const metadata = {
   title: "Posts | Dashboard",
 };
 
@@ -29,7 +26,6 @@ export default async function BlogDashboard() {
   const posts = await getPosts();
   return (
     <main>
-      <Header />
       <div className="py-2 max-w-screen-xl mx-auto">
         <div className="bg-background  px-4 py-4 flex items-center justify-between">
           <h1 className="text-2xl font-bold">Posts</h1>
@@ -103,29 +99,6 @@ export default async function BlogDashboard() {
           Total posts: <span className="font-medium">{posts.length}</span>
         </div>
       </section>
-      <Footer />
-      <ChatWidget />
     </main>
-  );
-}
-
-function MoveHorizontalIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polyline points="18 8 22 12 18 16" />
-      <polyline points="6 8 2 12 6 16" />
-      <line x1="2" x2="22" y1="12" y2="12" />
-    </svg>
   );
 }

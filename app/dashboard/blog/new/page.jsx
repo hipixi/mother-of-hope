@@ -13,7 +13,6 @@ const NewPost = async () => {
   }
   return (
     <main className="bg-muted min-h-screen">
-      <Header />
       <EditorWrapper />
     </main>
   );

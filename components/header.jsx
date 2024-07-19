@@ -14,6 +14,7 @@ import {
 } from "./ui/dropdown-menu";
 import SignOut from "./signout";
 import { signOut } from "@/app/actions/auth.action";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 const Header = async () => {
   const user = await getUser();
   return (
@@ -66,15 +67,19 @@ const Header = async () => {
           {user && (
             <DropdownMenu>
               <DropdownMenuTrigger>
-                <div className="w-12 h-12 bg-yellow-400 rounded-full text-base md:text-lg font-bold justify-center items-center flex uppercase">
-                  {user.fullname.split(" ")[0][0]}
-                </div>
+                <Avatar className="h-12 w-12 rounded-full">
+                  <AvatarImage src={user.image || "/placeholder-user.jpg"} />
+                  <AvatarFallback>{user.fullname[0]}</AvatarFallback>
+                </Avatar>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" sideOffset={5} className="w-24">
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Profile</DropdownMenuItem>
-                <DropdownMenuItem>Settings</DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link className="w-full" href="/profile">
+                    Profile
+                  </Link>
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
 
                 <DropdownMenuLabel>Dashboard</DropdownMenuLabel>

@@ -26,8 +26,6 @@ export default async function Users() {
   const users = await getUsers();
   return (
     <main>
-      <Header />
-
       <div className="flex flex-col h-full w-full max-w-screen-xl mx-auto">
         <header className="bg-background  px-4 py-4 flex items-center justify-between">
           <h1 className="text-2xl font-bold">Users</h1>
@@ -64,14 +62,11 @@ export default async function Users() {
           </div>
         </main>
         <footer className="bg-muted max-w-screen-xl mx-auto w-full border-t px-4 py-4 flex items-center justify-between">
-          <div className="text-muted-foreground">
+          <div className="text-muted-foreground rounded">
             Total users: <span className="font-medium">{users.length}</span>
           </div>
         </footer>
       </div>
-
-      <Footer />
-      <ChatWidget />
     </main>
   );
 }
