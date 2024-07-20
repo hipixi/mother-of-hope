@@ -43,7 +43,7 @@ const UpcomingEvents = () => {
               key={event.id}
               className="border bg-white border-gray-200 rounded-lg overflow-hidden shadow-sm"
             >
-              <div className="bg-green-600 text-white py-4 text-center">
+              <div className="bg-rose-600 text-white py-4 text-center">
                 <span className=" font-bold text-base">{event.date}</span>
               </div>
               <div className="p-6">
