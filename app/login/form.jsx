@@ -51,7 +51,9 @@ export default function SignUpForm() {
     <div className="md:flex md:flex-row-reverse w-full">
       <div className="bg-green-500 lg:w-1/2 h-1/4 md:min-h-screen flex items-center justify-center relative p-4">
         <div className="bg-white rounded-full flex items-center justify-center md:hidden w-32 h-32">
-          <img src="./logo.svg" className="h-32 w-32 object-contain" />
+          <Link href="/">
+            <img src="./logo.svg" className="h-32 w-32 object-contain" />
+          </Link>
         </div>
       </div>
 
