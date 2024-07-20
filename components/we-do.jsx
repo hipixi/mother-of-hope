@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { Separator } from "./ui/separator";
 
 const activities = [
   {
@@ -24,20 +25,22 @@ const activities = [
 
 const WeDo = () => {
   return (
-    <section className=" bg-gradient-to-b from-gray-50 to-gray-100 py-20">
+    <section className=" bg-white py-16 lg:py-28">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl">
+        <div>
+          <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
             What We Do
-          </h2>
-          <p className="mt-3 max-w-2xl mx-auto text-xl text-teal-6800 sm:mt-4">
+          </h1>
+          <p className="mt-3 text-xl text-gray-800 sm:mt-2">
             Our initiatives to create positive change in the community
           </p>
         </div>
+
+        <Separator className="my-3 lg:hidden" />
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3 ">
           {activities.map((acc) => (
             <div
-              className="font-extrabold shadow h-16 flex items-center justify-between text-sky-600 bg-white rounded border px-4"
+              className="font-extrabold shadow h-16 flex items-center justify-between text-sky-600 bg-white rounded-lg border px-4"
               key={acc.title}
             >
               <h3>{acc.title}</h3>

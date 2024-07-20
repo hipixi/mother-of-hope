@@ -71,3 +71,15 @@
 .animate-heart-pump {
   animation: heart-pump 0.8s ease-in-out infinite;
 }
+@keyframes scrollRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-right {
+  animation: scrollRight 10s linear infinite;
+}
