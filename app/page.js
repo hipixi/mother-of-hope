@@ -25,7 +25,7 @@ export default function Home() {
       {/* <Blog /> */}
       <Cores />
       <WeDo />
-      <Gallery />
+      {/* <Gallery /> */}
       <Footer />
       <ChatWidget />
     </main>
