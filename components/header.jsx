@@ -75,7 +75,7 @@ const Header = async () => {
               <DropdownMenuContent align="end" sideOffset={5} className="w-24">
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                <DropdownMenuItem asChild>
                   <Link className="w-full" href="/profile">
                     Profile
                   </Link>
@@ -85,17 +85,17 @@ const Header = async () => {
                 <DropdownMenuLabel>Dashboard</DropdownMenuLabel>
                 <DropdownMenuSeparator />
 
-                <DropdownMenuItem>
+                <DropdownMenuItem asChild>
                   <Link className="w-full" href="/dashboard/users">
                     Users
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem asChild>
                   <Link className="w-full" href="/dashboard/gallery">
                     Gallery
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem asChild>
                   <Link className="w-full" href="/dashboard/blog">
                     Blog
                   </Link>

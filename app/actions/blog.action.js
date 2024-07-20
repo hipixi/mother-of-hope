@@ -102,3 +102,20 @@ export const getSinglePost = async (slug) => {
     return { error: "Failed to fetch post" };
   }
 };
+
+export const getLatestPosts = async () => {
+  await dbConnect();
+  try {
+    const posts = await Post.find({}).sort({ updatedAt: -1 }).limit(3).lean();
+
+    const convertedPosts = posts.map((post) => ({
+      ...post,
+      _id: post._id.toString(),
+    }));
+
+    return convertedPosts;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};

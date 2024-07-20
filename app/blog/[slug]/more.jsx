@@ -2,10 +2,8 @@ import { getPosts } from "@/app/actions/blog.action";
 import Link from "next/link";
 
 const More = async ({ id }) => {
-  const posts = await getPosts();
-  //   const posts = allposts.filter((post) => post._id !== id);
-
-  //   console.log(posts);
+  const allposts = await getPosts();
+  const posts = allposts.filter((post) => post._id !== id);
 
   return (
     <div className="p-4 border rounded-lg  ">
