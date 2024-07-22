@@ -21,8 +21,8 @@ export default function Home() {
       <Separator />
       <Cores />
       <WeDo />
-      <UpcomingEvents />
       <GetInvolved />
+      <UpcomingEvents />
       <Partners />
       <Footer />
       <ChatWidget />
