@@ -6,7 +6,7 @@ const OtherEvents = async ({ id }) => {
   const events = await getOtherEvents(id);
   return (
     <>
-      <h2 className="font-semibold">Other Events</h2>
+      <h2 className="font-semibold mb-4">Other Events</h2>
 
       <div className="flex flex-col my-3 gap-4">
         {events.map((event) => (
@@ -15,8 +15,8 @@ const OtherEvents = async ({ id }) => {
             key={event._id}
             className="border bg-white border-gray-200 rounded-lg overflow-hidden shadow-sm"
           >
-            <div className="bg-slate-100 py-4 text-center">
-              <span className=" font-bold text-sm">
+            <div className="bg-muted py-4 text-center">
+              <span className=" font-semibold text-sm">
                 {new Intl.DateTimeFormat("en-US", {
                   day: "2-digit",
                   month: "long",

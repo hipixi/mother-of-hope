@@ -68,32 +68,19 @@ const SingleEvent = async ({ params }) => {
         )}
         {event.volunteers.length > 0 && (
           <div className="px-4 py-6 flex-1 font-medium border rounded-lg">
-            <h2 className="px-3">Volunteers for the event</h2>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="text-xs lg:text-sm">Name</TableHead>
-                  <TableHead>Email</TableHead>
-                  <TableHead className="">Tel</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {event.volunteers.map((volu) => (
-                  <TableRow key={volu._id}>
-                    <TableCell className="text-sm lg:text-sm">
-                      {volu.name}
-                    </TableCell>
-                    <TableCell className="text-xs lg:text-sm">
-                      {volu.email}
-                    </TableCell>
-
-                    <TableCell className="text-xs lg:text-sm">
-                      {volu.tel}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <h2 className="border-b py-1">Volunteers for the event</h2>
+            {event.volunteers.map((volunteer) => (
+              <div
+                key={volunteer._id}
+                className="border-b last-of-type:border-b-0 py-2 flex flex-col"
+              >
+                <h2 className="font-medium">{volunteer.name}</h2>
+                <p className="text-muted-foreground text-sm">
+                  {volunteer.email}
+                </p>
+                <p className="text-muted-foreground text-sm">{volunteer.tel}</p>
+              </div>
+            ))}
           </div>
         )}
       </div>

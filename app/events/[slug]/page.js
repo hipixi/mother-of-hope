@@ -29,7 +29,7 @@ const SingleEvent = async ({ params }) => {
             </p>
             <Badge className="bg-muted hover:bg-muted">{event.status}</Badge>
 
-            <div className="px-4 py-6 flex-1  border rounded-lg min-h-44 mt-8">
+            <div className="px-4 py-6 flex-1 border-t min-h-44 mt-8">
               <Volunteer id={event._id} />
             </div>
           </div>

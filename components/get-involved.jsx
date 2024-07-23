@@ -1,38 +1,28 @@
+import Link from "next/link";
 import { Button } from "./ui/button";
 
 const GetInvolved = () => {
   return (
-    <section className=" bg-gradient-to-b from-blue-900 to-blue-800 py-12 md:py-16 lg:py-28">
-      <div className="mx-auto px-4 lg:px-0 flex flex-col-reverse lg:flex-row max-w-screen-xl">
-        <img
-          src="/love.svg"
-          className="w-full text-black h-[350px] md:h-[500px]"
-        />
+    <section className="rounded-xl bg-muted font-medium  flex justify-center items-center flex-col max-w-screen-xl my-12 md:my-16 py-12 lg:py-24 lg:my-24 px-4 lg:px-8 w-[95%] mx-auto">
+      <div className="mx-auto max-w-3xl flex flex-col justify-center items-center my-4">
+        <h1 className="text-4xl font-bold text-balance my-3 lg:text-5xl  text-center">
+          Join Our Family, Become a Partner
+        </h1>
 
-        <div>
-          <h1 className="font-bold text-3xl md:text-4xl mb-4 capitalize text-white ">
-            Get Involved
-          </h1>
-          <p className="max-w-lg text-lg text-white mb-8">
-            Help us improve kasese by joining our volunteer program or our
-            partners program
-          </p>
+        <p className="text-center my-3 lg:text-lg text-slate-700">
+          You can get involved with our activities by either volunteering,
+          becoming a volunteer or donating to our course
+        </p>
+      </div>
 
-          <div className="">
-            <div className="bg-muted border shadow py-8 p-6 rounded-lg">
-              <h2 className="font-semibold text-2xl mb-4">Volunteer</h2>
-              <p className="mb-4">
-                Join our community of dedicated volunteers and make a
-                difference. We have various opportunities available to suit your
-                skills and interests.
-              </p>
-
-              <Button className="rounded-none font-bold ">
-                Sign Up to Volunteer
-              </Button>
-            </div>
-          </div>
-        </div>
+      <div className="flex  flex-col items-center lg:flex-row gap-2 lg:gap-6 my-3">
+        <Button className="px-10 font-bold " size="lg">
+          <Link href="/get-involved/partner">Become a Partner</Link>
+        </Button>
+        <div>OR</div>
+        <Button className="  font-bold " size="lg" variant="outline">
+          <Link href="/get-involved/volunteer">Become a Volunteer</Link>
+        </Button>
       </div>
     </section>
   );

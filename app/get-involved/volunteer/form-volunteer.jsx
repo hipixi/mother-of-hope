@@ -7,8 +7,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTransition, useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
-import { addVolunteer } from "@/app/actions/volunteer";
 import { useRouter } from "next/navigation";
+import { addGeneral } from "@/app/actions/general";
 
 const eventSchema = z.object({
   name: z.string().min(3, "Name is required"),
@@ -16,7 +16,7 @@ const eventSchema = z.object({
   tel: z.string().min(10, "invalid tel"),
 });
 
-const Volunteer = ({ id }) => {
+const FormVolunteer = () => {
   const [pending, startTransition] = useTransition();
   const { toast } = useToast();
   const router = useRouter();
@@ -33,10 +33,11 @@ const Volunteer = ({ id }) => {
 
   const onSubmit = async (values) => {
     startTransition(() =>
-      addVolunteer(id, values).then((data) => {
+      addGeneral(values).then((data) => {
         if (data.success) {
           toast({
-            title: "You have successfully been added as a volunteer",
+            title:
+              "Your volunteer request has successfully been submitted. We will contact you soon",
           });
           reset();
           router.refresh();
@@ -48,16 +49,13 @@ const Volunteer = ({ id }) => {
   };
   return (
     <>
-      <h2 className="font-bold">Volunteer for this Event</h2>
-
-      {error && (
-        <p className="text-destructive my-1 text-sm font-medium">{error}</p>
-      )}
-
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-4 w-full mt-3 max-w-lg"
       >
+        {error && (
+          <p className="text-destructive font-semibold my-2">{error}</p>
+        )}
         <div>
           <Label htmlFor="title">Your Name</Label>
           <Input
@@ -71,7 +69,7 @@ const Volunteer = ({ id }) => {
         </div>
 
         <div>
-          <Label htmlFor="location">Tel:</Label>
+          <Label htmlFor="location">Phone Number:</Label>
           <Input
             type="tel"
             id="tel"
@@ -100,11 +98,11 @@ const Volunteer = ({ id }) => {
           className="w-full font-semibold h-12"
           disabled={pending}
         >
-          {pending ? "Submiting..." : "Submit"}
+          {pending ? "Submiting Request..." : "Submit Request"}
         </Button>
       </form>
     </>
   );
 };
 
-export default Volunteer;
+export default FormVolunteer;

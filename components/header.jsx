@@ -106,6 +106,16 @@ const Header = async () => {
                     Events
                   </Link>
                 </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link className="w-full" href="/dashboard/volunteers">
+                    Volunteers
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link className="w-full" href="/dashboard/partners">
+                    Partners
+                  </Link>
+                </DropdownMenuItem>
                 <DropdownMenuItem>Contacts</DropdownMenuItem>
                 <DropdownMenuItem>Emails</DropdownMenuItem>
 
