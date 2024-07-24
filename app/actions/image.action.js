@@ -43,3 +43,14 @@ export async function deleteImage(id) {
     return;
   }
 }
+
+export const getTotalImages = async () => {
+  await dbConnect();
+  try {
+    const totalImages = await Image.countDocuments();
+    return totalImages;
+  } catch (error) {
+    console.error("Error fetching total number of images:", error);
+    return 0;
+  }
+};

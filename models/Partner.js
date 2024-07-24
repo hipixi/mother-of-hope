@@ -16,6 +16,8 @@ const partnerSchema = new mongoose.Schema(
       lowercase: true,
       match: /^\S+@\S+\.\S+$/,
     },
+    confirmed: { type: Boolean, default: false },
+    logo: { type: String },
   },
   { timestamps: true }
 );

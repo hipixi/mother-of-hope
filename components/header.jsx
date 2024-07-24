@@ -69,55 +69,25 @@ const Header = async () => {
               <DropdownMenuTrigger>
                 <Avatar className="h-12 w-12 rounded-full">
                   <AvatarImage src={user.image || "/placeholder-user.jpg"} />
-                  <AvatarFallback>{user.fullname[0]}</AvatarFallback>
+                  <AvatarFallback className="font-bold">
+                    {user.fullname[0]}
+                  </AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" sideOffset={5} className="w-24">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuLabel>{user.fullname}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
                   <Link className="w-full" href="/profile">
                     Profile
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuSeparator />
-
-                <DropdownMenuLabel>Dashboard</DropdownMenuLabel>
-                <DropdownMenuSeparator />
 
                 <DropdownMenuItem asChild>
-                  <Link className="w-full" href="/dashboard/users">
-                    Users
+                  <Link className="w-full" href="/dashboard">
+                    Dashboard
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link className="w-full" href="/dashboard/gallery">
-                    Gallery
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link className="w-full" href="/dashboard/blog">
-                    Blog
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>Team</DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link className="w-full" href="/dashboard/events">
-                    Events
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link className="w-full" href="/dashboard/volunteers">
-                    Volunteers
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link className="w-full" href="/dashboard/partners">
-                    Partners
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>Contacts</DropdownMenuItem>
-                <DropdownMenuItem>Emails</DropdownMenuItem>
 
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>

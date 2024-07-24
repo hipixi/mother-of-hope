@@ -59,9 +59,15 @@ export default async function Volunteers() {
             className="border-b last-of-type:border-b-0 py-2 flex justify-between items-center"
           >
             <div>
-              <h2 className="font-medium">{volunteer.name}</h2>
-              <p className="text-muted-foreground text-sm">{volunteer.email}</p>
-              <p className="text-muted-foreground text-sm">{volunteer.tel}</p>
+              <h3 className="font-medium text-sm md:text-base">
+                {volunteer.name}
+              </h3>
+              <p className="text-muted-foreground text-xs md:text-sm">
+                {volunteer.email}
+              </p>
+              <p className="text-muted-foreground text-xs md:text-sm">
+                {volunteer.tel}
+              </p>
             </div>
             <UnConfirmButton volunteerId={volunteer._id} />
           </div>

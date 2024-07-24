@@ -2,6 +2,7 @@
 
 import dbConnect from "@/lib/dbConnect";
 import General from "@/models/General";
+import { cache } from "react";
 
 export const addGeneral = async (values) => {
   await dbConnect();
@@ -29,6 +30,35 @@ export const addGeneral = async (values) => {
     };
   }
 };
+
+export const getMonthGeneral = cache(async () => {
+  await dbConnect();
+  try {
+    const now = new Date();
+
+    const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+    const lastDayOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+
+    const volunteers = await General.find({
+      createdAt: {
+        $gte: firstDayOfMonth,
+        $lte: lastDayOfMonth,
+      },
+    })
+      .sort({ updatedAt: -1 })
+      .lean();
+
+    const convertedVolunteers = volunteers.map((volunteer) => ({
+      ...volunteer,
+      _id: volunteer._id.toString(),
+    }));
+
+    return convertedVolunteers;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+});
 
 export const getGeneral = async () => {
   await dbConnect();

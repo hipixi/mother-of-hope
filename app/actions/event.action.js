@@ -3,6 +3,7 @@
 import dbConnect from "@/lib/dbConnect";
 import Event from "@/models/Events";
 import Volunteer from "@/models/Volunteer";
+import { cache } from "react";
 
 export const addEvent = async (values) => {
   await dbConnect();
@@ -17,7 +18,54 @@ export const addEvent = async (values) => {
 export const getEvents = async () => {
   await dbConnect();
   try {
-    const events = await Event.find({}).sort({ updatedAt: -1 }).lean();
+    const events = await Event.find({}).sort({ date: 1 }).lean();
+
+    const convertedEvents = events.map((event) => ({
+      ...event,
+      _id: event._id.toString(),
+    }));
+
+    return convertedEvents;
+  } catch (error) {
+    console.log(error);
+
+    return [];
+  }
+};
+
+export const getMonthEvents = cache(async () => {
+  await dbConnect();
+  try {
+    const now = new Date();
+
+    const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+    const lastDayOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+
+    const events = await Event.find({
+      createdAt: {
+        $gte: firstDayOfMonth,
+        $lte: lastDayOfMonth,
+      },
+    })
+      .sort({ updatedAt: -1 })
+      .lean();
+
+    const convertedEvents = events.map((event) => ({
+      ...event,
+      _id: event._id.toString(),
+    }));
+
+    return convertedEvents;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+});
+
+export const getHomeEvents = async () => {
+  await dbConnect();
+  try {
+    const events = await Event.find({}).sort({ date: 1 }).limit(3).lean();
 
     const convertedEvents = events.map((event) => ({
       ...event,

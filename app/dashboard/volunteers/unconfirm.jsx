@@ -38,7 +38,7 @@ export default function UnConfirmButton({ volunteerId }) {
       <Button
         variant="outline"
         size="sm"
-        className="text-black"
+        className="text-black text-xs"
         onClick={handleConfirm}
         disabled={isConfirming}
       >
