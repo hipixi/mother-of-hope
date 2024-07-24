@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 
 const GetInvolved = () => {
   return (
-    <section className="rounded-xl bg-muted font-medium  flex justify-center items-center flex-col max-w-screen-xl my-12 md:my-16 py-12 lg:py-24 lg:my-24 px-4 lg:px-8 w-[95%] mx-auto shadow border">
+    <section className="rounded-xl bg-muted font-medium  flex justify-center items-center flex-col max-w-screen-xl my-12 md:my-16 py-12 lg:py-24 lg:my-24 px-4 lg:px-8 w-[95%] mx-auto shadow-md">
       <div className="mx-auto max-w-3xl flex flex-col justify-center items-center my-4">
         <h1 className="text-5xl font-bold text-balance my-3 lg:text-6xl  text-center">
           Join Our Family

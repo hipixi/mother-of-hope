@@ -19,15 +19,17 @@ const DashboardHeader = async () => {
 
   return (
     <header className="border-b sticky bg-white z-50 top-0 left-0 right-0 py-2 overflow-x-hidden">
-      <nav className="mx-auto w-full max-w-screen-xl px-4 lg:px-0 flex items-center justify-between">
+      <nav className="mx-auto w-full max-w-screen-xl px-4 lg:px-0 flex items-center justify-between gap-4">
         <div className="flex items-center">
-          <img src="/logo.svg" className="w-16 h-16" />
+          <Link href="/">
+            <img src="/logo.svg" className="w-16 h-16" />
+          </Link>
         </div>
         <div className="flex items-center gap-2">
           <Input
             type="search"
             className="w-52 h-7 sm:w-64 md:w-80"
-            placeholder="search dashboard..."
+            placeholder="search..."
           />
 
           <DropdownMenu>
