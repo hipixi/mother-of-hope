@@ -5,7 +5,7 @@ import Link from "next/link";
 const UpcomingEvents = async () => {
   const events = await getEvents();
   return (
-    <section className="bg-green-200 py-12 md:py-16 lg:py-28">
+    <section className="bg-muted py-12 md:py-16 lg:py-28">
       <div className="mx-auto px-4 lg:px-0 max-w-screen-xl">
         <h1 className="font-bold text-2xl text-gray-800 md:text-3xl mb-8">
           Upcoming Events

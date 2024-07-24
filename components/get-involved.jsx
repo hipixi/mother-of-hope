@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { Card } from "./ui/card";
 
 const GetInvolved = () => {
   return (
-    <section className="rounded-xl bg-muted font-medium  flex justify-center items-center flex-col max-w-screen-xl my-12 md:my-16 py-12 lg:py-24 lg:my-24 px-4 lg:px-8 w-[95%] mx-auto shadow-md">
+    <Card className="rounded-xl bg-muted font-medium  flex justify-center items-center flex-col max-w-screen-xl my-12 md:my-16 py-12 lg:py-24 lg:my-24 px-4 lg:px-8 w-[95%] mx-auto ">
       <div className="mx-auto max-w-3xl flex flex-col justify-center items-center my-4">
         <h1 className="text-5xl font-bold text-balance my-3 lg:text-6xl  text-center">
-          Join Our Family
+          Get Involved
         </h1>
 
         <p className="text-center my-3 lg:text-lg text-slate-700">
@@ -15,7 +16,7 @@ const GetInvolved = () => {
         </p>
       </div>
 
-      <div className="flex  flex-col items-center lg:flex-row gap-2 lg:gap-6 my-6">
+      <div className="flex  flex-col items-center  gap-2 lg:gap-4 my-6">
         <Button className="px-10 font-bold h-14 text-lg" size="lg">
           <Link href="/get-involved/partner">Become a Partner</Link>
         </Button>
@@ -28,7 +29,7 @@ const GetInvolved = () => {
           <Link href="/get-involved/volunteer">Become a Volunteer</Link>
         </Button>
       </div>
-    </section>
+    </Card>
   );
 };
 
