@@ -26,7 +26,7 @@ const Header = async () => {
           </Link>
         </div>
 
-        <div className="hidden md:flex items-center gap-10 font-semibold flex-1 uppercase">
+        <div className="hidden md:flex items-center gap-10 font-semibold flex-1 capitalize">
           <Link
             href="/who-we-are"
             className="hover:text-rose-600 transition-colors"

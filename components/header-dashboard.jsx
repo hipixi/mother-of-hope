@@ -26,11 +26,9 @@ const DashboardHeader = async () => {
           </Link>
         </div>
         <div className="flex items-center gap-2">
-          <Input
-            type="search"
-            className="w-52 h-7 sm:w-64 md:w-80"
-            placeholder="search..."
-          />
+          <div className="w-52 h-7 sm:w-64 md:w-80 rounded bg-muted px-3 text-xs flex items-center">
+            search...
+          </div>
 
           <DropdownMenu>
             <DropdownMenuTrigger>
@@ -44,14 +42,15 @@ const DashboardHeader = async () => {
             <DropdownMenuContent align="end" sideOffset={5} className="w-24">
               <DropdownMenuLabel>{user.fullname}</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem asChild>
-                <Link className="w-full" href="/">
-                  Home
-                </Link>
-              </DropdownMenuItem>
+
               <DropdownMenuItem asChild>
                 <Link className="w-full" href="/profile">
                   Profile
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link className="w-full" href="/">
+                  Home
                 </Link>
               </DropdownMenuItem>
 

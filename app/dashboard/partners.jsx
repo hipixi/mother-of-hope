@@ -1,25 +1,25 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CalendarIcon } from "lucide-react";
-import { getEvents, getMonthEvents } from "../actions/event.action";
+import { getMonthPartners, getTotalPartners } from "../actions/partner";
 
-const Upcoming = async () => {
-  const allEvents = await getEvents();
-  const monthEvents = await getMonthEvents();
+const Partners = async () => {
+  const allpartners = await getTotalPartners();
+  const monthPartners = await getMonthPartners();
 
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between pb-2">
-        <CardTitle className="text-sm font-medium">Upcoming Events</CardTitle>
+        <CardTitle className="text-sm font-medium">Partners</CardTitle>
         <CalendarIcon className="w-4 h-4 text-muted-foreground" />
       </CardHeader>
       <CardContent>
-        <div className="text-2xl font-bold">{allEvents.length}</div>
+        <div className="text-2xl font-bold">{allpartners}</div>
         <p className="text-xs text-muted-foreground">
-          +{monthEvents.length} this month
+          +{monthPartners} this month
         </p>
       </CardContent>
     </Card>
   );
 };
 
-export default Upcoming;
+export default Partners;

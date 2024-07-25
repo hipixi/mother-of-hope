@@ -51,11 +51,12 @@ const FormPartner = () => {
     <>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-4 w-full mt-3 max-w-lg"
+        className="space-y-4 w-full mt-3  bg-card p-6 rounded"
       >
         {error && (
           <p className="text-destructive font-semibold my-2">{error}</p>
         )}
+        <h3 className="font-medium text-lg">Apply to Partner*</h3>
         <div>
           <Label htmlFor="title">Company Name</Label>
           <Input

@@ -1,26 +1,80 @@
-import ChatWidget from "@/components/chat";
-import Footer from "@/components/footer";
 import Header from "@/components/header";
+import { Separator } from "@/components/ui/separator";
+import WhyVolunteer from "./why-volunteer";
+import Opportunity from "./opportunity";
+import Requirements from "./requirements";
+import Footer from "@/components/footer";
+import ChatWidget from "@/components/chat";
+
+import Image from "next/image";
+import ScrollLink from "./scrolllink";
 import FormVolunteer from "./form-volunteer";
 
 export const metadata = {
-  title: "Partner | Mother of hope foundation uganda",
+  title: "Volunteer | Mother of hope foundation uganda",
 };
-const Volunteer = () => {
+
+export default function VolunteerPage() {
   return (
     <main>
       <Header />
-      <section className="my-6 w-[97%] p-4 lg:p-8 mx-auto max-w-2xl rounded-lg border ">
-        <h1 className="text-3xl lg:text-3xl font-semibold">
-          Become A volunteer
-        </h1>
 
-        <FormVolunteer />
-      </section>
+      <div className="min-h-screen bg-muted">
+        <div className=" px-4 py-12">
+          <section className="max-w-screen-xl mx-auto  px-4 sm:px-6 lg:px-8 mb-16">
+            <div className="flex flex-col lg:flex-row items-center">
+              <div className="w-full lg:w-1/2 lg:pr-12 mb-10 lg:mb-0">
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+                  Make a Difference:
+                  <br />
+                  <span className="text-green-600">
+                    Join Our Volunteer Program
+                  </span>
+                </h1>
+                <p className="text-xl text-gray-600 mb-8">
+                  Come and we mobilize educational and empowerment programs as
+                  well as resources with the goal of transforming the well-being
+                  of the community
+                </p>
+                <ScrollLink
+                  href="#volunteer-form"
+                  className="inline-block bg-green-600 text-white font-semibold py-2 md:py-3 px-8 rounded-full text-lg transition duration-300 ease-in-out hover:bg-green-700 hover:shadow-lg"
+                >
+                  Apply Now
+                </ScrollLink>
+              </div>
+              <div className="w-full lg:w-1/2">
+                <div className="relative aspect-square max-w-[600px] max-h-[600px] mx-auto">
+                  <Image
+                    width={600}
+                    height={600}
+                    alt="Volunteers working together"
+                    src="/vol.svg"
+                    className="object-cover rounded-lg shadow-2xl"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <Separator className="my-12" />
+
+          <h2 className="text-3xl font-semibold mb-8 text-center">FAQS</h2>
+
+          <WhyVolunteer />
+          <Opportunity />
+          <Requirements />
+
+          <Separator className="my-12" />
+
+          <section className="max-w-3xl mx-auto" id="volunteer-form">
+            <FormVolunteer />
+          </section>
+        </div>
+      </div>
+
       <Footer />
       <ChatWidget />
     </main>
   );
-};
-
-export default Volunteer;
+}

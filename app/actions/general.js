@@ -80,7 +80,6 @@ export const getGeneral = async () => {
 };
 
 export const confirmGeneral = async (id) => {
-  console.log(id);
   await dbConnect();
 
   try {
@@ -96,7 +95,6 @@ export const confirmGeneral = async (id) => {
 
     return {
       success: "Volunteer successfully confirmed",
-      volunteer: updatedVolunteer,
     };
   } catch (error) {
     console.error("Error confirming volunteer:", error.message);
@@ -122,7 +120,6 @@ export const unconfirmGeneral = async (id) => {
 
     return {
       success: "Volunteer successfully unconfirmed",
-      volunteer: updatedVolunteer,
     };
   } catch (error) {
     console.error("Error unconfirming volunteer:", error.message);

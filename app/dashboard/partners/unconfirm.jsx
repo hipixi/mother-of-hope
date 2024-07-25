@@ -1,12 +1,12 @@
 "use client";
 
-import { confirmGeneral, unconfirmGeneral } from "@/app/actions/general";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
+import { unconfirmPartner } from "@/app/actions/partner";
 
-export default function UnConfirmButton({ volunteerId }) {
+export default function UnConfirmButton({ partnerId }) {
   const [isConfirming, setIsConfirming] = useState(false);
   const [error, setError] = useState(null);
   const router = useRouter();
@@ -17,7 +17,7 @@ export default function UnConfirmButton({ volunteerId }) {
     setError(null);
 
     try {
-      const result = await unconfirmGeneral(volunteerId);
+      const result = await unconfirmPartner(partnerId);
       if (result.error) {
         setError(result.error);
         toast({
@@ -27,7 +27,7 @@ export default function UnConfirmButton({ volunteerId }) {
       } else {
         router.refresh();
         toast({
-          title: "Volunteer Removed.",
+          title: "Partner Removed.",
         });
       }
     } catch (err) {

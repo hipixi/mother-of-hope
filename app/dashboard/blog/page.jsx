@@ -27,7 +27,7 @@ export default async function BlogDashboard() {
   return (
     <main>
       <div className="py-2 max-w-screen-xl mx-auto">
-        <div className="bg-background  px-4 py-4 flex items-center justify-between">
+        <div className="bg-background  px-4 lg:px-0 py-4 flex items-center justify-between">
           <h1 className="text-2xl font-bold">Posts</h1>
           <Button
             size="sm"
@@ -46,7 +46,7 @@ export default async function BlogDashboard() {
 
       <div className="max-w-screen-xl mx-auto flex mb-12 w-full">
         <div className="flex flex-1 flex-col">
-          <main className="flex-1 p-2">
+          <main className="flex-1 py-2 px-4 lg:px-0">
             <div className="grid gap-6">
               <div className="border rounded-lg overflow-hidden">
                 <Table>

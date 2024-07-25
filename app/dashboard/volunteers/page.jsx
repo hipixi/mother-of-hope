@@ -1,10 +1,8 @@
 import {
   getConfirmedVolunteers,
-  getGeneral,
   getRecentUnconfirmedVolunteers,
 } from "@/app/actions/general";
 import { getUser } from "@/app/actions/get-user";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { redirect } from "next/navigation";
 import Confirm from "./confirm";
@@ -31,7 +29,7 @@ export default async function Volunteers() {
       </div>
 
       <div className="rounded-lg my-3 p-6 border">
-        <h2 className="font-medium text-lg">Recent Requests</h2>
+        <h3 className="font-medium text-sm md:text-base">Recent Requests</h3>
         <Separator className="my-2" />
 
         {volunteers.map((volunteer) => (
@@ -40,9 +38,15 @@ export default async function Volunteers() {
             className="border-b last-of-type:border-b-0 py-2 flex justify-between items-center"
           >
             <div>
-              <h2 className="font-medium">{volunteer.name}</h2>
-              <p className="text-muted-foreground text-sm">{volunteer.email}</p>
-              <p className="text-muted-foreground text-sm">{volunteer.tel}</p>
+              <h4 className="font-medium text-xs md:text-sm">
+                {volunteer.name}
+              </h4>
+              <p className="text-muted-foreground text-xs md:text-sm">
+                {volunteer.email}
+              </p>
+              <p className="text-muted-foreground text-xs md:text-sm">
+                {volunteer.tel}
+              </p>
             </div>
             <Confirm volunteerId={volunteer._id} />
           </div>
@@ -50,7 +54,9 @@ export default async function Volunteers() {
       </div>
 
       <div className="rounded-lg my-3 p-6 border">
-        <h2 className="font-medium text-lg">Confirmed Volunteers</h2>
+        <h3 className="font-medium text-sm lg:text-base">
+          Confirmed Volunteers
+        </h3>
         <Separator className="my-2" />
 
         {confirmedvolunteers.map((volunteer) => (
@@ -59,9 +65,9 @@ export default async function Volunteers() {
             className="border-b last-of-type:border-b-0 py-2 flex justify-between items-center"
           >
             <div>
-              <h3 className="font-medium text-sm md:text-base">
+              <h4 className="font-medium text-xs md:text-sm">
                 {volunteer.name}
-              </h3>
+              </h4>
               <p className="text-muted-foreground text-xs md:text-sm">
                 {volunteer.email}
               </p>
