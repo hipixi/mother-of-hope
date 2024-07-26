@@ -57,7 +57,7 @@ export const getPartners = async () => {
   await dbConnect();
 
   try {
-    const partners = await Partner.find({}).sort({ createdAt: -1 }).lean();
+    const partners = await Partner.find({}).sort({ updatedAt: -1 }).lean();
     const convertedPartners = partners.map((partner) => ({
       ...partner,
       _id: partner._id.toString(),
@@ -149,7 +149,7 @@ export const getConfirmedPartners = async () => {
 
   try {
     const partners = await Partner.find({ confirmed: true })
-      .sort({ createdAt: -1 })
+      .sort({ updatedAt: -1 })
       .lean();
 
     const convertedPartners = partners.map((volunteer) => ({

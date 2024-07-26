@@ -15,6 +15,7 @@ import {
 import SignOut from "./signout";
 import { signOut } from "@/app/actions/auth.action";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import SearchCommand from "./search-command";
 const Header = async () => {
   const user = await getUser();
   return (
@@ -54,7 +55,7 @@ const Header = async () => {
         </div>
 
         <div className="flex gap-4   items-center  md:gap-6 ml-auto">
-          <Search className="w-5 md:w-6 h-5 md:h-6" />
+          <SearchCommand />
           <Button
             className={`font-bold bg-green-600 hover:bg-green-800 rounded-none text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ${
               user && "hidden md:flex"

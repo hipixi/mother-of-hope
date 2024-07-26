@@ -29,14 +29,16 @@ export default async function Volunteers() {
         <h1 className="text-2xl font-bold">Partners</h1>
       </div>
 
-      <div className="rounded-lg my-3 p-6 border">
-        <h3 className="font-medium text-sm md:text-base">Recent Requests</h3>
+      <div className="rounded-lg my-3 border">
+        <h3 className="font-medium p-4 text-sm md:text-base">
+          Recent Requests
+        </h3>
         <Separator className="my-2" />
 
         {partners.map((partner) => (
           <div
             key={partner._id}
-            className="border-b last-of-type:border-b-0 py-2 flex items-center justify-between"
+            className="border-b last-of-type:border-b-0 py-2 flex items-center px-4 justify-between"
           >
             <div>
               <h4 className="font-medium text-xs md:text-sm">
@@ -55,31 +57,36 @@ export default async function Volunteers() {
         ))}
       </div>
 
-      <div className="rounded-lg my-3 p-6 border">
-        <h3 className="font-medium text-sm lg:text-base">Confirmed Partners</h3>
+      <div className="rounded-lg my-3  border">
+        <h3 className="font-medium p-4 text-sm lg:text-base">
+          Confirmed Partners
+        </h3>
         <Separator className="my-2" />
 
         {confirmedPartners.map((partner) => (
           <div
             key={partner._id}
-            className="border-b last-of-type:border-b-0 py-2 flex justify-between items-center"
+            className="border-b last-of-type:border-b-0 px-4 py-2 "
           >
             <Dialog>
-              <DialogTrigger className="p-0 flex flex-col items-start">
-                <div className="flex flex-col items-start">
+              <DialogTrigger className="w-full">
+                <div className="space-y-2 ">
                   <img
                     src={partner?.logo}
-                    className="w-[100px] h-12 object-contain"
+                    alt={`${partner.companyname} logo`}
+                    className="w-16 h-16 object-contain rounded"
                   />
-                  <h4 className="font-medium text-xs md:text-sm">
-                    {partner.companyname}
-                  </h4>
-                  <p className="text-muted-foreground text-xs md:text-sm">
-                    {partner.email}
-                  </p>
-                  <p className="text-muted-foreground text-xs md:text-sm">
-                    {partner.tel}
-                  </p>
+                  <div className="flex-1 text-left">
+                    <h4 className="font-semibold text-xs md:text-sm">
+                      {partner.companyname}
+                    </h4>
+                    <p className="text-muted-foreground text-xs md:text-sm">
+                      {partner.email}
+                    </p>
+                    <p className="text-muted-foreground text-xs md:text-sm">
+                      {partner.tel}
+                    </p>
+                  </div>
                 </div>
               </DialogTrigger>
               <DialogContent>
@@ -87,7 +94,9 @@ export default async function Volunteers() {
               </DialogContent>
             </Dialog>
 
-            <UnConfirmButton partnerId={partner._id} />
+            <div className="mt-2 flex justify-end">
+              <UnConfirmButton partnerId={partner._id} />
+            </div>
           </div>
         ))}
       </div>

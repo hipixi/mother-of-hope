@@ -18,6 +18,7 @@ const partnerSchema = new mongoose.Schema(
     },
     confirmed: { type: Boolean, default: false },
     logo: { type: String },
+    website: { type: String },
   },
   { timestamps: true }
 );

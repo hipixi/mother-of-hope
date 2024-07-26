@@ -17,11 +17,17 @@ const Partners = async () => {
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {partners.map((partner) => (
               <div key={partner._id}>
-                <img
-                  src={partner.logo}
-                  alt=""
-                  className="w-full max-h-20 lg:max-h-24 object-contain"
-                />
+                <a
+                  href={partner.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <img
+                    src={partner.logo}
+                    className="w-full max-h-20 lg:max-h-24 object-contain"
+                  />
+                </a>
               </div>
             ))}
           </div>

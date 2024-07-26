@@ -46,7 +46,7 @@ export default function UnConfirmButton({ partnerId }) {
         onClick={handleConfirm}
         disabled={isConfirming}
       >
-        {isConfirming ? "Removing..." : "Remove"}
+        {isConfirming ? "unlisting.." : "Unconfirm"}
       </Button>
     </div>
   );

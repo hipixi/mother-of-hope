@@ -24,7 +24,7 @@ const WhyVolunteer = () => {
           className="flex justify-between items-center cursor-pointer"
           onClick={toggleOpen}
         >
-          <h3 className="font-bold text-lg">Why Volunteer with us?</h3>
+          <h3 className="font-bold text-lg">Why Partner with us?</h3>
           {isOpen ? (
             <Minus className="w-5 h-6" />
           ) : (
