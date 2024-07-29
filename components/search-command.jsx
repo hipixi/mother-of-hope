@@ -68,10 +68,6 @@ const SearchCommand = ({ ...props }) => {
         {...props}
       >
         <Search className="w-5 md:w-6 h-5 md:h-6" />
-        <span className="sr-only">Open search</span>
-        <kbd className="pointer-events-none absolute right-[0.3rem] top-[0.3rem] hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
-          <span className="text-xs">⌘</span>K
-        </kbd>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />

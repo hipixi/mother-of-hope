@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "./ui/button";
 
 export default function Component() {
@@ -25,7 +26,7 @@ export default function Component() {
               className="bg-yellow-400 hover:bg-yellow-400 rounded-none text-gray-950 transition duration-300 ease-in-out transform hover:scale-105 font-bold text-lg"
               size="lg"
             >
-              Read The Story
+              <Link href="/who-we-are">Read The Story</Link>
             </Button>
           </div>
         </div>

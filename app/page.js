@@ -28,7 +28,6 @@ export default function Home() {
       {/* <Separator /> */}
       <Partners />
       <Footer />
-      <ChatWidget />
     </main>
   );
 }

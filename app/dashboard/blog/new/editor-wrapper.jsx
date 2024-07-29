@@ -2,7 +2,6 @@
 import { Input } from "@/components/ui/input";
 import Tags from "./tags";
 import { Button } from "@/components/ui/button";
-import Editor from "./editor";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,6 +17,7 @@ import {
 } from "@/components/ui/form";
 import { useRouter } from "next/navigation";
 import { addPost } from "@/app/actions/blog.action";
+import Editor from "@/components/editor";
 const formSchema = z.object({
   title: z.string().min(3, {
     message: "Post title must be atleast 3 characters",
@@ -42,10 +42,26 @@ const formSchema = z.object({
     }),
 });
 
+export const defaultValue = {
+  type: "doc",
+  content: [
+    {
+      type: "paragraph",
+      content: [
+        {
+          type: "text",
+          text: 'Type "/" for commands or start writing...',
+        },
+      ],
+    },
+  ],
+};
+
 const EditorWrapper = () => {
   const [uploading, setUploading] = useState(false);
   const [editorContent, setEditorContent] = useState("");
   const [loading, startTransition] = useTransition();
+  const [content, setContent] = useState("");
 
   const [tags, setTags] = useState([]);
 
@@ -64,8 +80,8 @@ const EditorWrapper = () => {
     },
   });
   useEffect(() => {
-    form.setValue("content", editorContent);
-  }, [editorContent]);
+    form.setValue("content", content);
+  }, [content]);
 
   useEffect(() => {
     form.setValue("tags", tags);
@@ -148,7 +164,7 @@ const EditorWrapper = () => {
 
               <div className="mb-4 mt-2">
                 <h3 className="font-semibold text-sm mb-1">Content</h3>
-                <Editor onContentChange={handleEditorContentChange} />
+                <Editor initialValue={defaultValue} onChange={setContent} />
               </div>
             </div>
 

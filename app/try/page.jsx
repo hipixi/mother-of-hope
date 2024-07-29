@@ -1,75 +1,155 @@
-import Header from "@/components/header";
-import { Separator } from "@/components/ui/separator";
-import WhyVolunteer from "../get-involved/volunteer/why-volunteer";
-import Opportunity from "../get-involved/volunteer/opportunity";
-import Requirements from "../get-involved/volunteer/requirements";
-import Footer from "@/components/footer";
-import ChatWidget from "@/components/chat";
-import FormVolunteer from "../get-involved/volunteer/form-volunteer";
-import Image from "next/image";
-import Link from "next/link";
-import ScrollLink from "../get-involved/volunteer/scrolllink";
+// "use client";
 
-export default function VolunteerPage() {
-  return (
-    <main>
-      <Header />
+// import { useState } from "react";
+// import { Lock } from "lucide-react";
+// import { Button } from "./ui/button";
+// import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-      <div className="min-h-screen bg-muted">
-        <div className=" px-4 py-12">
-          <section className="max-w-screen-xl mx-auto  px-4 sm:px-6 lg:px-8 mb-16">
-            <div className="flex flex-col lg:flex-row items-center">
-              <div className="w-full lg:w-1/2 lg:pr-12 mb-10 lg:mb-0">
-                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
-                  Make a Difference:
-                  <br />
-                  <span className="text-green-600">
-                    Join Our Volunteer Program
-                  </span>
-                </h1>
-                <p className="text-xl text-gray-600 mb-8">
-                  Empower communities and preserve our environment. Your skills
-                  and dedication can create lasting positive change!
-                </p>
-                <ScrollLink
-                  href="#volunteer-form"
-                  className="inline-block bg-green-600 text-white font-semibold py-2 md:py-3 px-8 rounded-full text-lg transition duration-300 ease-in-out hover:bg-green-700 hover:shadow-lg"
-                >
-                  Apply Now
-                </ScrollLink>
-              </div>
-              <div className="w-full lg:w-1/2">
-                <div className="relative aspect-square max-w-[600px] max-h-[600px] mx-auto">
-                  <Image
-                    width={600}
-                    height={600}
-                    alt="Volunteers working together"
-                    src="/volunteer-hero.svg"
-                    className="object-cover rounded-lg shadow-2xl"
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
+// const DOnate = () => {
+//   const [active, setActive] = useState("Once");
+//   const [activeAmount, setActiveAmount] = useState("20,000");
+//   const [customAmount, setCustomAmount] = useState("");
 
-          <Separator className="my-12" />
+//   const amounts = ["10,000", "20,000", "50,000"];
 
-          <h2 className="text-3xl font-semibold mb-8 text-center">FAQS</h2>
+//   const buttons = [{ name: "Once" }, { name: "Monthly" }];
 
-          <WhyVolunteer />
-          <Opportunity />
-          <Requirements />
+//   const handleAmountClick = (amt) => {
+//     if (amt === "Other amount") {
+//       setActiveAmount("Other amount");
+//       setCustomAmount("");
+//     } else {
+//       setActiveAmount(amt);
+//     }
+//   };
 
-          <Separator className="my-12" />
+//   const handlePaypalTransaction = async (details) => {
+//     const response = await fetch("/api/donations", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({
+//         amount: activeAmount === "Other amount" ? customAmount : activeAmount,
+//         frequency: active,
+//         paypalDetails: details,
+//       }),
+//     });
 
-          <section className="max-w-3xl mx-auto" id="volunteer-form">
-            <FormVolunteer />
-          </section>
-        </div>
-      </div>
+//     if (response.ok) {
+//       alert("Donation successful!");
+//     } else {
+//       alert("There was an error processing your donation.");
+//     }
+//   };
 
-      <Footer />
-      <ChatWidget />
-    </main>
-  );
-}
+//   return (
+//     <PayPalScriptProvider
+//       options={{ "client-id": process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID }}
+//     >
+//       <div className="absolute inset-0 flex flex-col items-start justify-center bg-black bg-opacity-20 px-4 sm:px-6 lg:px-8">
+//         <div className="w-full mx-auto md:mx-4 m-4 shadow-lg flex flex-col items-center bg-white max-w-xl rounded-lg p-3 py-10 md:px-6 md:py-20 text-black">
+//           <h1 className="text-4xl sm:text-4xl md:text-5xl font-extrabold  text-center max-w-4xl">
+//             Building a Resilient <span className="text-rose-600">Kasese</span>
+//           </h1>
+//           <p className="mt-4 text-base sm:text-xl text-center max-w-2xl">
+//             Creating a community that thrives despite economic and
+//             sustainability challenges
+//           </p>
+
+//           <div className="w-full lg:w-[70%] mx-auto">
+//             <div className="bg-muted w-full  rounded flex items-center my-6 border border-black">
+//               {buttons.map((btn) => (
+//                 <Button
+//                   onClick={() => setActive(btn.name)}
+//                   key={btn.name}
+//                   className={`rounded-none flex-1 first-of-type:border-r first-of-type:rounded-tl first-of-type:rounded-bl last-of-type:rounded-tr last-of-type:rounded-br first-of-type:border-r-black ${
+//                     active === btn.name
+//                       ? "bg-primary text-black hover:bg-primary"
+//                       : "bg-white text-black hover:bg-white"
+//                   }`}
+//                 >
+//                   {btn.name}
+//                 </Button>
+//               ))}
+//             </div>
+//             <div className="rounded border w-full bg-muted space-y-3 py-6 px-3">
+//               <h1 className="text-center py-2 border-b font-medium">
+//                 Choose an amount to give
+//               </h1>
+
+//               <div className="grid grid-cols-3 gap-1">
+//                 {amounts.map((amt) => (
+//                   <div
+//                     onClick={() => handleAmountClick(amt)}
+//                     key={amt}
+//                     className={`rounded cursor-pointer border p-1 py-3 flex justify-center items-center ${
+//                       activeAmount === amt && "bg-primary"
+//                     }`}
+//                   >
+//                     {amt}
+//                   </div>
+//                 ))}
+//               </div>
+//               <div className="grid grid-cols-3 gap-1 ">
+//                 <div
+//                   onClick={() => handleAmountClick("100,000")}
+//                   className={`rounded border p-1 py-3 flex justify-center items-center cursor-pointer ${
+//                     activeAmount === "100,000" && "bg-primary"
+//                   }`}
+//                 >
+//                   100,000
+//                 </div>
+//                 <div className="col-span-2">
+//                   {activeAmount === "Other amount" ? (
+//                     <input
+//                       type="text"
+//                       value={customAmount}
+//                       onChange={(e) => setCustomAmount(e.target.value)}
+//                       placeholder="Enter amount"
+//                       className="w-full h-full rounded border border-primary focus-visible:outline-none focus-visible:ring-0 p-1 py-3 text-center"
+//                     />
+//                   ) : (
+//                     <div
+//                       onClick={() => handleAmountClick("Other amount")}
+//                       className="rounded border p-1 py-3 flex justify-center items-center cursor-pointer"
+//                     >
+//                       Other amount
+//                     </div>
+//                   )}
+//                 </div>
+//               </div>
+
+//               <PayPalButtons
+//                 createOrder={(data, actions) => {
+//                   return actions.order.create({
+//                     purchase_units: [
+//                       {
+//                         amount: {
+//                           value:
+//                             activeAmount === "Other amount"
+//                               ? customAmount
+//                               : activeAmount.replace(",", ""),
+//                         },
+//                       },
+//                     ],
+//                   });
+//                 }}
+//                 onApprove={(data, actions) => {
+//                   return actions.order.capture().then(handlePaypalTransaction);
+//                 }}
+//                 style={{ layout: "vertical", shape: "rect" }}
+//               />
+//             </div>
+
+//             <div className="flex justify-center items-center text-muted-foreground my-2 gap-1">
+//               <Lock className="w-4 h-4" /> <span>secure donation</span>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </PayPalScriptProvider>
+//   );
+// };
+
+// export default DOnate;
