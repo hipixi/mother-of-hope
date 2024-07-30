@@ -36,7 +36,7 @@ const Editor = ({ initialValue, onChange }) => {
   return (
     <EditorRoot>
       <EditorContent
-        className="min-h-96 rounded-xl border p-4"
+        className="min-h-96 rounded-xl border-input border  p-4"
         {...(initialValue && { initialContent: initialValue })}
         extensions={extensions}
         editorProps={{
@@ -47,7 +47,7 @@ const Editor = ({ initialValue, onChange }) => {
           handleDrop: (view, event, _slice, moved) =>
             handleImageDrop(view, event, moved, uploadFn),
           attributes: {
-            className: `prose dark:prose-invert prose-headings:font-title font-default focus:outline-none max-w-full`,
+            class: `prose dark:prose-invert prose-headings:font-title font-default focus:outline-none max-w-full`,
           },
         }}
         onUpdate={({ editor }) => {

@@ -59,7 +59,6 @@ export const defaultValue = {
 
 const EditorWrapper = () => {
   const [uploading, setUploading] = useState(false);
-  const [editorContent, setEditorContent] = useState("");
   const [loading, startTransition] = useTransition();
   const [content, setContent] = useState("");
 
@@ -75,43 +74,33 @@ const EditorWrapper = () => {
       featuredImage: "",
       author: "",
       tags: [],
-      content: "",
       slug: "",
     },
   });
   useEffect(() => {
-    form.setValue("content", content);
-  }, [content]);
-
-  useEffect(() => {
     form.setValue("tags", tags);
   }, [tags]);
-
-  const handleEditorContentChange = (content) => {
-    setEditorContent(content);
-  };
 
   const handleTagsChange = (newTags) => {
     setTags(newTags);
   };
 
   const onSubmit = (values) => {
+    let fields = [...values, content];
     startTransition(() => {
-      addPost(values).then((data) => {
+      addPost(fields).then((data) => {
         if (data?.success) {
           router.push("/dashboard/blog");
         }
       });
     });
   };
-  const handleFormKeyDown = (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-    }
-  };
 
-  const handlePublishClick = () => {
-    form.handleSubmit(onSubmit)();
+  const handlePublishClick = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+    }
+    form.handleSubmit(onSubmit);
   };
 
   return (

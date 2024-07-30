@@ -15,7 +15,7 @@ const Partners = async () => {
         </p>
         <div className="relative overflow-hidden">
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {partners.map((partner) => (
+            {partners?.map((partner) => (
               <div key={partner._id}>
                 <a
                   href={partner.website}
