@@ -107,11 +107,7 @@ const EditorWrapper = () => {
     <>
       <div className="mx-auto max-w-screen-xl px-2 py-8 lg:px-0 ">
         <Form {...form}>
-          <form
-            className="flex justify-between flex-col lg:flex-row gap-6"
-            onKeyDown={handleFormKeyDown}
-            onSubmit={(e) => e.preventDefault()}
-          >
+          <form className="flex justify-between flex-col lg:flex-row gap-6">
             <div className="bg-white p-4 md:p-6 w-full lg:w-8/12 rounded-lg shadow-md border">
               <div className="mb-6 space-y-1">
                 <h1 className="text-xl font-semibold">Create New Post</h1>
