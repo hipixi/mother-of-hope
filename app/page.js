@@ -21,7 +21,6 @@ export default function Home() {
       <Vision />
       <Separator />
       <Happening />
-      <Separator />
       <Cores />
       <WeDo />
       <GetInvolved />

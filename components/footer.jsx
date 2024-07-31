@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white pt-12 md:pt-24 ">
+    <footer className="bg-gray-900 rounded-t-[2.5rem] text-white pt-12 md:pt-24 ">
       <div className="max-w-screen-xl mx-auto  ">
         <nav className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12  md:gap-6 py-8 px-3 lg:px-0">
           <div>

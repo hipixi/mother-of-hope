@@ -5,7 +5,7 @@ import Link from "next/link";
 const UpcomingEvents = async () => {
   const events = await getEvents();
   return (
-    <section className="bg-muted py-12 md:py-16 lg:py-28">
+    <section className="bg-muted rounded-t-[2.5rem] py-12 md:py-16 lg:py-28">
       <div className="mx-auto px-4 lg:px-0 max-w-screen-xl">
         <h1 className="font-bold text-2xl text-gray-800 md:text-3xl mb-8">
           Upcoming Events
@@ -15,7 +15,7 @@ const UpcomingEvents = async () => {
             <Link
               href={`/events/${event._id}`}
               key={event._id}
-              className="border bg-white border-gray-200 rounded-lg overflow-hidden shadow-sm"
+              className="border bg-white border-gray-200 rounded-3xl overflow-hidden shadow-sm"
             >
               <div className="bg-rose-600 text-white py-4 text-center">
                 <span className=" font-bold text-base">

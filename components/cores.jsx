@@ -26,18 +26,18 @@ const Cores = () => {
     },
   ];
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-green-600">
+    <section className="w-full py-16 md:py-24 lg:py-32 bg-[#3cdd8c] rounded-t-[2.5rem]">
       <div className="max-w-screen-xl px-4 md:px-6 mx-auto">
         <div className="w-full max-w-2xl mx-auto flex justify-center items-center text-center ">
           <div className="space-y-6">
-            <h2 className="text-5xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-white font-serif ">
+            <h2 className="text-5xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-black font-serif ">
               The principles that drive us
             </h2>
             <div className="w-16 h-2 bg-yellow-500 flex justify-center mx-auto"></div>
 
-            <div className="space-y-4">
+            <div className="space-y-4 md:space-y-6 lg:space-y-8 bg-[#f3f3f3] rounded-3xl p-8 py-12">
               {values.map((item, idx) => (
-                <div key={idx} className="text-slate-50 text-xl">
+                <div key={idx} className="lg:text-xl">
                   <span className="font-bold ">{item.name}: </span> {item.desc}
                 </div>
               ))}

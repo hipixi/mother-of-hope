@@ -23,37 +23,40 @@ export const metadata = {
 };
 export default function Contact() {
   return (
-    <div className="flex flex-col min-h-dvh">
+    <div className="flex flex-col min-h-dvh bg-gray-100">
       <Header />
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
-        <div className="max-w-screen-xl w-[95%] mx-auto">
+      <section className="w-full max-w-screen-xl mx-auto py-12 md:py-24 lg:py-32 ">
+        <div className="max-w-screen-xl bg-white p-8 py-12 lg:py-24 rounded-[2.5rem] w-[95%] mx-auto">
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
             <div className="space-y-4">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                 Get in Touch
               </h1>
-              <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
-                Have a question or inquiries, then here the place to contact us
+              <p className="text-gray-600  max-w-2xl mx-auto mb-12">
+                Have questions or want to learn more about our foundation? We
+                are here to help.
               </p>
             </div>
             <ContactForm />
           </div>
         </div>
       </section>
-      <section className="w-full py-12 md:py-24 bg-gray-100 lg:py-32">
-        <div className="container px-4 md:px-6">
-          <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
+      <section className="w-full  py-12 md:py-24 bg-gray-100 lg:py-32">
+        <div className="max-w-screen-xl mx-auto rounded-[2.5rem] bg-white px-4 md:px-6 w-[95%] p-8 py-12 lg:py-24">
+          <div className="grid gap-6 grid-cols-1 lg:grid-cols-2 lg:gap-12">
             <div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-                Our Location
+              <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl">
+                Physical Address
               </h2>
               <div className="mt-6 space-y-4">
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4 flex-wrap">
                   <MapPinIcon className="mt-1 h-6 w-6 text-gray-500 dark:text-gray-400" />
                   <div>
-                    <p className="font-medium">Jinja tours and safaris</p>
+                    <p className="font-medium">
+                      Mother of hope foundation uganda
+                    </p>
                     <p className="text-gray-500 dark:text-gray-400">
-                      Main street, Jinja, Uganda
+                      Kasese municipality
                     </p>
                   </div>
                 </div>
@@ -66,34 +69,34 @@ export default function Contact() {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
+                {/* <div className="flex items-start gap-4 flex-wrap">
                   <MailIcon className="mt-1 h-6 w-6 text-gray-500 dark:text-gray-400" />
                   <div>
                     <p className="font-medium">
-                      Jinjatoursandsafaris@gmail.com
+                      motherofhopefoundationuganda@gmail.com
                     </p>
                     <p className="text-gray-500 dark:text-gray-400">
                       Get in touch with us
                     </p>
                   </div>
-                </div>
+                </div> */}
 
-                <div className="flex items-start gap-4">
+                {/* <div className="flex items-start gap-4">
                   <MailIcon className="mt-1 h-6 w-6 text-gray-500 dark:text-gray-400" />
                   <div>
                     <p className="font-medium">info@jinjatoursandsafaris.com</p>
                     <p className="text-gray-500 dark:text-gray-400">
                       Alternative Email
                     </p>
-                  </div>
-                </div>
+                  </div> */}
+                {/* </div> */}
               </div>
             </div>
             <div>
               <Image
-                src=""
+                src="/together.svg"
                 width="550"
-                height="310"
+                height="410"
                 alt=""
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
               />
