@@ -17,7 +17,7 @@ const UpcomingEvents = async () => {
               key={event._id}
               className="border bg-white border-gray-200 rounded-3xl overflow-hidden shadow-sm"
             >
-              <div className="bg-rose-600 text-white py-4 text-center">
+              <div className="bg-[#3cdd8c] text-black py-4 text-center">
                 <span className=" font-bold text-base">
                   {new Intl.DateTimeFormat("en-US", {
                     day: "2-digit",

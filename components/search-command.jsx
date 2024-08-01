@@ -14,6 +14,8 @@ import {
   CommandItem,
   CommandList,
 } from "./ui/command";
+import { getEvents } from "@/app/actions/event.action";
+import { getPosts } from "@/app/actions/blog.action";
 
 const searchItems = [
   { name: "Who We Are", href: "/who-we-are" },
@@ -29,6 +31,8 @@ const searchItems = [
 const SearchCommand = ({ ...props }) => {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
+  const [events, setEvents] = React.useState([]);
+  const [posts, setPosts] = React.useState([]);
 
   React.useEffect(() => {
     const down = (e) => {
@@ -56,6 +60,23 @@ const SearchCommand = ({ ...props }) => {
     command();
   }, []);
 
+  React.useEffect(() => {
+    const fetchEvents = async () => {
+      const evnts = await getEvents();
+      setEvents(evnts);
+    };
+
+    fetchEvents();
+  }, []);
+
+  React.useEffect(() => {
+    const fetchPosts = async () => {
+      const pts = await getPosts();
+      setPosts(pts);
+    };
+
+    fetchPosts();
+  }, []);
   return (
     <>
       <Button
@@ -79,11 +100,37 @@ const SearchCommand = ({ ...props }) => {
                 key={item.href}
                 value={item.name}
                 onSelect={() => {
-                  console.log("CommandItem selected:", item.name); // Check if this logs
                   runCommand(() => router.push(item.href));
                 }}
               >
                 {item.name}
+              </CommandItem>
+            ))}
+          </CommandGroup>
+
+          <CommandGroup heading="Events">
+            {events?.map((item) => (
+              <CommandItem
+                key={item._id}
+                value={item.title}
+                onSelect={() => {
+                  runCommand(() => router.push(`/events/${item._id}`));
+                }}
+              >
+                {item.title}
+              </CommandItem>
+            ))}
+          </CommandGroup>
+          <CommandGroup heading="Blog">
+            {posts?.map((item) => (
+              <CommandItem
+                key={item._id}
+                value={item.title}
+                onSelect={() => {
+                  runCommand(() => router.push(`/blog/${item.slug}`));
+                }}
+              >
+                {item.title}
               </CommandItem>
             ))}
           </CommandGroup>

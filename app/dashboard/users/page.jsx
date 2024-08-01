@@ -1,7 +1,5 @@
 import { getUser, getUsers } from "@/app/actions/get-user";
-import ChatWidget from "@/components/chat";
-import Footer from "@/components/footer";
-import Header from "@/components/header";
+
 import {
   Table,
   TableHeader,
@@ -13,6 +11,7 @@ import {
 import AddUser from "./add-user";
 import { redirect } from "next/navigation";
 import DeleteUser from "./delete-user";
+import EditUser from "./edit-user";
 
 export const metadata = {
   title: "Users | Dashboard",
@@ -52,7 +51,8 @@ export default async function Users() {
                       {user.email}
                     </TableCell>
                     <TableCell className="">{user.role}</TableCell>
-                    <TableCell className="text-right">
+                    <TableCell className="text-right ">
+                      <EditUser user={user} />
                       <DeleteUser id={user._id} />
                     </TableCell>
                   </TableRow>

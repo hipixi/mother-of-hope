@@ -7,16 +7,16 @@ import { useRouter } from "next/navigation";
 
 const Donate = () => {
   const [active, setActive] = useState("Once");
-  const [activeAmount, setActiveAmount] = useState("20,000");
+  const [activeAmount, setActiveAmount] = useState("10");
   const [customAmount, setCustomAmount] = useState("");
 
-  const amounts = ["10,000", "20,000", "50,000"];
+  const amounts = ["5", "10", "20"];
 
   const buttons = [{ name: "Once" }, { name: "Monthly" }];
   const router = useRouter();
 
   const handleAmountClick = (amt) => {
-    if (amt === "Other amount") {
+    if (amt === "Other amoun") {
       setActiveAmount("Other amount");
       setCustomAmount("");
     } else {
@@ -73,18 +73,18 @@ const Donate = () => {
                       activeAmount === amt && "bg-primary"
                     }`}
                   >
-                    {amt}
+                    ${amt}
                   </div>
                 ))}
               </div>
               <div className="grid grid-cols-3 gap-1 ">
                 <div
-                  onClick={() => handleAmountClick("100,000")}
+                  onClick={() => handleAmountClick("50")}
                   className={`rounded border p-1 py-3 flex justify-center items-center cursor-pointer ${
-                    activeAmount === "100,000" && "bg-primary"
+                    activeAmount === "50" && "bg-primary"
                   }`}
                 >
-                  100,000
+                  $50
                 </div>
                 <div className="col-span-2">
                   {activeAmount === "Other amount" ? (

@@ -21,6 +21,24 @@ export const updateUserProfile = async (id, url) => {
   }
 };
 
+export const updateUserRole = async (id, value) => {
+  await dbConnect();
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      id,
+      { role: value.role },
+      { new: true }
+    );
+    if (!updatedUser) {
+      return { error: "User not found" };
+    }
+    return { success: "profile updated successfully" };
+  } catch (error) {
+    console.error(error);
+    return { error: "Failed to update role" };
+  }
+};
+
 export const updateUserEmailName = async (id, fullname, email) => {
   await dbConnect();
   try {
