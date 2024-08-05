@@ -65,7 +65,12 @@ export const getMonthEvents = cache(async () => {
 export const getHomeEvents = async () => {
   await dbConnect();
   try {
-    const events = await Event.find({}).sort({ date: 1 }).limit(3).lean();
+    const today = new Date();
+
+    const events = await Event.find({ date: { $gte: today } })
+      .sort({ date: 1 })
+      .limit(3)
+      .lean();
 
     const convertedEvents = events.map((event) => ({
       ...event,
@@ -75,11 +80,9 @@ export const getHomeEvents = async () => {
     return convertedEvents;
   } catch (error) {
     console.log(error);
-
     return [];
   }
 };
-
 export const getEventBySlug = async (id) => {
   await dbConnect();
   try {

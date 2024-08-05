@@ -17,27 +17,27 @@ const FeaturedImage = ({
     if (file) {
       setLoading(true);
       setUploading(true);
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "dantemoh");
-
-      try {
-        const response = await fetch(
-          `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
-          {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = async () => {
+        try {
+          const response = await fetch("/api/upload", {
             method: "POST",
-            body: formData,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ data: reader.result }),
+          });
+          if (!response.ok) {
+            throw new Error("Upload failed");
           }
-        );
-
-        const data = await response.json();
-        onChange(data.secure_url);
-      } catch (error) {
-        console.error("Error uploading image", error);
-      } finally {
-        setLoading(false);
-        setUploading(false);
-      }
+          const data = await response.json();
+          onChange(data.url);
+        } catch (error) {
+          console.error("Error uploading image", error);
+        } finally {
+          setLoading(false);
+          setUploading(false);
+        }
+      };
     }
   };
 
@@ -52,7 +52,7 @@ const FeaturedImage = ({
           />
           <button
             onClick={onRemove}
-            className="absolute top-1 right-1 text-destructive"
+            className="absolute top-2 right-1 text-destructive"
           >
             <X />
           </button>

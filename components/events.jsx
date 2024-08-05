@@ -1,9 +1,9 @@
-import { getEvents } from "@/app/actions/event.action";
+import { getHomeEvents } from "@/app/actions/event.action";
 import { Clock, LocateIcon } from "lucide-react";
 import Link from "next/link";
 
 const UpcomingEvents = async () => {
-  const events = await getEvents();
+  const events = await getHomeEvents();
   return (
     <section className="bg-muted rounded-t-[2.5rem] py-12 md:py-16 lg:py-28">
       <div className="mx-auto px-4 lg:px-0 max-w-screen-xl">

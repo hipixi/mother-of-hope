@@ -18,12 +18,13 @@ import {
 import { useRouter } from "next/navigation";
 import { addPost } from "@/app/actions/blog.action";
 import Editor from "@/components/editor";
+
 const formSchema = z.object({
   title: z.string().min(3, {
-    message: "Post title must be atleast 3 characters",
+    message: "Post title must be at least 3 characters",
   }),
   featuredImage: z.string().min(1, {
-    message: "choose an image please",
+    message: "Choose an image please",
   }),
   description: z.string().min(3, {
     message: "Add a description before you publish",
@@ -42,7 +43,7 @@ const formSchema = z.object({
     }),
 });
 
-export const defaultValue = {
+const defaultValue = {
   type: "doc",
   content: [
     {
@@ -61,9 +62,7 @@ const EditorWrapper = () => {
   const [uploading, setUploading] = useState(false);
   const [loading, startTransition] = useTransition();
   const [content, setContent] = useState("");
-
   const [tags, setTags] = useState([]);
-
   const router = useRouter();
 
   const form = useForm({
@@ -75,19 +74,27 @@ const EditorWrapper = () => {
       author: "",
       tags: [],
       slug: "",
+      content: "",
     },
   });
+
   useEffect(() => {
     form.setValue("tags", tags);
   }, [tags]);
+
+  useEffect(() => {
+    form.setValue("content", content);
+  }, [content]);
 
   const handleTagsChange = (newTags) => {
     setTags(newTags);
   };
 
   const onSubmit = (values) => {
-    let fields = [...values, content];
+    // Merge content into the values object
+    const fields = { ...values, content: content };
     startTransition(() => {
+      // Uncomment and modify this part when ready to make the API call
       addPost(fields).then((data) => {
         if (data?.success) {
           router.push("/dashboard/blog");
@@ -96,144 +103,139 @@ const EditorWrapper = () => {
     });
   };
 
-  const handlePublishClick = (e) => {
+  const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      e.preventDefault();
+      e.preventDefault(); // Prevent form submission on Enter key
     }
-    form.handleSubmit(onSubmit);
   };
 
   return (
-    <>
-      <div className="mx-auto max-w-screen-xl px-2 py-8 lg:px-0 ">
-        <Form {...form}>
-          <form className="flex justify-between flex-col lg:flex-row gap-6">
-            <div className="bg-white p-4 md:p-6 w-full lg:w-8/12 rounded-lg shadow-md border">
-              <div className="mb-6 space-y-1">
-                <h1 className="text-xl font-semibold">Create New Post</h1>
-              </div>
+    <div className="mx-auto max-w-screen-xl px-2 py-8 lg:px-0">
+      <Form {...form}>
+        <form
+          className="flex justify-between flex-col lg:flex-row gap-6"
+          onSubmit={form.handleSubmit(onSubmit)}
+          onKeyDown={handleKeyDown}
+        >
+          <div className="bg-white p-4 md:p-6 w-full lg:w-8/12 rounded-lg shadow-md border">
+            <div className="mb-6 space-y-1">
+              <h1 className="text-xl font-semibold">Create New Post</h1>
+            </div>
 
+            <FormField
+              control={form.control}
+              name="title"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="font-bold">Blog Title</FormLabel>
+                  <FormControl>
+                    <Input {...field} type="text" placeholder="" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="description"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="font-bold">Description</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="text"
+                      placeholder="Brief description of your post"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <div className="mb-4 mt-2">
+              <h3 className="font-semibold text-sm mb-1">Content</h3>
+              <Editor initialValue={defaultValue} onChange={setContent} />
+            </div>
+          </div>
+
+          <div className="w-full lg:w-4/12">
+            <div className="bg-white p-6 mb-5 rounded-lg shadow-md border">
               <FormField
                 control={form.control}
-                name="title"
+                name="slug"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-bold">Blog Title</FormLabel>
-                    <FormControl>
-                      <Input {...field} type="text" placeholder="" />
-                    </FormControl>
-
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="description"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="font-bold">Description</FormLabel>
+                    <FormLabel className="font-bold">Slug</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
                         type="text"
-                        placeholder="Brief description of your post"
+                        placeholder="your-post-slug"
                       />
                     </FormControl>
-
                     <FormMessage />
                   </FormItem>
                 )}
               />
-
-              <div className="mb-4 mt-2">
-                <h3 className="font-semibold text-sm mb-1">Content</h3>
-                <Editor initialValue={defaultValue} onChange={setContent} />
-              </div>
+            </div>
+            <div className="bg-white p-6 mb-5 rounded-lg space-y-2 shadow-md border">
+              <FormLabel className="font-semibold mb-2">
+                Featured Image
+              </FormLabel>
+              <FormField
+                control={form.control}
+                name="featuredImage"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <FeaturedImage
+                        value={field.value ? [field.value] : []}
+                        disabled={uploading}
+                        onChange={(featuredImage) =>
+                          field.onChange(featuredImage)
+                        }
+                        onRemove={() => field.onChange("")}
+                        setUploading={setUploading}
+                        uploading={uploading}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </div>
 
-            <div className="w-full lg:w-4/12">
-              <div className="bg-white p-6 mb-5 rounded-lg shadow-md border">
-                <FormField
-                  control={form.control}
-                  name="slug"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="font-bold">Slug</FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          type="text"
-                          placeholder="your-post-slug"
-                        />
-                      </FormControl>
-
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="bg-white p-6 mb-5 rounded-lg shadow-md border">
-                <FormLabel className="font-semibold mb-2">
-                  Featured Image
-                </FormLabel>
-                <FormField
-                  control={form.control}
-                  name="featuredImage"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <FeaturedImage
-                          value={field.value ? [field.value] : []}
-                          disabled={uploading}
-                          onChange={(featuredImage) =>
-                            field.onChange(featuredImage)
-                          }
-                          onRemove={() => field.onChange("")}
-                          setUploading={setUploading}
-                          uploading={uploading}
-                        />
-                      </FormControl>
-
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <div className="bg-white p-6 mb-5 rounded-lg shadow-md border">
-                <FormField
-                  control={form.control}
-                  name="author"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="font-bold">Author</FormLabel>
-                      <FormControl>
-                        <Input {...field} type="text" placeholder="your name" />
-                      </FormControl>
-
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <Tags onTagsChange={handleTagsChange} />
-              <div className="mt-4">
-                <Button
-                  type="submit"
-                  disabled={loading}
-                  onClick={handlePublishClick}
-                  className="w-full font-bold"
-                >
-                  Publish Post
-                </Button>
-              </div>
+            <div className="bg-white p-6 mb-5 rounded-lg shadow-md border">
+              <FormField
+                control={form.control}
+                name="author"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-bold">Author</FormLabel>
+                    <FormControl>
+                      <Input {...field} type="text" placeholder="your name" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </div>
-          </form>
-        </Form>
-      </div>
-    </>
+            <Tags onTagsChange={handleTagsChange} />
+            <div className="mt-4">
+              <Button
+                type="submit"
+                disabled={loading}
+                className="w-full font-bold"
+              >
+                Publish Post
+              </Button>
+            </div>
+          </div>
+        </form>
+      </Form>
+    </div>
   );
 };
 

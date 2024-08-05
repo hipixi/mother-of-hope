@@ -17,6 +17,7 @@ export function isValidUrl(url) {
     return false;
   }
 }
+
 export function getUrlFromString(str) {
   if (isValidUrl(str)) return str;
   try {
@@ -29,13 +30,16 @@ export function getUrlFromString(str) {
 }
 
 export const LinkSelector = ({ open, onOpenChange }) => {
-  const inputRef = useRef < HTMLInputElement > null;
+  const inputRef = useRef(null);
   const { editor } = useEditor();
 
   // Autofocus on input by default
   useEffect(() => {
-    inputRef.current && inputRef.current?.focus();
-  });
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [open]);
+
   if (!editor) return null;
 
   return (
@@ -59,13 +63,15 @@ export const LinkSelector = ({ open, onOpenChange }) => {
       <PopoverContent align="start" className="w-60 p-0" sideOffset={10}>
         <form
           onSubmit={(e) => {
-            const target = e.currentTarget;
             e.preventDefault();
-            const input = target[0];
+            const input = e.target[0];
             const url = getUrlFromString(input.value);
+            console.log("Form submitted, URL:", url); // Debugging log
             if (url) {
               editor.chain().focus().setLink({ href: url }).run();
               onOpenChange(false);
+            } else {
+              console.log("Invalid URL"); // Debugging log
             }
           }}
           className="flex p-1"

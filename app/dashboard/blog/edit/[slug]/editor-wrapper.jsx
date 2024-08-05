@@ -15,9 +15,9 @@ import {
 } from "@/components/ui/form";
 import { useRouter } from "next/navigation";
 import { editPost } from "@/app/actions/blog.action";
-import Editor from "../../new/editor";
 import FeaturedImage from "../../new/featured-image";
 import Tags from "../../new/tags";
+import Editor from "@/components/editor";
 const formSchema = z.object({
   title: z.string().min(3, {
     message: "Post title must be atleast 3 characters",
@@ -44,7 +44,8 @@ const formSchema = z.object({
 
 const EditorWrapper = ({ initialData }) => {
   const [uploading, setUploading] = useState(false);
-  const [editorContent, setEditorContent] = useState(initialData.post.content);
+  const [content, setContent] = useState(initialData.post.content);
+
   const [loading, startTransition] = useTransition();
 
   const [tags, setTags] = useState(initialData.post.tags);
@@ -63,9 +64,10 @@ const EditorWrapper = ({ initialData }) => {
       slug: initialData.post.slug,
     },
   });
+
   useEffect(() => {
-    form.setValue("content", editorContent);
-  }, [editorContent]);
+    form.setValue("content", content);
+  }, [content]);
 
   useEffect(() => {
     form.setValue("tags", tags);
@@ -149,8 +151,8 @@ const EditorWrapper = ({ initialData }) => {
               <div className="mb-4 mt-2">
                 <h3 className="font-semibold text-sm mb-1">Content</h3>
                 <Editor
-                  onContentChange={handleEditorContentChange}
-                  initialContent={initialData.post.content}
+                  initialValue={initialData.post.content}
+                  onChange={setContent}
                 />
               </div>
             </div>
@@ -176,7 +178,7 @@ const EditorWrapper = ({ initialData }) => {
                   )}
                 />
               </div>
-              <div className="bg-white p-6 mb-5 rounded-lg shadow-md border">
+              <div className="bg-white p-6 space-y-2 mb-5 rounded-lg shadow-md border">
                 <FormLabel className="font-semibold mb-2">
                   Featured Image
                 </FormLabel>
