@@ -18,7 +18,25 @@ export const addEvent = async (values) => {
 export const getEvents = async () => {
   await dbConnect();
   try {
-    const events = await Event.find({}).sort({ date: 1 }).lean();
+    const events = await Event.find({}).sort({ date: 1 }).lean().limit(20);
+
+    const convertedEvents = events.map((event) => ({
+      ...event,
+      _id: event._id.toString(),
+    }));
+
+    return convertedEvents;
+  } catch (error) {
+    console.log(error);
+
+    return [];
+  }
+};
+
+export const getDashEvents = async () => {
+  await dbConnect();
+  try {
+    const events = await Event.find({}).sort({ date: 1 }).lean().limit(20);
 
     const convertedEvents = events.map((event) => ({
       ...event,
@@ -69,7 +87,7 @@ export const getHomeEvents = async () => {
 
     const events = await Event.find({ date: { $gte: today } })
       .sort({ date: 1 })
-      .limit(3)
+      .limit(9)
       .lean();
 
     const convertedEvents = events.map((event) => ({

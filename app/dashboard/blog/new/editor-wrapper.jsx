@@ -91,10 +91,8 @@ const EditorWrapper = () => {
   };
 
   const onSubmit = (values) => {
-    // Merge content into the values object
     const fields = { ...values, content: content };
     startTransition(() => {
-      // Uncomment and modify this part when ready to make the API call
       addPost(fields).then((data) => {
         if (data?.success) {
           router.push("/dashboard/blog");
@@ -104,8 +102,8 @@ const EditorWrapper = () => {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault(); // Prevent form submission on Enter key
+    if (e.key === "Enter" && e.target.tagName !== "TEXTAREA") {
+      e.preventDefault();
     }
   };
 

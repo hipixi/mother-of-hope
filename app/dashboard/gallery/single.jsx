@@ -12,6 +12,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -27,6 +28,7 @@ const SingleImage = ({ image }) => {
   const handleDelete = async (id) => {
     const data = await deleteImage(id);
     if (data?.sucess) {
+      window.location.reload();
       router.refresh();
     }
   };
@@ -36,6 +38,7 @@ const SingleImage = ({ image }) => {
       shallow
       className="after:content group relative mb-5 block w-full after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
     >
+      {imageLoad && <Skeleton className="absolute inset-0 w-full h-full" />}
       <img
         alt=""
         className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110 w-full h-[250px] md:h-[300px] object-cover"
@@ -74,6 +77,3 @@ const SingleImage = ({ image }) => {
 };
 
 export default SingleImage;
-const ImageSkeleton = () => (
-  <div className="animate-pulse bg-gray-200 rounded-lg w-full h-[250px] md:h-[300px]"></div>
-);

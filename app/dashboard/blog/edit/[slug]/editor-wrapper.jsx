@@ -73,17 +73,14 @@ const EditorWrapper = ({ initialData }) => {
     form.setValue("tags", tags);
   }, [tags]);
 
-  const handleEditorContentChange = (content) => {
-    setEditorContent(content);
-  };
-
   const handleTagsChange = (newTags) => {
     setTags(newTags);
   };
 
   const onSubmit = (values) => {
+    const fields = { ...values, content: content };
     startTransition(() => {
-      editPost(initialData.post._id, values).then((data) => {
+      editPost(initialData.post._id, fields).then((data) => {
         if (data?.success) {
           router.push("/dashboard/blog");
         }
@@ -91,23 +88,13 @@ const EditorWrapper = ({ initialData }) => {
     });
   };
 
-  const handleFormKeyDown = (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-    }
-  };
-
-  const handlePublishClick = () => {
-    form.handleSubmit(onSubmit)();
-  };
   return (
     <>
       <div className="mx-auto max-w-screen-xl px-2 py-8 lg:px-0 ">
         <Form {...form}>
           <form
             className="flex justify-between flex-col lg:flex-row gap-6"
-            onKeyDown={handleFormKeyDown}
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={form.handleSubmit(onSubmit)}
           >
             <div className="bg-white p-4 md:p-6 w-full lg:w-8/12 rounded-lg shadow-md border">
               <div className="mb-6 space-y-1">
@@ -231,7 +218,6 @@ const EditorWrapper = ({ initialData }) => {
                   type="submit"
                   disabled={loading}
                   className="w-full font-bold"
-                  onClick={handlePublishClick}
                 >
                   Update Post
                 </Button>

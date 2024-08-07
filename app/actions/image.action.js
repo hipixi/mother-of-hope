@@ -14,21 +14,27 @@ export const addImage = async (values) => {
   };
 };
 
-export const getImages = async () => {
+export const getImages = async (page = 1, limit = 30) => {
   await dbConnect();
   try {
-    const images = await Image.find({}).sort({ updatedAt: -1 }).lean();
+    const skip = (page - 1) * limit;
+    const images = await Image.find({})
+      .sort({ updatedAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean();
+
+    const total = await Image.countDocuments();
 
     const convertedImages = images.map((image) => ({
       ...image,
       _id: image._id.toString(),
     }));
 
-    return convertedImages;
+    return { images: convertedImages, total };
   } catch (error) {
     console.log(error);
-
-    return [];
+    return { images: [], total: 0 };
   }
 };
 

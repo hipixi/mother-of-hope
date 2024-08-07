@@ -20,6 +20,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { getStatus } from "../event-status";
 
 const SingleEvent = async ({ params }) => {
   const user = await getUser();
@@ -56,7 +57,9 @@ const SingleEvent = async ({ params }) => {
           </p>
           <p className="text-gray-600 mb-4">{event.location}</p>
           <div className="flex items-center justify-between">
-            <Badge className="bg-muted hover:bg-muted">{event.status}</Badge>
+            <Badge className="bg-muted hover:bg-muted">
+              {getStatus(event)}
+            </Badge>
             <DeleteEvent id={event._id} />
           </div>
           <EditEvent event={event} />
@@ -67,18 +70,29 @@ const SingleEvent = async ({ params }) => {
           </div>
         )}
         {event.volunteers.length > 0 && (
-          <div className="px-4 py-6 flex-1 font-medium border rounded-lg">
-            <h2 className="border-b py-1">Volunteers for the event</h2>
+          <div className="px-4 py-6 flex-1 font-medium border rounded-lg bg-white shadow-md">
+            <h2 className="border-b py-2 text-lg font-semibold">
+              Volunteers for the event
+            </h2>
             {event.volunteers.map((volunteer) => (
               <div
                 key={volunteer._id}
-                className="border-b last-of-type:border-b-0 py-2 flex flex-col"
+                className="border-b last-of-type:border-b-0 py-4 flex items-center gap-4"
               >
-                <h2 className="font-medium">{volunteer.name}</h2>
-                <p className="text-muted-foreground text-sm">
-                  {volunteer.email}
-                </p>
-                <p className="text-muted-foreground text-sm">{volunteer.tel}</p>
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
+                  <span className="text-xl font-bold text-gray-600">
+                    {volunteer.name.charAt(0)}
+                  </span>
+                </div>
+                <div className="flex flex-col">
+                  <h3 className="font-medium text-lg">{volunteer.name}</h3>
+                  <p className="text-muted-foreground text-sm">
+                    {volunteer.email}
+                  </p>
+                  <p className="text-muted-foreground text-sm">
+                    {volunteer.tel}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

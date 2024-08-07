@@ -20,27 +20,27 @@ const ChangeImage = ({ user }) => {
     if (file) {
       setLoading(true);
       setUploading(true);
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "dantemoh");
-
-      try {
-        const response = await fetch(
-          `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
-          {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = async () => {
+        try {
+          const response = await fetch("/api/upload", {
             method: "POST",
-            body: formData,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ data: reader.result }),
+          });
+          if (!response.ok) {
+            throw new Error("Upload failed");
           }
-        );
-
-        const data = await response.json();
-        setValue(data.secure_url);
-      } catch (error) {
-        console.error("Error uploading image", error);
-      } finally {
-        setLoading(false);
-        setUploading(false);
-      }
+          const data = await response.json();
+          setValue(data.url);
+        } catch (error) {
+          console.error("Error uploading image", error);
+        } finally {
+          setLoading(false);
+          setUploading(false);
+        }
+      };
     }
   };
 
@@ -72,17 +72,17 @@ const ChangeImage = ({ user }) => {
           <DialogContent>
             <div className="pt-6 flex text-start flex-col items-center justify-center">
               {value ? (
-                <div className="relative">
+                <div className="relative h-48 w-48 rounded-full border-2 border-gray-300 shadow-lg">
                   <img
                     src={value}
                     alt="Uploaded"
-                    className="object-cover object-top rounded-full h-60 h-60"
+                    className="object-cover object-top rounded-full h-full w-full"
                   />
                   <button
                     onClick={handleRemove}
-                    className="absolute top-1 right-2 text-destructive"
+                    className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition"
                   >
-                    <X />
+                    <X className="h-4 w-4" />
                   </button>
                 </div>
               ) : (

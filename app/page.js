@@ -7,6 +7,7 @@ import Happening from "@/components/happening";
 import Header from "@/components/header";
 import Hero from "@/components/hero";
 import Partners from "@/components/partners";
+import OurTeam from "@/components/team";
 import { Separator } from "@/components/ui/separator";
 import Vision from "@/components/vision";
 import Component from "@/components/we-are";
@@ -25,8 +26,7 @@ export default function Home() {
       <WeDo />
       <GetInvolved />
       <UpcomingEvents />
-      {/* <OurTeam /> */}
-      {/* <Separator /> */}
+      <OurTeam />
       <Partners />
       <Footer />
     </main>

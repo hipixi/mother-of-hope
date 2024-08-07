@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Clock, LocateIcon } from "lucide-react";
 import Volunteer from "./volunteer";
 import OtherEvents from "./other";
+import { getStatus } from "@/components/event-status";
 
 const SingleEvent = async ({ params }) => {
   const { event } = await getEventBySlug(params.slug);
@@ -27,7 +28,9 @@ const SingleEvent = async ({ params }) => {
             <p className="text-gray-600 flex items-center gap-2 mb-4">
               <LocateIcon className="w-4 h-4" /> {event.location}
             </p>
-            <Badge className="bg-muted hover:bg-muted">{event.status}</Badge>
+            <Badge className="bg-muted hover:bg-muted">
+              {getStatus(event)}
+            </Badge>
 
             <div className="px-4 py-6 flex-1 border-t min-h-44 mt-8">
               <Volunteer id={event._id} />
@@ -48,12 +51,28 @@ export default SingleEvent;
 
 export async function generateMetadata({ params }) {
   const { event } = await getEventBySlug(params.slug);
+  const ogImageUrl = `${
+    process.env.NEXT_PUBLIC_BASE_URL
+  }/api/generate-og-image?title=${encodeURIComponent(
+    event.title
+  )}&date=${encodeURIComponent(event.date)}&location=${encodeURIComponent(
+    event.location
+  )}`;
+
   return {
     title: `${event.title} | Mother of hope foundation uganda`,
     description: `${event.description}`,
     openGraph: {
-      title: `${event.title} `,
+      title: `${event.title}`,
       description: `${event.description}`,
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${event.title} Open Graph Image`,
+        },
+      ],
     },
   };
 }

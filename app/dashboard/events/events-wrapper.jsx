@@ -12,19 +12,31 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import AddEvent from "./add-event";
 import EventFilterSwitcher from "./filter-switcher";
+import { getStatus } from "./event-status";
 
 export default function EventsWrapper({ events }) {
   const [filter, setFilter] = useState("Upcoming");
 
   const filteredEvents = useMemo(() => {
-    return events.filter((event) => event.status === filter);
+    const now = new Date();
+    return events.filter((event) => {
+      const eventDate = new Date(event.date);
+      if (filter === "Upcoming") {
+        return eventDate > now;
+      } else if (filter === "Completed") {
+        return eventDate < now;
+      } else if (filter === "Ongoing") {
+        const eventEndDate = new Date(event.endDate);
+        return eventDate <= now && eventEndDate >= now;
+      }
+      return true;
+    });
   }, [events, filter]);
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
   };
 
-  console.log(filteredEvents);
   return (
     <>
       <div className="flex items-center justify-between bg-background  py-4">
@@ -74,7 +86,7 @@ export default function EventsWrapper({ events }) {
                         : "outline"
                     }
                   >
-                    {event.status}
+                    {getStatus(event)}
                   </Badge>
                 </TableCell>
               </TableRow>

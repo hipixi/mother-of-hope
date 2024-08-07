@@ -57,7 +57,7 @@ const Header = async () => {
         <div className="flex gap-4   items-center  md:gap-6 ml-auto">
           <SearchCommand />
           <Button
-            className={`font-bold bg-green-600 hover:bg-green-800 rounded-none text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ${
+            className={`font-bold rounded bg-green-600 hover:bg-green-800  text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ${
               user && "hidden md:flex"
             }`}
           >
@@ -156,7 +156,7 @@ const Header = async () => {
               <div className="mt-auto bottom-0">
                 {user ? (
                   <>
-                    <Button className="font-bold w-full bg-green-600 hover:bg-green-800 rounded-none text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ">
+                    <Button className="font-bold w-full rounded bg-green-600 hover:bg-green-800  text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ">
                       <FaHeart className="text-white animate-heart-pump" />
                       Donate
                     </Button>

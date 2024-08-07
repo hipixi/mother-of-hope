@@ -3,7 +3,9 @@ import { redirect } from "next/navigation";
 import SignInForm from "./form";
 
 export const metadata = {
-  title: "MOHFU - Login",
+  title: "Login | Mother of hope foundation uganda",
+  description:
+    "Login to MOHFU to access your account and manage your preferences.",
 };
 
 export default async function SignIn() {

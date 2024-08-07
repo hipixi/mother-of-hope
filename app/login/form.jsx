@@ -106,7 +106,7 @@ export default function SignUpForm() {
               type="button"
               variant="ghost"
               size="icon"
-              className="absolute right-0 top-3 h-full px-3 py-2 hover:bg-transparent"
+              className="absolute right-2 top-11 transform -translate-y-1/2"
               onClick={toggleShowPassword}
             >
               {showPassword ? (
