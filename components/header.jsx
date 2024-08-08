@@ -16,6 +16,15 @@ import SignOut from "./signout";
 import { signOut } from "@/app/actions/auth.action";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import SearchCommand from "./search-command";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
+import Donate from "./donate";
+import PopupDonate from "./donate-pop";
 const Header = async () => {
   const user = await getUser();
   return (
@@ -56,14 +65,31 @@ const Header = async () => {
 
         <div className="flex gap-4   items-center  md:gap-6 ml-auto">
           <SearchCommand />
-          <Button
-            className={`font-bold rounded bg-green-600 hover:bg-green-800  text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ${
-              user && "hidden md:flex"
-            }`}
-          >
-            <FaHeart className="text-white animate-heart-pump" />
-            Donate
-          </Button>
+
+          <Dialog>
+            <DialogTrigger>
+              <Button
+                className={`font-bold rounded bg-green-600 hover:bg-green-800  text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ${
+                  user && "hidden md:flex"
+                }`}
+              >
+                <FaHeart className="text-white animate-heart-pump" />
+                Donate
+              </Button>
+            </DialogTrigger>
+
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>
+                  <h1 className="text-3xl sm:text-3xl md:text-4xl font-extrabold  text-center ">
+                    Help Build a Resilient{" "}
+                    <span className="text-rose-600">Kasese</span>
+                  </h1>
+                </DialogTitle>
+              </DialogHeader>
+              <PopupDonate />
+            </DialogContent>
+          </Dialog>
 
           {user && (
             <DropdownMenu>
@@ -156,10 +182,25 @@ const Header = async () => {
               <div className="mt-auto bottom-0">
                 {user ? (
                   <>
-                    <Button className="font-bold w-full rounded bg-green-600 hover:bg-green-800  text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ">
-                      <FaHeart className="text-white animate-heart-pump" />
-                      Donate
-                    </Button>
+                    <Dialog>
+                      <DialogTrigger>
+                        <Button className="font-bold w-full rounded bg-green-600 hover:bg-green-800  text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ">
+                          <FaHeart className="text-white animate-heart-pump" />
+                          Donate
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>
+                            <h1 className="text-3xl sm:text-3xl md:text-4xl font-extrabold  text-center ">
+                              Help Build a Resilient{" "}
+                              <span className="text-rose-600">Kasese</span>
+                            </h1>
+                          </DialogTitle>
+                        </DialogHeader>
+                        <PopupDonate />
+                      </DialogContent>
+                    </Dialog>
                   </>
                 ) : (
                   <Link href="/login">

@@ -101,11 +101,7 @@ const EditorWrapper = () => {
     });
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter" && e.target.tagName !== "TEXTAREA") {
-      e.preventDefault();
-    }
-  };
+ 
 
   return (
     <div className="mx-auto max-w-screen-xl px-2 py-8 lg:px-0">
@@ -113,7 +109,6 @@ const EditorWrapper = () => {
         <form
           className="flex justify-between flex-col lg:flex-row gap-6"
           onSubmit={form.handleSubmit(onSubmit)}
-          onKeyDown={handleKeyDown}
         >
           <div className="bg-white p-4 md:p-6 w-full lg:w-8/12 rounded-lg shadow-md border">
             <div className="mb-6 space-y-1">

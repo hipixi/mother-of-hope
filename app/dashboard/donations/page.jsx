@@ -70,7 +70,11 @@ const Donations = () => {
                   {donation.frequency}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap hidden md:table-cell">
-                  {new Date(donation.createdAt).toLocaleDateString()}
+                  {new Intl.DateTimeFormat("en-UK", {
+                    month: "short",
+                    year: "numeric",
+                    day: "numeric",
+                  }).format(new Date(donation.createdAt))}
                 </td>
               </tr>
             ))}

@@ -94,11 +94,6 @@ export default async function BlogDashboard() {
           </main>
         </div>
       </div>
-      <section className="bg-muted max-w-screen-xl mx-auto w-full border-t px-4 py-4 flex items-center justify-between">
-        <div className="text-muted-foreground">
-          Total posts: <span className="font-medium">{posts.length}</span>
-        </div>
-      </section>
     </main>
   );
 }

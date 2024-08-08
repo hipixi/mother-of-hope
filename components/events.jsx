@@ -7,7 +7,7 @@ const UpcomingEvents = async () => {
   return (
     <>
       {events && events.length > 0 && (
-        <section className="bg-muted rounded-t-[2.5rem] pt-12 pb-32">
+        <section className="bg-muted  pt-32 pb-32">
           <div className="mx-auto px-4 lg:px-0 max-w-screen-xl">
             <h1 className="font-bold text-center text-3xl text-gray-800 md:text-4xl mb-8">
               Upcoming Events

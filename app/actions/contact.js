@@ -31,3 +31,17 @@ export const getContacts = async () => {
     };
   }
 };
+
+export const deleteContact = async (id) => {
+  await dbConnect();
+  try {
+    const deletedContact = await Contact.findByIdAndDelete(id);
+    if (!deletedContact) {
+      return { error: "Contact not found" };
+    }
+    return { success: "Contact deleted successfully" };
+  } catch (error) {
+    console.error(error);
+    return { error: "Failed to delete contact" };
+  }
+};

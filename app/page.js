@@ -25,6 +25,7 @@ export default function Home() {
       <Cores />
       <WeDo />
       <GetInvolved />
+      <Separator />
       <UpcomingEvents />
       <OurTeam />
       <Partners />

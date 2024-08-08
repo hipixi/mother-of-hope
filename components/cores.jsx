@@ -30,7 +30,7 @@ const Cores = () => {
       <div className="max-w-screen-xl px-4 md:px-6 mx-auto">
         <div className="w-full max-w-2xl mx-auto flex justify-center items-center text-center ">
           <div className="space-y-6">
-            <h2 className="text-5xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-black font-serif ">
+            <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-5xl text-balance text-white uppercase ">
               The principles that drive us
             </h2>
             <div className="w-16 h-2 bg-yellow-500 flex justify-center mx-auto"></div>

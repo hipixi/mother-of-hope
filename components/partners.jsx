@@ -6,8 +6,8 @@ const Partners = async () => {
   return (
     <section className="py-12 md:py-16 lg:py-20 overflow-hidden">
       <div className="mx-auto max-w-screen-xl">
-        <h2 className="font-bold text-3xl md:text-4xl mb-8 text-center">
-          Our Partners
+        <h2 className="font-bold text-4xl md:text-5xl mb-8 text-center">
+          Our Partners organisations
         </h2>
         <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
           {`We're proud to work with these amazing organizations to make a
@@ -25,7 +25,7 @@ const Partners = async () => {
                 >
                   <img
                     src={partner.logo}
-                    className="w-full max-h-20 lg:max-h-24 object-contain"
+                    className="w-full max-h-24 lg:max-h-28 object-contain"
                   />
                 </a>
               </div>

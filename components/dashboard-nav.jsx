@@ -12,7 +12,6 @@ const navItems = [
   { href: "/dashboard/contacts", label: "Contacts" },
   { href: "/dashboard/volunteers", label: "Volunteers" },
   { href: "/dashboard/partners", label: "Partners" },
-  { href: "/dashboard/team", label: "Team" },
   { href: "/dashboard/gallery", label: "Gallery" },
 ];
 

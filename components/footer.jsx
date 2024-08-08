@@ -5,15 +5,25 @@ import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
+import PopupDonate from "./donate-pop";
 
 const Footer = () => {
   return (
     <footer className="bg-gray-900 rounded-t-[2.5rem] text-white pt-12 md:pt-24 ">
       <div className="max-w-screen-xl mx-auto  ">
         <nav className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12  md:gap-6 py-8 px-3 lg:px-0">
-          <div>
-            <h3 className="font-semibold uppercase mb-4">get to know us</h3>
-            <ul className=" md:text-base mt-2 text-slate-300">
+          <div className="">
+            <h3 className="font-semibold uppercase mb-4 text-xl">
+              get to know us
+            </h3>
+            <ul className=" text-lg mt-2 text-slate-300">
               <li>who we are</li>
               <li>our work</li>
               <li>where we work</li>
@@ -24,14 +34,39 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="font-semibold uppercase mb-4">support</h3>
-            <ul className=" md:text-base mt-2 text-slate-300">
-              <li>donate</li>
-              <li>contact us</li>
-              <li>volunteer</li>
-              <li>gallery</li>
-              <li>blog</li>
-              <li>upcoming events</li>
+            <h3 className="font-semibold text-xl uppercase mb-4">support</h3>
+            <ul className=" text-lg mt-2 text-slate-300">
+              <Dialog>
+                <DialogTrigger>
+                  <li>donate</li>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>
+                      <h1 className="text-3xl sm:text-3xl md:text-4xl font-extrabold  text-center ">
+                        Help Build a Resilient{" "}
+                        <span className="text-rose-600">Kasese</span>
+                      </h1>
+                    </DialogTitle>
+                  </DialogHeader>
+                  <PopupDonate />
+                </DialogContent>
+              </Dialog>
+              <li>
+                <Link href="/get-involved/partner">partner</Link>
+              </li>
+              <li>
+                <Link href="/get-involved/volunteer">volunteer</Link>
+              </li>
+              <li>
+                <Link href="/gallery">gallery</Link>
+              </li>
+              <li>
+                <Link href="/contact">contact us</Link>
+              </li>
+              <li>
+                <Link href={"/blog"}>blog</Link>
+              </li>
             </ul>
           </div>
 
@@ -67,7 +102,7 @@ const Footer = () => {
 
             <div className="flex flex-col md:flex-row md:justify-between items-center">
               <div className="text-center md:text-left mb-4 md:mb-0">
-                <p className="text-sm text-muted-foreground ">
+                <p className="text-base text-muted-foreground ">
                   © {new Date().getFullYear()} Mother of hope foundation uganda.
                   All rights reserved.
                 </p>
