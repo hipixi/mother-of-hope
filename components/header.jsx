@@ -68,6 +68,7 @@ const Header = async () => {
           <Dialog>
             <DialogTrigger>
               <Button
+                size="lg"
                 className={`font-bold rounded bg-green-600 hover:bg-green-800  text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ${
                   user && "hidden md:flex"
                 }`}

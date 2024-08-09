@@ -33,6 +33,18 @@ export const getEvents = async () => {
   }
 };
 
+export const getAllEvents = async () => {
+  await dbConnect();
+
+  try {
+    const events = await Event.find({});
+    return events;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
 export const getDashEvents = async () => {
   await dbConnect();
   try {

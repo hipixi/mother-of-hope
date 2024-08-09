@@ -71,7 +71,10 @@ const SidebarSheet = ({ user }) => {
           {user ? (
             <Dialog>
               <DialogTrigger>
-                <Button className="font-bold w-full rounded bg-green-600 hover:bg-green-800 text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white">
+                <Button
+                  size="lg"
+                  className="font-bold w-full rounded bg-green-600 hover:bg-green-800 text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white"
+                >
                   <FaHeart className="text-white animate-heart-pump" />
                   Donate
                 </Button>

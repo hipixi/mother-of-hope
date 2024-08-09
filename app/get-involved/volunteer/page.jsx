@@ -12,6 +12,20 @@ import FormVolunteer from "./form-volunteer";
 
 export const metadata = {
   title: "Volunteer | Mother of hope foundation uganda",
+  description: `Come and join our family in building a resilient community in kasese that will thrive even in times of turmoil`,
+
+  openGraph: {
+    title: `Volunteer | Mother of hope foundation uganda`,
+    description: `Come and join our family in building a resilient community in kasese that will thrive even in times of turmoil`,
+    images: [
+      {
+        url: "/vol.svg",
+        width: 1200,
+        height: 630,
+        alt: ``,
+      },
+    ],
+  },
 };
 
 export default function VolunteerPage() {
