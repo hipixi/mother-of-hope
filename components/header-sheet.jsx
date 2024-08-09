@@ -23,40 +23,40 @@ const SidebarSheet = ({ user }) => {
         <div className="flex flex-col text-sm gap-4 mt-6">
           <ScrollLink
             href="#who-we-are"
-            className="hover:text-rose-600 transition-colors lg:hidden"
+            className="hover:text-rose-600 transition-colors lg:hidden w-full"
           >
-            <SheetClose>Who we are</SheetClose>
+            <SheetClose className="w-full">Who we are</SheetClose>
           </ScrollLink>
           <ScrollLink
             href="#what-we-do"
-            className="hover:text-rose-600 transition-colors lg:hidden"
+            className="hover:text-rose-600 transition-colors lg:hidden w-full"
           >
-            <SheetClose>What we do</SheetClose>
+            <SheetClose className="w-full">What we do</SheetClose>
           </ScrollLink>
           <ScrollLink
             href="#our-team"
-            className="hover:text-rose-600 transition-colors lg:hidden"
+            className="hover:text-rose-600 transition-colors lg:hidden w-full"
           >
-            <SheetClose>Our Team</SheetClose>
+            <SheetClose className="w-full">Our Team</SheetClose>
           </ScrollLink>
           <ScrollLink
             href="#get-involved"
-            className="hover:text-rose-600 transition-colors"
+            className="hover:text-rose-600 transition-colors w-full"
           >
-            <SheetClose>Get involved</SheetClose>
+            <SheetClose className="w-full">Get involved</SheetClose>
           </ScrollLink>
           <Link href="/blog" className="hover:text-rose-600 transition-colors">
             Blog
           </Link>
           <ScrollLink
             href="#our-partners"
-            className="hover:text-rose-600 transition-colors"
+            className="hover:text-rose-600 transition-colors w-full"
           >
-            <SheetClose>Our partners</SheetClose>
+            <SheetClose className="w-full">Our partners</SheetClose>
           </ScrollLink>
           <Link
             href="/gallery"
-            className="hover:text-rose-600 transition-colors"
+            className="hover:text-rose-600 transition-colors w-full"
           >
             Gallery
           </Link>

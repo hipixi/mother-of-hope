@@ -56,9 +56,7 @@ const DonationsWrapper = () => {
   return (
     <div className="px-4 lg:px-0 max-w-screen-xl mx-auto">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl mt-3 md:text-2xl font-bold mb-6">
-          Recent Donations
-        </h1>
+        <h1 className="text-xl mt-3 md:text-2xl font-bold mb-6">Donations</h1>
         <div className="relative">
           <Select
             onValueChange={handleLimitChange}
@@ -86,10 +84,10 @@ const DonationsWrapper = () => {
           <TableHeader>
             <TableRow>
               <TableHead>Name</TableHead>
-              <TableHead>Email</TableHead>
+              <TableHead className="hidden lg:table-cell">Email</TableHead>
               <TableHead>Amount</TableHead>
-              <TableHead>Frequency</TableHead>
-              <TableHead>Date</TableHead>
+              <TableHead className="hidden lg:table-cell">Frequency</TableHead>
+              <TableHead className="hidden lg:table-cell">Date</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
