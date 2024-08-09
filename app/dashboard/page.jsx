@@ -1,11 +1,11 @@
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Upcoming from "./upcoming";
 import Volunteers from "./volunteers";
 import Events from "./events";
 import Posts from "./posts";
-import { DollarSignIcon } from "lucide-react";
 import Partners from "./partners";
 import Donations from "./donations";
+import TotalPosts from "./total-posts";
+import TotalUsers from "./users";
 
 export const metadata = {
   title: "Overview | Dashboard",
@@ -19,7 +19,9 @@ export default function Component() {
           <Donations />
           <Volunteers />
           <Upcoming />
+          <TotalUsers />
           <Partners />
+          <TotalPosts />
         </div>
         <div className="grid gap-4 mt-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           <Posts />

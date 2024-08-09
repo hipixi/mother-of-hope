@@ -4,7 +4,7 @@ const Partners = async () => {
   const partners = await getConfirmedPartners();
 
   return (
-    <section className="py-12 md:py-16 lg:py-20 overflow-hidden">
+    <section className="py-16 lg:py-28 overflow-hidden">
       <div className="mx-auto max-w-screen-xl">
         <h2 className="font-bold text-4xl md:text-5xl mb-8 text-center">
           Our Partners organisations

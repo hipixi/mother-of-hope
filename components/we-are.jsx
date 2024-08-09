@@ -1,6 +1,6 @@
 export default function Component() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-rose-700 ">
+    <section className="w-full py-16 lg:py-32 bg-rose-700 ">
       <div className="max-w-screen-xl px-4 md:px-6 mx-auto">
         <div className="w-full max-w-3xl mx-auto flex justify-center items-center text-center">
           <div className="space-y-6">

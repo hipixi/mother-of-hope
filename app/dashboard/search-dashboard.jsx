@@ -2,10 +2,9 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
-import { Search } from "lucide-react";
 
-import { cn } from "@/lib/utils";
-import { Button } from "./ui/button";
+import { getEvents } from "@/app/actions/event.action";
+import { getPosts } from "@/app/actions/blog.action";
 import {
   CommandDialog,
   CommandEmpty,
@@ -13,20 +12,21 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "./ui/command";
-import { getEvents } from "@/app/actions/event.action";
-import { getPosts } from "@/app/actions/blog.action";
+} from "@/components/ui/command";
 
 const searchItems = [
   { name: "Home", href: "/" },
-  { name: "Blog", href: "/blog" },
-  { name: "Gallery", href: "/gallery" },
-  { name: "Dashboard", href: "/dashboard" },
-  { name: "Contact Us", href: "/contact" },
-  { name: "Login", href: "/login" },
+  { name: "Overview", href: "/dashboard" },
+  { name: "Users", href: "/dashboard/users" },
+  { name: "Events", href: "/dashboard/events" },
+  { name: "Blog", href: "/dashboard/blog" },
+  { name: "Contacts", href: "/dashboard/contacts" },
+  { name: "Volunteers", href: "/dashboard/volunteers" },
+  { name: "Partners", href: "/dashboard/partners" },
+  { name: "Gallery", href: "/dashboard/gallery" },
 ];
 
-const SearchCommand = ({ ...props }) => {
+const SearchDashboard = ({ ...props }) => {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
   const [events, setEvents] = React.useState([]);
@@ -77,17 +77,14 @@ const SearchCommand = ({ ...props }) => {
   }, []);
   return (
     <>
-      <Button
-        variant="ghost"
-        size="icon"
-        className={cn(
-          "relative h-8 w-8 md:h-9 md:w-9 justify-center rounded-full"
-        )}
+      <div
+        className="w-52 h-7 cursor-pointer sm:w-64 md:w-80 rounded bg-muted px-3 text-xs flex items-center"
         onClick={() => setOpen(true)}
         {...props}
       >
-        <Search className="w-5 md:w-6 h-5 md:h-6" />
-      </Button>
+        search...
+      </div>
+
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
@@ -138,4 +135,4 @@ const SearchCommand = ({ ...props }) => {
   );
 };
 
-export default SearchCommand;
+export default SearchDashboard;

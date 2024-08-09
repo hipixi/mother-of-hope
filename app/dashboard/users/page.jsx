@@ -22,6 +22,9 @@ export default async function Users() {
   if (!currentUser) {
     redirect("/login");
   }
+  if (currentUser && user.role === "user") {
+    redirect("/dashboard");
+  }
   const users = await getUsers();
   return (
     <main>

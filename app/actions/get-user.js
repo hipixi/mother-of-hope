@@ -34,3 +34,14 @@ export const getUsers = cache(async () => {
     return [];
   }
 });
+
+export const getTotalUsers = async () => {
+  await dbConnect();
+  try {
+    const totalUsers = await User.countDocuments();
+    return totalUsers;
+  } catch (error) {
+    console.error("Error fetching total number of Users:", error);
+    return 0;
+  }
+};

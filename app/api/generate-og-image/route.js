@@ -1,10 +1,15 @@
-import { createCanvas } from "canvas";
+import { createCanvas, registerFont } from "canvas";
+import path from "path";
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const title = searchParams.get("title");
   const date = searchParams.get("date");
   const location = searchParams.get("location");
+
+  registerFont(path.join(process.cwd(), "public", "font", "Inter.ttf"), {
+    family: "Inter",
+  });
 
   const width = 1200;
   const height = 630;
@@ -20,22 +25,22 @@ export async function GET(request) {
 
   // Text settings
   ctx.fillStyle = "#fff";
-  ctx.font = "bold 80px Arial";
+  ctx.font = "bold 100px Inter";
   ctx.textAlign = "center";
 
   // Draw title
   ctx.fillText(title, width / 2, height / 2 - 100);
 
   // Draw date
-  ctx.font = "bold 40px Arial";
+  ctx.font = "bold 40px Inter";
   ctx.fillText(date, width / 2, height / 2 + 10);
 
   // Draw location
-  ctx.font = "bold 40px Arial";
+  ctx.font = "bold 40px Inter";
   ctx.fillText(location, width / 2, height / 2 + 70);
 
   // Draw MOHFU at the bottom
-  ctx.font = "bold 20px Arial";
+  ctx.font = "bold 20px Inter";
   ctx.fillText("Mother of hope foundation uganda", width / 2, height - 50); // Adjusted position to be near the bottom
 
   const buffer = canvas.toBuffer("image/png");

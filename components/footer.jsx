@@ -1,10 +1,7 @@
 import { FaFacebook, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -13,6 +10,8 @@ import {
   DialogTrigger,
 } from "./ui/dialog";
 import PopupDonate from "./donate-pop";
+import ScrollLink from "./scroll";
+import Subscribe from "./subscribe";
 
 const Footer = () => {
   return (
@@ -24,11 +23,21 @@ const Footer = () => {
               get to know us
             </h3>
             <ul className=" text-lg mt-2 text-slate-300">
-              <li>who we are</li>
-              <li>our work</li>
-              <li>where we work</li>
-              <li>our partners</li>
-              <li>our team</li>
+              <li>
+                <ScrollLink href="#who-we-are">who we are</ScrollLink>
+              </li>
+              <li>
+                <ScrollLink href="#what-we-do">what we do</ScrollLink>
+              </li>
+              <li>
+                <ScrollLink href="#our-team">our team</ScrollLink>
+              </li>
+              <li>
+                <ScrollLink href="#get-involved">get involved</ScrollLink>
+              </li>
+              <li>
+                <ScrollLink href="#our-partners">our partners</ScrollLink>
+              </li>
               <li>kasese municipality</li>
             </ul>
           </div>
@@ -70,18 +79,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="ring-2 ring-yellow-500 bg-white shadow text-black rounded-lg p-6 h-auto flex flex-col justify-center gap-6">
-            <h3 className="uppercase font-semibold">Stay connected</h3>
-
-            <Input placeholder="Email" className="h-11 md:h-12 rounded-none" />
-            <Button
-              size="lg"
-              className="font-semibold bg-yellow-400 hover:bg-yellow-600 text-black uppercase rounded-none flex items-center gap-2"
-            >
-              Submit
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-          </div>
+          <Subscribe />
         </nav>
 
         <div className="flex justify-between items-center px-3 lg:px-0">

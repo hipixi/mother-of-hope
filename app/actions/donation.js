@@ -26,14 +26,17 @@ export const getMonthDonations = cache(async () => {
   }
 });
 
-export const getDonations = async () => {
+export const getDonations = async (limit = 10) => {
   await dbConnect();
 
   try {
-    const donations = await Donation.find({}).sort({ createdAt: -1 }).lean();
-    const convertedDonations = donations.map((partner) => ({
-      ...partner,
-      _id: partner._id.toString(),
+    const donations = await Donation.find({})
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .lean();
+    const convertedDonations = donations.map((donation) => ({
+      ...donation,
+      _id: donation._id.toString(),
     }));
 
     return convertedDonations;

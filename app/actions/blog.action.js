@@ -119,3 +119,14 @@ export const getLatestPosts = async () => {
     return [];
   }
 };
+
+export const getTotalPosts = async () => {
+  await dbConnect();
+  try {
+    const totalPosts = await Post.countDocuments();
+    return totalPosts;
+  } catch (error) {
+    console.error("Error fetching total number of Posts:", error);
+    return 0;
+  }
+};

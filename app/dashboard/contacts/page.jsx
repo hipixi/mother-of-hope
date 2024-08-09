@@ -1,8 +1,8 @@
 "use client";
 import { getContacts } from "@/app/actions/contact";
-import { Trash } from "lucide-react";
 import { useEffect, useState } from "react";
 import DeleteContact from "./delete-contact";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const ContactsDashboard = () => {
   const [contacts, setContacts] = useState([]);
@@ -25,7 +25,11 @@ const ContactsDashboard = () => {
 
   if (isLoading) {
     return (
-      <div className="p-4 lg:px-0 max-w-screen-xl mx-auto">Loading...</div>
+      <div className="w-[97%] max-w-screen-xl mx-auto mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <Skeleton className="h-[300px] w-full" />
+        <Skeleton className="h-[300px] w-full" />
+        <Skeleton className="h-[300px] w-full" />
+      </div>
     );
   }
 

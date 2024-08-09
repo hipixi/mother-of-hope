@@ -1,4 +1,3 @@
-import ChatWidget from "@/components/chat";
 import Cores from "@/components/cores";
 import UpcomingEvents from "@/components/events";
 import Footer from "@/components/footer";
@@ -18,17 +17,27 @@ export default function Home() {
     <main>
       <Header />
       <Hero />
-      <Component />
+      <section id="who-we-are">
+        <Component />
+      </section>
       <Vision />
       <Separator />
       <Happening />
       <Cores />
-      <WeDo />
-      <GetInvolved />
+      <section id="what-we-do">
+        <WeDo />
+      </section>
+      <section id="get-involved">
+        <GetInvolved />
+      </section>
       <Separator />
       <UpcomingEvents />
-      <OurTeam />
-      <Partners />
+      <section id="our-team">
+        <OurTeam />
+      </section>
+      <section id="our-partners">
+        <Partners />
+      </section>
       <Footer />
     </main>
   );

@@ -13,6 +13,7 @@ import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { signOut } from "@/app/actions/auth.action";
 import DashboardNav from "./dashboard-nav";
+import SearchDashboard from "@/app/dashboard/search-dashboard";
 
 const DashboardHeader = async () => {
   const user = await getUser();
@@ -26,9 +27,7 @@ const DashboardHeader = async () => {
           </Link>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-52 h-7 sm:w-64 md:w-80 rounded bg-muted px-3 text-xs flex items-center">
-            search...
-          </div>
+          <SearchDashboard />
 
           <DropdownMenu>
             <DropdownMenuTrigger>

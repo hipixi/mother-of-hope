@@ -80,7 +80,7 @@ const teamMembers = [
 
 const OurTeam = () => {
   return (
-    <section className="bg-primary rounded-t-[2.5rem] -top-6 relative px-4 py-16 lg:py-28 sm:px-6 lg:px-8">
+    <section className="bg-primary rounded-t-[2.5rem] -top-6 relative px-4 py-20 lg:py-32 sm:px-6 lg:px-8">
       <div className="max-w-screen-xl mx-auto">
         <header>
           <h1 className="text-4xl font-bold text-center">Meet Our Team</h1>
@@ -90,7 +90,7 @@ const OurTeam = () => {
             made in kasese
           </p>
         </header>
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-14 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {teamMembers.map((member) => (
             <article
               key={member.id}

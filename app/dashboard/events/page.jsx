@@ -1,6 +1,4 @@
-import { getUser } from "@/app/actions/get-user";
 import EventsWrapper from "./events-wrapper";
-import { redirect } from "next/navigation";
 import { getEvents } from "@/app/actions/event.action";
 
 export const metadata = {
@@ -8,12 +6,6 @@ export const metadata = {
 };
 
 export default async function Events() {
-  const user = await getUser();
-
-  if (!user) {
-    redirect("/login");
-  }
-
   const events = await getEvents();
 
   return (

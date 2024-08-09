@@ -13,9 +13,12 @@ export const metadata = {
     description: `All the relevant ways to contact us`,
     images: [
       {
-        url: ``,
-        width: 800,
-        height: 600,
+        url: `
+https://i.imgur.com/AkhnjiG.jpeg
+        
+        `,
+        width: 1200,
+        height: 630,
         alt: ``,
       },
     ],

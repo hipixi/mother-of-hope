@@ -1,7 +1,5 @@
-import { AlignLeft, Search } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { FaHeart } from "react-icons/fa";
 import { getUser } from "@/app/actions/get-user";
 import {
@@ -23,8 +21,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
-import Donate from "./donate";
 import PopupDonate from "./donate-pop";
+import ScrollLink from "./scroll";
+import SidebarSheet from "./header-sheet";
 const Header = async () => {
   const user = await getUser();
   return (
@@ -37,29 +36,29 @@ const Header = async () => {
         </div>
 
         <div className="hidden md:flex items-center gap-10 font-semibold flex-1 capitalize">
-          <Link
-            href="/who-we-are"
+          <ScrollLink
+            href="#who-we-are"
             className="hover:text-rose-600 transition-colors"
           >
             who we are
-          </Link>
-          <Link
-            href="/what-we-do"
+          </ScrollLink>
+          <ScrollLink
+            href="#what-we-do"
             className="hover:text-rose-600 transition-colors"
           >
             what we do
-          </Link>
-          <Link
-            href="/where-we-work"
+          </ScrollLink>
+          <ScrollLink
+            href="#our-team"
             className="hover:text-rose-600 hidden lg:block transition-colors"
           >
-            where we work
-          </Link>
+            our team
+          </ScrollLink>
           <Link
-            href="/how-to-help"
+            href="/contact"
             className="hover:text-rose-600 hidden lg:block transition-colors"
           >
-            how to help
+            contact us
           </Link>
         </div>
 
@@ -123,96 +122,7 @@ const Header = async () => {
               </DropdownMenuContent>
             </DropdownMenu>
           )}
-          <Sheet>
-            <SheetTrigger>
-              <AlignLeft className="w-6 md:w-7 h-6 md:h-7  ml-auto cursor-pointer" />
-            </SheetTrigger>
-            <SheetContent side="left" className="flex  justify-center flex-col">
-              <div className="flex  flex-col text-sm  gap-4 mt-6">
-                <Link
-                  href="/who-we-are"
-                  className="hover:text-rose-600 transition-colors"
-                >
-                  Who we are
-                </Link>
-                <Link
-                  href="/what-we-do"
-                  className="hover:text-rose-600 transition-colors"
-                >
-                  What we do
-                </Link>
-                <Link
-                  href="/where-we-work"
-                  className="hover:text-rose-600 transition-colors"
-                >
-                  Where we work
-                </Link>
-                <Link
-                  href="/how-to-help"
-                  className="hover:text-rose-600  transition-colors"
-                >
-                  Wow to help
-                </Link>
-                <Link
-                  href="/blog"
-                  className="hover:text-rose-600  transition-colors"
-                >
-                  Blog
-                </Link>
-                <Link
-                  href="/how-to-help"
-                  className="hover:text-rose-600  transition-colors"
-                >
-                  Our partners
-                </Link>
-                <Link
-                  href="/gallery"
-                  className="hover:text-rose-600  transition-colors"
-                >
-                  Gallery
-                </Link>
-                <Link
-                  href="/how-to-help"
-                  className="hover:text-rose-600  transition-colors"
-                >
-                  Contact us
-                </Link>
-              </div>
-
-              <div className="mt-auto bottom-0">
-                {user ? (
-                  <>
-                    <Dialog>
-                      <DialogTrigger>
-                        <Button className="font-bold w-full rounded bg-green-600 hover:bg-green-800  text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ">
-                          <FaHeart className="text-white animate-heart-pump" />
-                          Donate
-                        </Button>
-                      </DialogTrigger>
-                      <DialogContent>
-                        <DialogHeader>
-                          <DialogTitle>
-                            <h1 className="text-3xl sm:text-3xl md:text-4xl font-extrabold  text-center ">
-                              Help Build a Resilient{" "}
-                              <span className="text-rose-600">Kasese</span>
-                            </h1>
-                          </DialogTitle>
-                        </DialogHeader>
-                        <PopupDonate />
-                      </DialogContent>
-                    </Dialog>
-                  </>
-                ) : (
-                  <Link href="/login">
-                    <Button variant="outline" className="w-full">
-                      {" "}
-                      Login
-                    </Button>
-                  </Link>
-                )}
-              </div>
-            </SheetContent>
-          </Sheet>
+          <SidebarSheet user={user} />
         </div>
       </nav>
     </header>

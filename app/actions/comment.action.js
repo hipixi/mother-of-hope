@@ -5,8 +5,6 @@ import Comment from "@/models/Comment";
 import Post from "@/models/Post";
 
 export const addComment = async (postId, values) => {
-  console.log(postId, "ooo");
-  console.log("values", values);
   await dbConnect();
   try {
     const newComment = await Comment.create({

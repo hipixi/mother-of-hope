@@ -2,9 +2,7 @@ import {
   getConfirmedVolunteers,
   getRecentUnconfirmedVolunteers,
 } from "@/app/actions/general";
-import { getUser } from "@/app/actions/get-user";
 import { Separator } from "@/components/ui/separator";
-import { redirect } from "next/navigation";
 import Confirm from "./confirm";
 import UnConfirmButton from "./unconfirm";
 
@@ -13,12 +11,6 @@ export const metadata = {
 };
 
 export default async function Volunteers() {
-  const user = await getUser();
-
-  if (!user) {
-    redirect("/login");
-  }
-
   const volunteers = await getRecentUnconfirmedVolunteers();
   const confirmedvolunteers = await getConfirmedVolunteers();
 
