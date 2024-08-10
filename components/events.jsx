@@ -8,7 +8,7 @@ const UpcomingEvents = async () => {
     <>
       {events && events.length > 0 && (
         <section className="bg-muted py-16 lg:py-32">
-          <div className="mx-auto px-4 lg:px-0 max-w-screen-xl">
+          <div className="mx-auto px-4  max-w-screen-xl">
             <h1 className="font-bold text-center text-4xl text-gray-800 md:text-4xl mb-8">
               Upcoming Events
             </h1>

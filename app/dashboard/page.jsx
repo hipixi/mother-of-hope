@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function Component() {
   return (
-    <div className="flex flex-col mx-auto max-w-screen-xl px-4 lg:px-0 min-h-screen bg-background">
+    <div className="flex flex-col mx-auto max-w-screen-xl px-4  min-h-screen bg-background">
       <main className="flex-1 mt-4 ">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <Donations />

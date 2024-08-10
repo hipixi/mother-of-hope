@@ -16,7 +16,7 @@ export default async function Volunteers() {
   const partners = await getRecentUnconfirmedPartners();
   const confirmedPartners = await getConfirmedPartners();
   return (
-    <main className="flex max-w-screen-xl mx-auto px-4 lg:px-0 flex-col h-full">
+    <main className="flex max-w-screen-xl mx-auto px-4 flex-col h-full">
       <div className="flex items-center justify-between bg-background  py-4">
         <h1 className="text-2xl font-bold">Partners</h1>
       </div>

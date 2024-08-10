@@ -20,7 +20,7 @@ const DashboardNav = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="mx-auto max-w-screen-xl px-4 lg:px-0">
+    <nav className="mx-auto max-w-screen-xl px-4 ">
       <ul className="flex items-center gap-6 overflow-x-auto lg:overflow-hidden py-2">
         {navItems.map((item) => (
           <li key={item.href}>

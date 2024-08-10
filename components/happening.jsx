@@ -5,7 +5,7 @@ import Link from "next/link";
 const Happening = async () => {
   const posts = await getLatestPosts();
   return (
-    <section className="bg-white max-w-screen-xl mx-auto px-4 lg:px-0 my-14 md:my-16 lg:my-28">
+    <section className="bg-white max-w-screen-xl mx-auto px-4  my-14 md:my-16 lg:my-28">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <div className="flex flex-col gap-4">
           <h1 className="text-5xl font-extrabold uppercase">Happening now</h1>

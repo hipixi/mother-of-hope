@@ -24,11 +24,11 @@ const GalleryWrapper = () => {
   return (
     <>
       <div className="py-2 flex flex-col min-h-screen max-w-screen-xl mx-auto">
-        <div className="flex px-2 py-3 items-center justify-between border-b">
+        <div className="flex px-4 py-3 items-center justify-between border-b">
           <h1 className="text-sm font-semibold text-green-800">Gallery</h1>
           <AddImage />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-2 gap-2 lg:gap-4 mt-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 px-4 gap-2 lg:gap-4 mt-3">
           {images.map((image) => (
             <SingleImage key={image._id} image={image} />
           ))}

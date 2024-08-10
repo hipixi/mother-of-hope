@@ -104,7 +104,7 @@ const EditorWrapper = () => {
  
 
   return (
-    <div className="mx-auto max-w-screen-xl px-2 py-8 lg:px-0">
+    <div className="mx-auto max-w-screen-xl px-2 py-8 ">
       <Form {...form}>
         <form
           className="flex justify-between flex-col lg:flex-row gap-6"

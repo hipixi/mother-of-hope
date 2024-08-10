@@ -17,7 +17,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 rounded-t-[2.5rem] text-white pt-12 md:pt-24 ">
       <div className="max-w-screen-xl mx-auto  ">
-        <nav className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12  md:gap-6 py-8 px-3 lg:px-0">
+        <nav className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12  md:gap-6 py-8 px-3">
           <div className="">
             <h3 className="font-semibold uppercase mb-4 text-xl">
               get to know us
@@ -82,7 +82,7 @@ const Footer = () => {
           <Subscribe />
         </nav>
 
-        <div className="flex justify-between items-center px-3 lg:px-0">
+        <div className="flex justify-between items-center px-3">
           <div className="flex items-center gap-6">
             <FaFacebook className="w-9 h-9 md:h-12 md:w-12" />
             <FaLinkedin className="h-9 w-9 md:h-12 md:w-12" />

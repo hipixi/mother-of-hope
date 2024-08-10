@@ -31,7 +31,7 @@ const SingleEvent = async ({ params }) => {
 
   const { event } = await getEventBySlug(params.slug);
   return (
-    <main className="mx-auto max-w-screen-xl mt-4 px-4 lg:px-0">
+    <main className="mx-auto max-w-screen-xl mt-4 px-4 ">
       <div className="my-4">
         <Breadcrumb>
           <BreadcrumbList>

@@ -20,7 +20,7 @@ const DashboardHeader = async () => {
 
   return (
     <header className="border-b sticky bg-white z-50 top-0 left-0 right-0 py-2 overflow-x-hidden">
-      <nav className="mx-auto w-full max-w-screen-xl px-4 lg:px-0 flex items-center justify-between gap-4">
+      <nav className="mx-auto w-full max-w-screen-xl px-4 flex items-center justify-between gap-4">
         <div className="flex items-center">
           <Link href="/">
             <img src="/logo.svg" className="w-16 h-16" />

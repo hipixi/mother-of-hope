@@ -28,7 +28,7 @@ const Header = async () => {
   const user = await getUser();
   return (
     <header className="h-24 border-b flex items-center justify-center bg-white sticky top-0 right-0 left-0 z-50">
-      <nav className="w-full mx-auto flex items-center justify-between  md:gap-16 max-w-screen-xl px-4 lg:px-0">
+      <nav className="w-full mx-auto flex items-center justify-between  md:gap-16 max-w-screen-xl px-4">
         <div className="flex-shrink-0 mr-8">
           <Link href="/">
             <img src="/logo.svg" alt="MOHF Logo" className="w-24 md:h-24" />

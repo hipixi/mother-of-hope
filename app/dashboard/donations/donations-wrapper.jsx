@@ -54,7 +54,7 @@ const DonationsWrapper = () => {
   }
 
   return (
-    <div className="px-4 lg:px-0 max-w-screen-xl mx-auto">
+    <div className="px-4  max-w-screen-xl mx-auto">
       <div className="flex items-center justify-between">
         <h1 className="text-xl mt-3 md:text-2xl font-bold mb-6">Donations</h1>
         <div className="relative">

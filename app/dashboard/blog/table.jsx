@@ -17,7 +17,7 @@ const PostTable = async () => {
     <>
       <div className="max-w-screen-xl mx-auto flex mb-12 w-full">
         <div className="flex flex-1 flex-col">
-          <main className="flex-1 py-2 px-4 lg:px-0">
+          <main className="flex-1 py-2 px-4 ">
             <div className="grid gap-6">
               <div className="border rounded-lg overflow-hidden">
                 <Table>

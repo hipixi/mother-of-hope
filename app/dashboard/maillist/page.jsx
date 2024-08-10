@@ -24,10 +24,10 @@ export default async function Users() {
   return (
     <main>
       <div className="flex flex-col h-full w-full max-w-screen-xl mx-auto">
-        <header className="bg-background  px-4 lg:px-0 py-4 flex items-center justify-between">
+        <header className="bg-background  px-4  py-4 flex items-center justify-between">
           <h1 className="text-2xl font-bold">Maillist</h1>
         </header>
-        <main className="flex-1 p-4 lg:px-0">
+        <main className="flex-1 p-4 ">
           <div className="border rounded-lg overflow-hidden">
             <Table>
               <TableHeader>
