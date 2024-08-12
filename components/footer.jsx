@@ -85,7 +85,9 @@ const Footer = () => {
         <div className="flex justify-between items-center px-3">
           <div className="flex items-center gap-6">
             <FaFacebook className="w-9 h-9 md:h-12 md:w-12" />
-            <FaLinkedin className="h-9 w-9 md:h-12 md:w-12" />
+            <a href="https://www.linkedin.com/company/mother-of-hope-foundation-uganda/">
+              <FaLinkedin className="h-9 w-9 md:h-12 md:w-12" />
+            </a>
             <FaSquareXTwitter className="h-9 w-9 md:h-12 md:w-12" />
           </div>
 
@@ -113,9 +115,12 @@ const Footer = () => {
                 <Link href="/privacy" className="text-sm  mx-2 my-1">
                   Privacy Policy
                 </Link>
-                <Link href="/sitemap" className="text-sm  mx-2 my-1">
+                <a
+                  href="https://www.motherofhopefoundationuganda.org/sitemap.xml"
+                  className="text-sm  mx-2 my-1"
+                >
                   sitemap
-                </Link>
+                </a>
               </nav>
             </div>
           </div>
