@@ -1,5 +1,6 @@
 import { FaLinkedin } from "react-icons/fa";
 import { BiLogoGmail } from "react-icons/bi";
+import Image from "next/image";
 
 const teamMembers = [
   {
@@ -8,8 +9,7 @@ const teamMembers = [
     role: "Co-founder & Chairperson Board of Directors",
     description:
       "A conservationist & technology enthusiast with over 5 years experiences.",
-    image:
-      "https://res.cloudinary.com/dop7clqdc/image/upload/v1723021554/builr262ny2qw6ymykop_1_txjoac.jpg",
+    image: "/ELIUD.jpg",
     socials: {
       linkedin: "https://www.linkedin.com/in/eliud-masereka-243621129/",
       email: "maserekaabbot@gmail.com",
@@ -20,8 +20,7 @@ const teamMembers = [
     name: "Mr.Masereka Samson",
     role: "Co-founder & Projects Coordinator",
     description: "Brilliant strategist driving our technological advancements.",
-    image:
-      "https://res.cloudinary.com/dop7clqdc/image/upload/v1721984335/yglkj7fy31oqm28olptn.jpg",
+    image: "/SAMSON.jpg",
     socials: {
       linkedin: "",
       email: "maserekasamky@gmail.com",
@@ -32,9 +31,8 @@ const teamMembers = [
     id: 3,
     name: "Ms.Biira Ellen",
     role: "Executive Director",
-    description: "Coding wizard with a passion for clean, efficient solutions.",
-    image:
-      "https://res.cloudinary.com/dop7clqdc/image/upload/v1723040667/w3sgo2hljwjngqet3w9a.jpg",
+
+    image: "/BIIRA.jpg",
     socials: {
       linkedin: "",
       email: "ellenbiira2@gmail.com ",
@@ -44,7 +42,7 @@ const teamMembers = [
     id: 4,
     name: "Mr.Masereka Geofrey",
     role: "Co-founder & Finance Coordinator",
-    description: "Coding wizard with a passion for clean, efficient solutions.",
+
     image:
       "https://res.cloudinary.com/dop7clqdc/image/upload/v1723036159/msksvvjstghxeqkr66yi.jpg",
     socials: {
@@ -56,7 +54,7 @@ const teamMembers = [
     id: 4,
     name: "Ms.Masika Joaquine ",
     role: "Grants & Partnerships Coordinator",
-    description: "Creative mind behind our intuitive user experiences.",
+
     image:
       "https://res.cloudinary.com/dop7clqdc/image/upload/v1723040791/kuurmb02l8iamblriw2u.jpg",
     socials: {
@@ -68,9 +66,8 @@ const teamMembers = [
     id: 5,
     name: "Mr.Moses Bwambale Sapeho",
     role: "Front Desk Officer",
-    description: "Expert in transforming ideas into successful products.",
-    image:
-      "https://res.cloudinary.com/dop7clqdc/image/upload/v1723036783/odznct9suoljqpdae6bh.jpg",
+
+    image: "/BWAMBALE.jpg",
     socials: {
       linkedin: "https://linkedin.com/in/chrislee",
       email: "sapehomevents@gmail.com ",
@@ -94,16 +91,20 @@ const OurTeam = () => {
           {teamMembers.map((member) => (
             <article
               key={member.id}
-              className="text-center p-6 bg-[#ffeecc] rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="text-center p-6 py-10 bg-[#ffeecc] rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
-              <img
-                className="w-32 h-32  object-cover object-top border rounded-full mx-auto mb-4"
-                src={member.image}
-                alt={`Photo of ${member.name}, ${member.role}`}
-              />
-              <h3 className="text-xl font-semibold">{member.name}</h3>
-              <p className="text-gray-600 mb-2">{member.role}</p>
-              <p className="text-sm text-gray-500 mb-4">{member.description}</p>
+              <div className="relative mx-auto w-32 h-32 p-2">
+                <Image
+                  fill
+                  className="border object-cover object-right-top rounded-full"
+                  src={member.image}
+                  alt={`Photo of ${member.name}, ${member.role}`}
+                />
+              </div>
+
+              <h3 className="text-xl font-semibold mt-2">{member.name}</h3>
+              <p className="text-gray-600 my-2">{member.role}</p>
+
               <div className="flex items-center justify-center space-x-2">
                 {member.socials.email && (
                   <a
