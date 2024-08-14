@@ -39,7 +39,7 @@ const Donate = () => {
             Building a Resilient <span className="text-rose-600">Kasese</span>
           </h1>
           <p className="mt-4 text-base sm:text-xl text-center max-w-2xl">
-            Creating a community that thrives despite economic and
+            Creating a community that thrives despite of economic and
             sustainability challenges
           </p>
 

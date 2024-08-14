@@ -9,7 +9,7 @@ const teamMembers = [
     role: "Co-founder & Chairperson Board of Directors",
     description:
       "A conservationist & technology enthusiast with over 5 years experiences.",
-    image: "/ELIUD.jpg",
+    image: "https://i.imgur.com/oHCMVwP.jpeg",
     socials: {
       linkedin: "https://www.linkedin.com/in/eliud-masereka-243621129/",
       email: "maserekaabbot@gmail.com",
@@ -20,7 +20,7 @@ const teamMembers = [
     name: "Mr.Masereka Samson",
     role: "Co-founder & Projects Coordinator",
     description: "Brilliant strategist driving our technological advancements.",
-    image: "/SAMSON.jpg",
+    image: "https://i.imgur.com/TMwCewL.jpeg",
     socials: {
       linkedin: "",
       email: "maserekasamky@gmail.com",
@@ -32,7 +32,7 @@ const teamMembers = [
     name: "Ms.Biira Ellen",
     role: "Executive Director",
 
-    image: "/BIIRA.jpg",
+    image: "https://i.imgur.com/aRezUCT.jpeg",
     socials: {
       linkedin: "",
       email: "ellenbiira2@gmail.com ",
@@ -67,7 +67,7 @@ const teamMembers = [
     name: "Mr.Moses Bwambale Sapeho",
     role: "Front Desk Officer",
 
-    image: "/BWAMBALE.jpg",
+    image: "https://i.imgur.com/FfNZDD3.jpeg",
     socials: {
       linkedin: "https://linkedin.com/in/chrislee",
       email: "sapehomevents@gmail.com ",
@@ -109,8 +109,6 @@ const OurTeam = () => {
                 {member.socials.email && (
                   <a
                     href={member.socials.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="text-blue-600 hover:text-blue-800"
                     aria-label={`LinkedIn profile of ${member.name}`}
                   >
