@@ -1,6 +1,7 @@
 import { FaLinkedin } from "react-icons/fa";
 import { BiLogoGmail } from "react-icons/bi";
 import Image from "next/image";
+import Link from "next/link";
 
 const teamMembers = [
   {
@@ -77,12 +78,14 @@ const teamMembers = [
 
 const OurTeam = () => {
   return (
-    <section className="bg-primary rounded-t-[2.5rem] -top-6 relative px-4 py-20 lg:py-32 sm:px-6 lg:px-8">
+    <section className="bg-[#3cdd8c] mt-8 rounded-t-[2.5rem] -top-6 relative px-4 py-20 lg:py-32 sm:px-6 lg:px-8">
       <div className="max-w-screen-xl mx-auto">
         <header>
-          <h1 className="text-4xl font-bold text-center">Meet Our Team</h1>
+          <h1 className="text-4xl lg:text-5xl font-bold text-center">
+            Meet Our Team
+          </h1>
 
-          <p className="my-3 text-lg text-center mb-12">
+          <p className="my-3 text-lg lg:text-xl text-center mb-12">
             The wonderful people fighting each day to see a positive impact is
             made in kasese
           </p>
@@ -91,7 +94,7 @@ const OurTeam = () => {
           {teamMembers.map((member) => (
             <article
               key={member.id}
-              className="text-center p-6 py-10 bg-[#ffeecc] rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="text-center p-6 py-10 bg-[#f3f3f3] rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <div className="relative mx-auto w-32 h-32 p-2">
                 <Image
@@ -102,8 +105,12 @@ const OurTeam = () => {
                 />
               </div>
 
-              <h3 className="text-xl font-semibold mt-2">{member.name}</h3>
-              <p className="text-gray-600 my-2">{member.role}</p>
+              <h3 className="text-xl font-semibold mt-2">
+                <Link href="/team/eluid">{member.name}</Link>
+              </h3>
+              <p className="text-gray-600 my-2">
+                <Link href="/team/eluid">{member.role}</Link>
+              </p>
 
               <div className="flex items-center justify-center space-x-2">
                 {member.socials.email && (

@@ -38,7 +38,9 @@ const Footer = () => {
               <li>
                 <ScrollLink href="#our-partners">our partners</ScrollLink>
               </li>
-              <li>kasese municipality</li>
+              <li>
+                <Link href="/login">login</Link>
+              </li>
             </ul>
           </div>
 

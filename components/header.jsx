@@ -28,35 +28,53 @@ const Header = async () => {
   const user = await getUser();
   return (
     <header className="h-24 border-b flex items-center justify-center bg-white sticky top-0 right-0 left-0 z-50">
-      <nav className="w-full mx-auto flex items-center justify-between  md:gap-16 max-w-screen-xl px-4">
+      <nav className="w-full mx-auto flex items-center justify-between  md:gap-4 max-w-screen-xl px-4">
         <div className="flex-shrink-0 mr-8">
           <Link href="/">
             <img src="/logo.svg" alt="MOHF Logo" className="w-24 md:h-24" />
           </Link>
         </div>
 
-        <div className="hidden md:flex items-center gap-10 font-semibold flex-1 capitalize">
-          <ScrollLink
-            href="#who-we-are"
+        <div className="hidden lg:flex items-center gap-6 flex-1 capitalize">
+          <Link
+            href="/who-we-are"
             className="hover:text-rose-600 transition-colors"
           >
             who we are
-          </ScrollLink>
+          </Link>
           <ScrollLink
             href="#what-we-do"
             className="hover:text-rose-600 transition-colors"
           >
             what we do
           </ScrollLink>
+
           <ScrollLink
-            href="#our-team"
-            className="hover:text-rose-600 hidden lg:block transition-colors"
+            href="#get-involved"
+            className="hover:text-rose-600  transition-colors  "
           >
-            our team
+            Get involved
           </ScrollLink>
+          <Link href="/blog" className="hover:text-rose-600 transition-colors">
+            Blog
+          </Link>
+          <Link
+            href="/gallery"
+            className="hover:text-rose-600 transition-colors"
+          >
+            Gallery
+          </Link>
+
+          <ScrollLink
+            href="#our-partners"
+            className="hover:text-rose-600 transition-colors"
+          >
+            Our partners
+          </ScrollLink>
+
           <Link
             href="/contact"
-            className="hover:text-rose-600 hidden lg:block transition-colors"
+            className="hover:text-rose-600  transition-colors"
           >
             contact us
           </Link>
@@ -69,11 +87,10 @@ const Header = async () => {
             <DialogTrigger>
               <Button
                 size="lg"
-                className={`font-bold rounded bg-green-600 hover:bg-green-800  text-base md:text-lg transition-colors h-9 px-3 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ${
+                className={`font-bold rounded-none bg-green-600 hover:bg-green-800  text-base md:text-lg transition-colors h-10 lg:h-11 px-4 sm:px-5 md:h-11 md:px-8 flex items-center gap-2 text-white ${
                   user && "hidden md:flex"
                 }`}
               >
-                <FaHeart className="text-white animate-heart-pump" />
                 Donate
               </Button>
             </DialogTrigger>

@@ -1,4 +1,3 @@
-import Header from "@/components/header";
 import EditorWrapper from "./editor-wrapper";
 import { redirect } from "next/navigation";
 import { getUser } from "@/app/actions/get-user";

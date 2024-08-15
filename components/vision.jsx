@@ -1,7 +1,7 @@
 const Vision = () => {
   return (
-    <section className="bg-transparent w-[95%] max-w-screen-xl mx-auto py-12">
-      <div className="w-full">
+    <section className="bg-white">
+      <div className="  w-[95%] max-w-screen-xl mx-auto py-12">
         <div className="grid grid-cols-1 gap-8 bottom-6 lg:grid-cols-3 w-full">
           <div
             className="bg-cover h-[300px] flex flex-col gap-4  p-10"

@@ -32,9 +32,6 @@ export default function Home() {
       </section>
       <Separator />
       <UpcomingEvents />
-      <section id="our-team">
-        <OurTeam />
-      </section>
       <section id="our-partners">
         <Partners />
       </section>

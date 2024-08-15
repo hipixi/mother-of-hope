@@ -1,161 +1,118 @@
-import Link from "next/link";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Header from "@/components/header";
-import GetInvolved from "@/components/get-involved";
+
 import Footer from "@/components/footer";
+import OurTeam from "@/components/team";
+import Vision from "@/components/vision";
+
+export const metadata = {
+  title: "Who We Are",
+  description:
+    "Read about our story, meet our team, vision, mission and our reach in kasese municipality",
+};
 
 export default function Component() {
   return (
-    <div className="flex flex-col min-h-dvh">
+    <div className="flex flex-col min-h-dvh bg-[#3cdd8c]">
       <Header />
       <main className="flex-1">
-        <section className="w-full pt-12 md:pt-24 lg:pt-32 border-y relative">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/hero-background.jpg')" }}
-          ></div>
-          <div className="relative px-4 md:px-6 space-y-10 xl:space-y-16">
-            <div className="grid max-w-[1300px] mx-auto gap-4 px-4 sm:px-6 md:px-10 md:grid-cols-2 md:gap-16">
-              <div className="bg-white bg-opacity-80 p-6 rounded-lg">
-                <div className="inline-block rounded-lg bg-blue-600 text-white px-3 py-1 text-sm">
-                  Mother of Hope Foundation Uganda
-                </div>
-                <h1 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem] mt-4">
-                  Empowering Communities, Transforming Lives
-                </h1>
-                <p className="mx-auto max-w-[700px] text-gray-700 md:text-xl mt-4">
-                  We are dedicated to creating positive and sustainable change
-                  in the communities we serve. Through our innovative programs
-                  and collaborative approach, we strive to empower individuals,
-                  strengthen communities, and transform lives.
-                </p>
-                <button className="mt-6 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-300">
-                  Get Involved
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container space-y-12 px-4 md:px-6">
+        <section className="w-full bg-muted pt-6 pb-12 lg:pt-16lg:pb-32">
+          <div className="max-w-screen-2xl mx-auto  px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                <h2 className="text-4xl mb-6 font-bold tracking-tighter sm:text-5xl">
                   Our Story
                 </h2>
-                <div className="space-y-4 max-w-[900px] mx-auto">
-                  <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Founded in 2020, Mother of Hope Foundation Uganda is a
-                    Community-Based non-profit organization located in Nyamwamba
-                    Division, Kasese Municipality, Uganda. We aim to address
-                    pressing economic and social challenges faced by local
-                    communities.
+                <div className="space-y-4 max-w-[900px] mx-auto text-lg/relaxed text-gray-700 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  <p>
+                    Mother of Hope Foundation Uganda is a Community-Based
+                    non-profit organization located in Nyamwamba Division,
+                    Kasese Municipality, Uganda.
                   </p>
-                  <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Our commitment extends to leaving a lasting imprint in
-                    Kasese by nurturing hope, promoting education, facilitating
-                    empowerment, and catalyzing community development.
+                  <p>
+                    Founded in 2020 as a response to the pressing economic and
+                    social challenges faced by the local communities, the
+                    foundation strives to enact positive change and holistic
+                    transformation for individuals who grapple with economic and
+                    social disadvantages. Its very name embodies its aspiration
+                    to serve as a beacon of hope, fostering growth, empowerment,
+                    and progress within the community.
                   </p>
-                  <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    We tackle challenges such as flooding from River Nyamwamba,
-                    soil erosion, and food insecurity in the Rwenzori
-                    sub-region. Our holistic approach aims to create a brighter
-                    future for the communities we serve.
+                  <p>
+                    The organization&#39;s commitment extends to leaving a
+                    lasting imprint in Kasese by nurturing hope, promoting
+                    education, facilitating empowerment, and catalyzing
+                    community development. Through its comprehensive approach,
+                    unwavering dedication to its mission, vision, and goals, the
+                    foundation aims to forge a brighter future for the community
+                    it serves.
+                  </p>
+                  <p>
+                    The foundation&#39;s genesis is rooted in the myriad
+                    challenges encountered within the community, with ripple
+                    effects that extend to encompass the entire Kasese district
+                    and even reverberate globally. Chief among these challenges
+                    is the recurring inundation caused by the River Nyamwamba, a
+                    formidable disaster that compels people to seek refuge far
+                    from their homes.
+                  </p>
+                  <p>
+                    This cycle of flooding erodes soil fertility along the
+                    riverbanks, aggravating the specter of food insecurity
+                    across the broader Rwenzori sub-region. Flash floods from
+                    the hills of Mount Rwenzori in the Busumba region further
+                    compound the food security concerns, particularly
+                    detrimental given the region&#39;s agrarian reliance.
+                  </p>
+                  <p>
+                    Concurrently, domestic violence casts a long shadow over
+                    families in Kasese Municipality and the larger district,
+                    yielding dire consequences. The scarcity of resources
+                    prompts many children to forego education, opting to remain
+                    at home due to their parents&#39; inability to cover school
+                    fees and essential needs.
+                  </p>
+                  <p>
+                    This vulnerability exposes them to exploitation, with girls
+                    lacking access to proper sanitation provisions and boys
+                    resorting to detrimental activities like riverbank sand
+                    mining. Unemployment emerges as a substantial challenge in
+                    these communities, partly stemming from the instability
+                    caused by River Nyamwamba&#39;s flooding and the lack of
+                    educational facilities in certain areas, hindering
+                    residents&#39; competitiveness in the job market.
+                  </p>
+                  <p>
+                    The fabric of the Rwenzori region is further strained by
+                    tribal conflicts and land disputes, ignited by ADF attacks
+                    that intensify the region&#39;s destabilization, fostering
+                    an environment rife with insecurity.
+                  </p>
+
+                  <p>
+                    Tragically, these conflicts result in the loss of parents
+                    who are essential pillars of support and nurturance for the
+                    younger generation, endangering the future prospects of the
+                    world&#39;s children.
+                  </p>
+                  <p>
+                    Mother of Hope Foundation Uganda&#39;s raison extends beyond
+                    merely highlighting these complex challenges. It endeavors
+                    to marshal resources, awareness, and direct interventions to
+                    confront them head-on. By addressing these multifaceted
+                    issues, the Foundation not only uplifts the immediate
+                    community but also resonates as a resounding call to action
+                    for the global community, invoking a shared responsibility
+                    to drive positive transformation and forge a brighter
+                    collective future
                   </p>
                 </div>
               </div>
             </div>
-            <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-3 md:gap-12 lg:max-w-5xl">
-              {["Our Mission", "Our Values", "Our Team"].map((item, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center text-center p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
-                >
-                  <h3 className="text-lg font-bold mb-2">{item}</h3>
-                  <p className="text-sm text-muted-foreground">
-                    {item === "Our Mission"
-                      ? "To create positive and sustainable change in the communities we serve, empowering individuals and strengthening communities."
-                      : item === "Our Values"
-                      ? "Compassion, Integrity, Innovation, Collaboration, and Sustainability."
-                      : "Our dedicated team of experts, volunteers, and community leaders work tirelessly to make a difference."}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
+        <Vision />
 
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
-          <div className="container grid items-start gap-8 px-4 md:px-6">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                Meet Our Team
-              </h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Our team of passionate individuals is the driving force behind
-                our success. Get to know the people who make Mother of Hope
-                Foundation Uganda a transformative force in our communities.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-              {[
-                { name: "John Doe", role: "Executive Director" },
-                { name: "Sarah Adams", role: "Program Manager" },
-                { name: "Michael Rodriguez", role: "Volunteer Coordinator" },
-                { name: "Lisa Wang", role: "Fundraising Coordinator" },
-              ].map((member, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center justify-center space-y-4 text-center p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
-                >
-                  <Avatar>
-                    <AvatarImage src="/placeholder-user.jpg" />
-                    <AvatarFallback>
-                      {member.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="space-y-1">
-                    <h4 className="text-lg font-semibold">{member.name}</h4>
-                    <p className="text-sm text-muted-foreground">
-                      {member.role}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-blue-50">
-          <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-8 text-center">
-              Our Impact
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                { metric: "1000+", description: "Individuals Empowered" },
-                { metric: "50+", description: "Community Projects" },
-                { metric: "5", description: "Years of Service" },
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className="text-center p-6 bg-white rounded-lg shadow-sm"
-                >
-                  <h3 className="text-4xl font-bold text-blue-600 mb-2">
-                    {item.metric}
-                  </h3>
-                  <p className="text-lg text-gray-600">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <GetInvolved />
+        <OurTeam />
       </main>
 
       <Footer />

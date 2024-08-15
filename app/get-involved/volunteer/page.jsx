@@ -88,7 +88,6 @@ export default function VolunteerPage() {
       </div>
 
       <Footer />
-      <ChatWidget />
     </main>
   );
 }

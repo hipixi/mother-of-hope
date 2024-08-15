@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { Button } from "./ui/button";
+
 export default function Component() {
   return (
     <section className="w-full py-16 lg:py-32 bg-rose-700 ">
@@ -19,6 +22,16 @@ export default function Component() {
               social disadvantages.
             </p>
           </div>
+        </div>
+        <div className="flex items-center justify-center mt-8">
+          <Button size="lg" className="h-12  font-bold text-lg ">
+            <Link
+              href="/who-we-are"
+              className="w-full h-full flex items-center justify-center px-8"
+            >
+              Read Our Story
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

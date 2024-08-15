@@ -13,7 +13,7 @@ const navItems = [
   { href: "/dashboard/volunteers", label: "Volunteers" },
   { href: "/dashboard/partners", label: "Partners" },
   { href: "/dashboard/gallery", label: "Gallery" },
-  { href: "/dashboard/maillist", label: "Mail list" },
+  { href: "/dashboard/team", label: "Team" },
 ];
 
 const DashboardNav = () => {
