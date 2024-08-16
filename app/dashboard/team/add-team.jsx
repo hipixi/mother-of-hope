@@ -64,7 +64,7 @@ const AddTeam = () => {
           toast({
             title: "Team member added successfully",
           });
-          router.refresh();
+          router.push("/dashboard/team");
         }
       })
     );

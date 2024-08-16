@@ -6,7 +6,6 @@ export const metadata = {
 };
 
 const EditTeamPage = async ({ params }) => {
-  console.log(params);
   const { member } = await getMemberBySlug(params.id);
 
   return (

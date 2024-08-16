@@ -20,7 +20,7 @@ export default function Component() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-4xl mb-6 font-bold tracking-tighter sm:text-5xl">
-                  Our Story
+                  Read Our Story
                 </h2>
                 <div className="space-y-4 max-w-[900px] mx-auto text-lg/relaxed text-gray-700 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   <p>

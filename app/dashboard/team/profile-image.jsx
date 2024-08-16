@@ -48,7 +48,7 @@ const ProfileImage = ({
           <img
             src={value}
             alt="Uploaded"
-            className="object-cover rounded-full  w-[200px] h-[200px]"
+            className="object-cover object-top rounded-full  w-[200px] h-[200px]"
           />
           <button
             onClick={onRemove}
