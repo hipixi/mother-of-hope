@@ -24,7 +24,10 @@ export default function Component() {
           </div>
         </div>
         <div className="flex items-center justify-center mt-8">
-          <Button size="lg" className="h-12  font-bold text-lg ">
+          <Button
+            size="lg"
+            className="h-12 lg:h-13 lg:text-xl rounded-none font-bold text-lg "
+          >
             <Link
               href="/who-we-are"
               className="w-full h-full flex items-center justify-center px-8"

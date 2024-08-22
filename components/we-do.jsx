@@ -66,7 +66,7 @@ const WeDo = () => {
               key={activity.title}
               className="bg-white border rounded-3xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
             >
-              <div className="p-6 space-y-3">
+              <div className="p-6 flex flex-col gap-3 space-y-3">
                 <div className="bg-sky-100 h-16 mx-auto w-16 rounded-full p-3  flex items-center justify-center">
                   <activity.icon className="h-7 w-7 text-sky-600" />
                 </div>
@@ -76,6 +76,10 @@ const WeDo = () => {
                   </h3>
                 </div>
                 <p className="text-gray-600 mb-4">{activity.desc}</p>
+
+                <div className="flex items-center justify-center py-3 mt-auto text-blue-600">
+                  Read more
+                </div>
               </div>
             </Link>
           ))}
