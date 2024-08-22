@@ -7,6 +7,7 @@ import {
   Scale,
 } from "lucide-react";
 import { Separator } from "./ui/separator";
+import Link from "next/link";
 
 const activities = [
   {
@@ -57,7 +58,11 @@ const WeDo = () => {
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {activities.map((activity, index) => (
-            <div
+            <Link
+              href={`/what-we-do/${activity.title
+                .toLowerCase()
+                .split(" ")
+                .join("-")}`}
               key={activity.title}
               className="bg-white border rounded-3xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
             >
@@ -72,7 +77,7 @@ const WeDo = () => {
                 </div>
                 <p className="text-gray-600 mb-4">{activity.desc}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

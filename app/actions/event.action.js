@@ -180,3 +180,28 @@ export const getOtherEvents = async (currentEventId) => {
     return [];
   }
 };
+
+export const getUpcomingEvents = cache(async () => {
+  await dbConnect();
+  try {
+    const now = new Date();
+
+    const events = await Event.find({
+      date: {
+        $gte: now,
+      },
+    })
+      .sort({ updatedAt: -1 })
+      .lean();
+
+    const convertedEvents = events.map((event) => ({
+      ...event,
+      _id: event._id.toString(),
+    }));
+
+    return convertedEvents;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+});

@@ -1,14 +1,12 @@
-import ChatWidget from "@/components/chat";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 
-export default function RootLayout({ children }) {
+export default function WhatWeDoLayout({ children }) {
   return (
-    <main>
+    <div>
       <Header />
       {children}
       <Footer />
-      <ChatWidget />
-    </main>
+    </div>
   );
 }

@@ -14,7 +14,7 @@ const SingleEvent = async ({ params }) => {
   return (
     <main>
       <Header />
-      <div className="mx-auto max-w-screen-xl px-4 lg:px-0">
+      <div className="mx-auto max-w-screen-xl px-4 ">
         <div className="mx-auto   my-6 flex flex-col lg:flex-row gap-8">
           <div className="relative px-4 py-8  border rounded-lg w-full lg:w-7/12 ">
             <h1 className="text-2xl md:text-3xl font-medium">{event.title}</h1>
@@ -36,9 +36,8 @@ const SingleEvent = async ({ params }) => {
               <Volunteer id={event._id} />
             </div>
           </div>
-          <div className="px-4 py-6 w-full lg:w-5/12  border rounded-lg min-h-44">
-            <OtherEvents id={event._id} />
-          </div>
+
+          <OtherEvents id={event._id} />
         </div>
       </div>
       <Footer />

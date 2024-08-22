@@ -94,7 +94,14 @@ const Footer = () => {
             >
               <FaLinkedin className="h-9 w-9 md:h-12 md:w-12" />
             </a>
-            <FaSquareXTwitter className="h-9 w-9 md:h-12 md:w-12" />
+
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://x.com/MOHFU_Uganda"
+            >
+              <FaSquareXTwitter className="h-9 w-9 md:h-12 md:w-12" />
+            </a>
           </div>
 
           <img src="/logo.svg" className="w-32 h-32" />

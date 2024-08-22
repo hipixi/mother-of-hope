@@ -29,14 +29,14 @@ const TeamMember = async ({ params }) => {
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink href="/who-we-are">Team</BreadcrumbLink>
+              <BreadcrumbLink href="/who-we-are">Who-we-are</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
-          </BreadcrumbList>
 
-          <BreadcrumbItem>
-            <BreadcrumbPage>{name}</BreadcrumbPage>
-          </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbPage>{name}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
         </Breadcrumb>
       </div>
 
@@ -129,3 +129,24 @@ const TeamMember = async ({ params }) => {
 };
 
 export default TeamMember;
+
+export async function generateMetadata({ params }) {
+  const name = params.slug.split("-").join(" ");
+  const { member } = await getMemberByName(name);
+  return {
+    title: `${member.name} | Mother of hope foundation uganda`,
+    description: `${member.about}`,
+    openGraph: {
+      title: `${member.title} `,
+      description: `${member.about}`,
+      images: [
+        {
+          url: `${member.image}`,
+          width: 800,
+          height: 600,
+          alt: `${member.name}`,
+        },
+      ],
+    },
+  };
+}

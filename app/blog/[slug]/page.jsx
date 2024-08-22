@@ -10,6 +10,7 @@ import { Separator } from "@/components/ui/separator";
 
 export default async function PostPage({ params }) {
   const { post } = await getSinglePost(params.slug);
+  const url = `https://www.motherofhopefoundationuganda.org/blog/${post.url}`;
   return (
     <>
       <main>
@@ -40,21 +41,21 @@ export default async function PostPage({ params }) {
 
               <div className="flex gap-4 my-2">
                 <a
-                  href={`https://wa.me/?text=$`}
+                  href={`https://wa.me/?text=$${url}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <FaWhatsapp className="w-6 h-6 text-green-500 font-bold" />
                 </a>
                 <a
-                  href={`https://www.facebook.com/sharer/sharer.php?url`}
+                  href={`https://www.facebook.com/sharer/sharer.php?url=${url}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <FaFacebook className="w-6 h-6 text-blue-500 font-bold" />
                 </a>
                 <a
-                  href={`https://twitter.com/share?url=`}
+                  href={`https://twitter.com/share?url=${url}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -95,21 +96,21 @@ export default async function PostPage({ params }) {
                 </p>
                 <div className="flex gap-4 my-2">
                   <a
-                    href={`https://wa.me/?text=`}
+                    href={`https://wa.me/?text=${url}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <FaWhatsapp className="w-7 h-7 text-green-500 font-bold" />
                   </a>
                   <a
-                    href={`https://www.facebook.com/sharer/sharer.php?u=`}
+                    href={`https://www.facebook.com/sharer/sharer.php?url=${url}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <FaFacebook className="w-7 h-7 text-blue-500 font-bold" />
                   </a>
                   <a
-                    href={`https://twitter.com/share?url=`}
+                    href={`https://twitter.com/share?url=${url}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
