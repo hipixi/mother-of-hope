@@ -10,7 +10,7 @@ const OtherEvents = async ({ id }) => {
   return (
     <>
       {events.length > 0 && (
-        <div className="px-4 py-6 w-full lg:w-5/12  border rounded-lg min-h-44">
+        <div className="px-4 py-6 w-full lg:w-5/12  border rounded-lg min-h-44 h-fit">
           <h2 className="font-semibold mb-4">Other Upcoming Events</h2>
 
           <div className="flex flex-col my-3 gap-4">

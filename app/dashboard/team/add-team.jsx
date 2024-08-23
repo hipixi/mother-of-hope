@@ -116,6 +116,7 @@ const AddTeam = () => {
         <div>
           <Label htmlFor="fullname">Education</Label>
           <Input
+            placeholder="Separate honors with a coma"
             id="education"
             {...register("education")}
             className={errors.education ? "border-red-500" : ""}

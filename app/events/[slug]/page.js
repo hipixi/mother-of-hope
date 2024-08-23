@@ -31,6 +31,11 @@ const SingleEvent = async ({ params }) => {
             <Badge className="bg-muted hover:bg-muted">
               {getStatus(event)}
             </Badge>
+            {event?.about.split(".").map((p, i) => (
+              <p key={i} className="text-muted-foreground my-2">
+                {p}.
+              </p>
+            ))}
 
             <div className="px-4 py-6 flex-1 border-t min-h-44 mt-8">
               <Volunteer id={event._id} />

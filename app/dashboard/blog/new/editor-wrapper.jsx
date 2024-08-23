@@ -101,7 +101,14 @@ const EditorWrapper = () => {
     });
   };
 
- 
+  const generateSlug = (title) => {
+    return title
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, "") // Remove special characters
+      .replace(/\s+/g, "-") // Replace spaces with hyphens
+      .replace(/--+/g, "-") // Replace multiple hyphens with single hyphen
+      .trim(); // Trim leading/trailing spaces or hyphens
+  };
 
   return (
     <div className="mx-auto max-w-screen-xl px-2 py-8 ">
@@ -122,7 +129,16 @@ const EditorWrapper = () => {
                 <FormItem>
                   <FormLabel className="font-bold">Blog Title</FormLabel>
                   <FormControl>
-                    <Input {...field} type="text" placeholder="" />
+                    <Input
+                      {...field}
+                      type="text"
+                      placeholder=""
+                      onChange={(e) => {
+                        field.onChange(e);
+                        const slug = generateSlug(e.target.value);
+                        form.setValue("slug", slug);
+                      }}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -166,6 +182,8 @@ const EditorWrapper = () => {
                         {...field}
                         type="text"
                         placeholder="your-post-slug"
+                        readOnly
+                        disabled
                       />
                     </FormControl>
                     <FormMessage />

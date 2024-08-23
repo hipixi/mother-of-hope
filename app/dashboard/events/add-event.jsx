@@ -22,7 +22,8 @@ import { useToast } from "@/components/ui/use-toast";
 const eventSchema = z
   .object({
     title: z.string().min(3, "Event name is required"),
-    description: z.string().min(15, "Event description is required"),
+    description: z.string().min(3, "Event description is required"),
+    about: z.string().min(15, "Event about is required"),
     location: z.string().min(3, "Event location is required"),
     date: z.string().refine((val) => !isNaN(Date.parse(val)), {
       message: "Invalid date format",
@@ -90,7 +91,7 @@ const AddEvent = () => {
             </Button>
           </div>
         </DialogTrigger>
-        <DialogContent className="w-full">
+        <DialogContent className="w-full max-h-[80vh] overflow-auto">
           <DialogHeader>
             <DialogTitle>New Event</DialogTitle>
           </DialogHeader>
@@ -112,15 +113,29 @@ const AddEvent = () => {
               )}
             </div>
             <div>
-              <Label htmlFor="description">Description</Label>
-              <Textarea
+              <Label htmlFor="title">Event Description</Label>
+              <Input
                 id="description"
+                placeholder="something very small about the event"
                 {...register("description")}
                 className={errors.description ? "border-red-500" : ""}
               />
               {errors.description && (
                 <p className="text-red-500 text-sm mt-1">
                   {errors.description.message}
+                </p>
+              )}
+            </div>
+            <div>
+              <Label htmlFor="description">About</Label>
+              <Textarea
+                id="about"
+                {...register("about")}
+                className={errors.about ? "border-red-500" : ""}
+              />
+              {errors.about && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.about.message}
                 </p>
               )}
             </div>

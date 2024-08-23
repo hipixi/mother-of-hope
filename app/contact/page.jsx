@@ -66,7 +66,16 @@ export default function Contact() {
                 <div className="flex items-start gap-4">
                   <PhoneIcon className="mt-1 h-6 w-6 text-gray-500 dark:text-gray-400" />
                   <div>
-                    <p className="font-medium">+(256) 7798 49930</p>
+                    <p className="font-medium">0787223599</p>
+                    <p className="font-medium">0701856359 </p>
+
+                    <div className="my-2 text-gray-500">
+                      <p className="">info@motherofhopefoundationuganda.org </p>
+                      <p className="">
+                        contact@motherofhopefoundationuganda.org{" "}
+                      </p>
+                    </div>
+
                     <p className="text-gray-500 dark:text-gray-400">
                       Monday - Sunday, 8am - 6pm
                     </p>
