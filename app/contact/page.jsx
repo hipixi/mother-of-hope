@@ -2,6 +2,8 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Image from "next/image";
 import ContactForm from "./form";
+import { Mail } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 
 export const metadata = {
   title: "Contact | Mother of Hope foundation Uganda",
@@ -30,7 +32,7 @@ export default function Contact() {
       <Header />
       <section className="w-full max-w-screen-xl mx-auto py-12 md:py-24 lg:py-32 ">
         <div className="max-w-screen-xl bg-white p-8 py-12 lg:py-24 rounded-[2.5rem] w-[95%] mx-auto">
-          <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
+          <div className="grid gap-6 grid-cols-1 lg:grid-cols-2 lg:gap-12">
             <div className="space-y-4">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                 Get in Touch
@@ -46,7 +48,7 @@ export default function Contact() {
       </section>
       <section className="w-full  py-12 md:py-24 bg-gray-100 lg:py-32">
         <div className="max-w-screen-xl mx-auto rounded-[2.5rem] bg-white px-4 md:px-6 w-[95%] p-8 py-12 lg:py-24">
-          <div className="grid gap-6 grid-cols-1 lg:grid-cols-2 lg:gap-12">
+          <div className="grid gap-6 grid-cols-1  lg:grid-cols-2 lg:gap-12">
             <div>
               <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl">
                 Physical Address
@@ -63,45 +65,24 @@ export default function Contact() {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
+                <div className="flex  items-start gap-4">
                   <PhoneIcon className="mt-1 h-6 w-6 text-gray-500 dark:text-gray-400" />
-                  <div>
+                  <div className="flex flex-col flex-wrap">
                     <p className="font-medium">0787223599</p>
                     <p className="font-medium">0701856359 </p>
-
-                    <div className="my-2 text-gray-500">
-                      <p className="">info@motherofhopefoundationuganda.org </p>
-                      <p className="">
-                        contact@motherofhopefoundationuganda.org{" "}
-                      </p>
-                    </div>
-
-                    <p className="text-gray-500 dark:text-gray-400">
-                      Monday - Sunday, 8am - 6pm
-                    </p>
                   </div>
                 </div>
-                {/* <div className="flex items-start gap-4 flex-wrap">
-                  <MailIcon className="mt-1 h-6 w-6 text-gray-500 dark:text-gray-400" />
-                  <div>
-                    <p className="font-medium">
-                      motherofhopefoundationuganda@gmail.com
-                    </p>
-                    <p className="text-gray-500 dark:text-gray-400">
-                      Get in touch with us
-                    </p>
-                  </div>
-                </div> */}
 
-                {/* <div className="flex items-start gap-4">
-                  <MailIcon className="mt-1 h-6 w-6 text-gray-500 dark:text-gray-400" />
-                  <div>
-                    <p className="font-medium">info@jinjatoursandsafaris.com</p>
-                    <p className="text-gray-500 dark:text-gray-400">
-                      Alternative Email
-                    </p>
-                  </div> */}
-                {/* </div> */}
+                <Separator className="my-2" />
+                <div className="my-3 break-all text-gray-500 space-y-3">
+                  <p className="">info@motherofhopefoundationuganda.org </p>
+                  <p className="">contact@motherofhopefoundationuganda.org </p>
+                </div>
+                <Separator className="my-3" />
+
+                <p className="text-gray-500 dark:text-gray-400">
+                  Monday - Sunday, 8am - 6pm
+                </p>
               </div>
             </div>
             <div>
