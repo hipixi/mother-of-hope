@@ -22,8 +22,8 @@ import {
   DialogTrigger,
 } from "./ui/dialog";
 import PopupDonate from "./donate-pop";
-import ScrollLink from "./scroll";
 import SidebarSheet from "./header-sheet";
+import ScrollLink from "./scroll";
 const Header = async () => {
   const user = await getUser();
   return (

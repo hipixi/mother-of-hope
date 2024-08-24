@@ -63,14 +63,14 @@ const Blog = async () => {
           <div className="grid gap-6 grid-cols-1 md:grid-cols-3 sm:grid-cols-3 lg:grid-cols-3">
             {posts.map((post) => (
               <Link href={`/blog/${post.slug}`} key={post._id}>
-                <Card>
+                <Card className="rounded-none border-0 shadow-none">
                   <CardContent className="p-0">
                     <img
                       src={post.featuredImage}
                       alt={post.title}
                       className="w-full h-48 lg:h-60 object-cover rounded-t-lg"
                     />
-                    <div className="px-4 py-4 space-y-2">
+                    <div className="px-1 py-4 space-y-2">
                       <h3 className="text-gray-950 text-lg font-semibold">
                         {post.title}
                       </h3>

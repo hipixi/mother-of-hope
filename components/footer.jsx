@@ -24,7 +24,7 @@ const Footer = () => {
             </h3>
             <ul className=" text-lg mt-2 text-slate-300">
               <li>
-                <ScrollLink href="#who-we-are">who we are</ScrollLink>
+                <Link href="/who-we-are">who we are</Link>
               </li>
               <li>
                 <ScrollLink href="#what-we-do">what we do</ScrollLink>
