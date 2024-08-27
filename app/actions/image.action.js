@@ -60,3 +60,20 @@ export const getTotalImages = async () => {
     return 0;
   }
 };
+
+export const getImagesSlider = async () => {
+  await dbConnect();
+  try {
+    const images = await Image.find({}).sort({ updatedAt: -1 }).limit(5).lean();
+
+    const convertedImages = images.map((image) => ({
+      ...image,
+      _id: image._id.toString(),
+    }));
+
+    return { images: convertedImages };
+  } catch (error) {
+    console.log(error);
+    return { images: [] };
+  }
+};
