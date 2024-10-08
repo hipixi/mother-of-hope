@@ -24,7 +24,7 @@ const AddLogo = ({ id }) => {
       reader.readAsDataURL(file);
       reader.onloadend = async () => {
         try {
-          const response = await fetch("/api/upload", {
+          const response = await fetch("/api/partners", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ data: reader.result }),

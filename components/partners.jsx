@@ -2,6 +2,7 @@ import { getConfirmedPartners } from "@/app/actions/partner";
 
 const Partners = async () => {
   const partners = await getConfirmedPartners();
+  console.log(partners);
 
   return (
     <section className="py-16 lg:py-28 overflow-hidden">
