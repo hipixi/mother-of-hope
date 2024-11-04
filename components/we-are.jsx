@@ -26,7 +26,7 @@ export default function Component() {
         <div className="flex items-center justify-center mt-8">
           <Button
             size="lg"
-            className="h-12 lg:h-13 lg:text-xl rounded-none font-bold text-lg "
+            className="h-12 lg:h-14 lg:text-xl rounded-none font-bold text-lg "
           >
             <Link
               href="/who-we-are"

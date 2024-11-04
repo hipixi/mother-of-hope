@@ -1,14 +1,25 @@
 "use client";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import Image from "next/image";
 import { getImagesSlider } from "@/app/actions/image.action";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 const Slider = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [images, setImages] = useState();
+
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % images.length);
+    }, 3000); // Slide every 3 seconds
+    return () => clearInterval(slideInterval); // Cleanup on component unmount
+  }, [images?.length]);
+
+  const handleNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % images.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
+  };
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -20,39 +31,40 @@ const Slider = () => {
     fetchImages();
   }, []);
 
-  console.log(images);
   return (
-    <div className="w-full ">
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={0}
-        slidesPerView={1}
-        navigation
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
-        loop={true}
+    <div className="relative w-full max-w-screen-2xl mx-auto overflow-hidden">
+      <div
+        className="flex transition-transform duration-700 ease-in-out"
+        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
       >
         {images?.map((image, index) => (
-          <SwiperSlide
-            className="relative w-full aspect-[4/3] md:aspect-[2/1] h-[600px] md:h-[600px]"
-            key={image.url}
+          <div
+            key={index}
+            className="w-full h-[400px] md:h-[600px] lg:h-[800px] flex-shrink-0"
           >
-            <Image
+            <img
               src={image.url}
               alt={`Slide ${index + 1}`}
-              fill
-              objectFit="cover"
-              priority
-              quality={75}
-              className="object-cover object-center"
-              sizes="(max-width: 640px) 100vw,
-              (max-width: 1280px) 50vw,
-              (max-width: 1536px) 33vw,
-              25vw"
+              className="object-cover w-full h-full object-top"
             />
-          </SwiperSlide>
+          </div>
         ))}
-      </Swiper>
+      </div>
+
+      {/* Navigation buttons */}
+
+      {/* Pagination dots */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+        {images?.map((_, index) => (
+          <button
+            key={index}
+            className={`w-3 h-3 rounded-full ${
+              index === currentSlide ? "bg-white" : "bg-gray-400"
+            }`}
+            onClick={() => setCurrentSlide(index)}
+          />
+        ))}
+      </div>
     </div>
   );
 };
