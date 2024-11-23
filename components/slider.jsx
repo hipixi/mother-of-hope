@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [images, setImages] = useState();
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     const slideInterval = setInterval(() => {
@@ -12,14 +12,6 @@ const Slider = () => {
     }, 3000); // Slide every 3 seconds
     return () => clearInterval(slideInterval); // Cleanup on component unmount
   }, [images?.length]);
-
-  const handleNext = () => {
-    setCurrentSlide((prev) => (prev + 1) % images.length);
-  };
-
-  const handlePrev = () => {
-    setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
-  };
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -43,7 +35,7 @@ const Slider = () => {
             className="w-full h-[400px] md:h-[600px] lg:h-[800px] flex-shrink-0"
           >
             <img
-              src={image.url}
+              src={image?.url}
               alt={`Slide ${index + 1}`}
               className="object-cover w-full h-full object-top"
             />

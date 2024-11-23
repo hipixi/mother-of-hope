@@ -2,6 +2,7 @@
 
 import dbConnect from "@/lib/dbConnect";
 import Image from "@/models/Image";
+import { unstable_cache } from "next/cache";
 
 export const addImage = async (values) => {
   await dbConnect();
@@ -61,19 +62,30 @@ export const getTotalImages = async () => {
   }
 };
 
-export const getImagesSlider = async () => {
-  await dbConnect();
-  try {
-    const images = await Image.find({}).sort({ updatedAt: -1 }).limit(5).lean();
+export const getImagesSlider = unstable_cache(
+  async () => {
+    await dbConnect();
+    try {
+      // Only select the fields we need (url and _id)
+      const images = await Image.find({}, { url: 1 })
+        .sort({ updatedAt: -1 })
+        .limit(5)
+        .lean();
 
-    const convertedImages = images.map((image) => ({
-      ...image,
-      _id: image._id.toString(),
-    }));
+      const convertedImages = images.map((image) => ({
+        url: image.url,
+        _id: image._id.toString(),
+      }));
 
-    return { images: convertedImages };
-  } catch (error) {
-    console.log(error);
-    return { images: [] };
+      return { images: convertedImages };
+    } catch (error) {
+      console.log(error);
+      return { images: [] };
+    }
+  },
+  ["images-slider"],
+  {
+    revalidate: 14400, // 4 hours in seconds (4 * 60 * 60)
+    tags: ["images-slider"], // Optional: useful for manual revalidation
   }
-};
+);

@@ -1,44 +1,48 @@
-import { v2 as cloudinary } from "cloudinary";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
-cloudinary.config({
-  cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+const R2_ACCOUNT_ID = process.env.R2_ACCOUNT_ID;
+const R2_ACCESS_KEY_ID = process.env.R2_ACCESS_KEY_ID;
+const R2_SECRET_ACCESS_KEY = process.env.R2_SECRET_ACCESS_KEY;
+const R2_BUCKET_NAME = process.env.R2_BUCKET_NAME;
+
+const S3 = new S3Client({
+  region: "auto",
+  endpoint: `https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
+  credentials: {
+    accessKeyId: R2_ACCESS_KEY_ID,
+    secretAccessKey: R2_SECRET_ACCESS_KEY,
+  },
 });
 
-export async function POST(req) {
-  const data = await req.formData();
-  const file = data.get("file");
-
-  if (!file) {
-    return new Response(JSON.stringify({ error: "No file uploaded" }), {
-      status: 400,
-    });
-  }
-
-  const bytes = await file.arrayBuffer();
-  const buffer = Buffer.from(bytes);
-
+export async function POST(request) {
+  console.log(request);
+  console.log("hitting");
   try {
-    const result = await new Promise((resolve, reject) => {
-      cloudinary.uploader
-        .upload_stream(
-          { resource_type: "auto", folder: "your_folder_name" },
-          (error, result) => {
-            if (error) reject(error);
-            else resolve(result);
-          }
-        )
-        .end(buffer);
-    });
+    const { filename, contentType } = await request.json();
 
-    return new Response(JSON.stringify({ url: result.secure_url }), {
-      status: 200,
+    const uniqueFilename = `${Date.now()}-${filename}`;
+
+    const signedUrl = await getSignedUrl(
+      S3,
+      new PutObjectCommand({
+        Bucket: R2_BUCKET_NAME,
+        Key: uniqueFilename,
+        ContentType: contentType,
+      }),
+      { expiresIn: 120 } // URL expires in 120 seconds
+    );
+
+    return Response.json({
+      success: true,
+      url: signedUrl,
+      filename: uniqueFilename,
     });
   } catch (error) {
     console.error("Upload error:", error);
-    return new Response(JSON.stringify({ error: "Upload failed" }), {
-      status: 500,
-    });
+    return Response.json(
+      { success: false, error: "Failed to generate upload URL" },
+      { status: 500 }
+    );
   }
 }

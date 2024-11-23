@@ -3,6 +3,7 @@ import { cache } from "react";
 
 import dbConnect from "@/lib/dbConnect";
 import Partner from "@/models/Partner";
+import { unstable_cache } from "next/cache";
 
 export const addPartner = async (values) => {
   await dbConnect();
@@ -53,24 +54,31 @@ export const getMonthPartners = cache(async () => {
   }
 });
 
-export const getPartners = async () => {
-  await dbConnect();
+export const getPartners = unstable_cache(
+  async () => {
+    await dbConnect();
 
-  try {
-    const partners = await Partner.find({}).sort({ updatedAt: -1 }).lean();
-    const convertedPartners = partners.map((partner) => ({
-      ...partner,
-      _id: partner._id.toString(),
-    }));
+    try {
+      const partners = await Partner.find({}).sort({ updatedAt: -1 }).lean();
+      const convertedPartners = partners.map((partner) => ({
+        ...partner,
+        _id: partner._id.toString(),
+      }));
 
-    return convertedPartners;
-  } catch (error) {
-    console.log("failed to fetch", error.message);
-    return {
-      error: "Failed to fetch",
-    };
+      return convertedPartners;
+    } catch (error) {
+      console.log("failed to fetch", error.message);
+      return {
+        error: "Failed to fetch",
+      };
+    }
+  },
+  ["partners"],
+  {
+    revalidate: 14400, // 4 hours in seconds (4 * 60 * 60)
+    tags: ["partners"], // Optional: useful for manual revalidation
   }
-};
+);
 
 export const confirmPartner = async (id) => {
   await dbConnect();

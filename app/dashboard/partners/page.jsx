@@ -12,7 +12,7 @@ export const metadata = {
   title: "Partners | Dashboard",
 };
 
-export default async function Volunteers() {
+export default async function Partners() {
   const partners = await getRecentUnconfirmedPartners();
   const confirmedPartners = await getConfirmedPartners();
   return (
