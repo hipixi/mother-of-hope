@@ -55,13 +55,7 @@ export default SingleEvent;
 
 export async function generateMetadata({ params }) {
   const { event } = await getEventBySlug(params.slug);
-  const ogImageUrl = `${
-    process.env.NEXT_PUBLIC_BASE_URL
-  }/api/generate-og-image?title=${encodeURIComponent(
-    event.title
-  )}&date=${encodeURIComponent(event.date)}&location=${encodeURIComponent(
-    event.location
-  )}`;
+  const ogImageUrl = `/partner.svg`;
 
   return {
     title: `${event.title} | Mother of hope foundation uganda`,
