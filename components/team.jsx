@@ -1,6 +1,5 @@
 import { FaLinkedin } from "react-icons/fa";
 import { BiLogoGmail } from "react-icons/bi";
-import Image from "next/image";
 import Link from "next/link";
 import { getTeam } from "@/app/actions/team.action";
 
@@ -26,9 +25,8 @@ const OurTeam = async () => {
               className="text-center p-6 py-10 bg-[#f3f3f3] rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <div className="relative mx-auto w-32 h-32 p-2">
-                <Image
-                  fill
-                  className="border object-cover object-top rounded-full  w-[200px] h-[200px]"
+                <img
+                  className="border object-cover object-top rounded-full  w-full h-full"
                   src={member.image}
                   alt={`Photo of ${member.name}, ${member.position}`}
                 />

@@ -16,8 +16,6 @@ const S3 = new S3Client({
 });
 
 export async function POST(request) {
-  console.log(request);
-  console.log("hitting");
   try {
     const { filename, contentType } = await request.json();
 

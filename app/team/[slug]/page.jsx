@@ -10,7 +10,6 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
-import Image from "next/image";
 import { BiLogoGmail } from "react-icons/bi";
 import { FaLinkedin } from "react-icons/fa";
 
@@ -45,12 +44,11 @@ const TeamMember = async ({ params }) => {
 
         <div className="flex flex-col w-full lg:flex-row gap-3 lg:gap-7 justify-start lg:justify-normal">
           <div className="w-full h-full lg:w-[400px] ">
-            <div className="relative w-full lg:w-[300px] h-[400px] lg:h-[300px]">
-              <Image
+            <div className=" w-full lg:w-[300px] h-[400px] lg:h-[300px]">
+              <img
                 src={member.image}
                 alt={`Profile picture of ${member.name}`}
-                fill
-                className="object-cover object-top"
+                className="object-cover w-full h-full object-top"
                 sizes="(max-width: 768px) 100vw, 400px"
               />
             </div>

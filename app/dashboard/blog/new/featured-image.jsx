@@ -29,8 +29,25 @@ const FeaturedImage = ({
           if (!response.ok) {
             throw new Error("Upload failed");
           }
-          const data = await response.json();
-          onChange(data.url);
+
+          const { url: presignedUrl, filename } = await response.json();
+
+          // Upload the file directly to R2 using the presigned URL
+          const uploadResponse = await fetch(presignedUrl, {
+            method: "PUT",
+            body: file,
+            headers: {
+              "Content-Type": file.type,
+            },
+          });
+
+          if (!uploadResponse.ok) {
+            throw new Error("Failed to upload file");
+          }
+
+          // Return the public URL for the uploaded file
+          const publicUrl = `${process.env.NEXT_PUBLIC_R2_PUBLIC_URL}/${filename}`;
+          onChange(publicUrl);
         } catch (error) {
           console.error("Error uploading image", error);
         } finally {
@@ -48,7 +65,7 @@ const FeaturedImage = ({
           <img
             src={value}
             alt="Uploaded"
-            className="object-cover w-full h-[200px]"
+            className="object-cover object-top w-full h-[200px]"
           />
           <button
             onClick={onRemove}

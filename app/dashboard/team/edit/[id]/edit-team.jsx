@@ -30,6 +30,7 @@ const EditTeam = ({ initialData }) => {
   const { toast } = useToast();
 
   const router = useRouter();
+  console.log(initialData);
 
   const {
     register,
@@ -56,9 +57,9 @@ const EditTeam = ({ initialData }) => {
     defaultValue: initialData.image || "",
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (values) => {
     startTransition(() =>
-      editMember(data).then((data) => {
+      editMember(initialData._id, values).then((data) => {
         if (data.success) {
           toast({
             title: "Team member edited successfully",

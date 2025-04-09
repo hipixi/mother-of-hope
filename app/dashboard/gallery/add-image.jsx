@@ -2,10 +2,8 @@
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
-import ImageUpload from "@/components/image-upload";
-
 import { ImagePlus, Loader, Plus } from "lucide-react";
-import { Form, FormLabel } from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import {
   Dialog,
   DialogClose,

@@ -9,7 +9,7 @@ const teamSchema = new mongoose.Schema(
     image: { type: String },
     linkedin: { type: String },
     email: { type: String },
-    tels: [{ type: String }],
+    tels: { type: String },
   },
   { timestamps: true }
 );

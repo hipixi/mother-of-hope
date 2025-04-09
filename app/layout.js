@@ -31,10 +31,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <meta
-        name="google-site-verification"
-        content="tCeEpBupta0WK2UTnKiQlz_PbqlCd1WOMHhbnI9T1jE"
-      />
+      <head>
+        <meta
+          name="google-site-verification"
+          content="tCeEpBupta0WK2UTnKiQlz_PbqlCd1WOMHhbnI9T1jE"
+        />
+        <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+      </head>
       <body className={cn("antialiased", inter.className)}>
         {children}
         <Toaster />
