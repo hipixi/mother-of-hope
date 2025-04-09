@@ -111,7 +111,7 @@ const TeamMember = async ({ params }) => {
             <div>
               <h1 className="text-xl font-medium space-y-4">Contact</h1>
 
-              {member.tels[0].split(",").map((cont, i) => (
+              {member.tels.split(",").map((cont, i) => (
                 <div key={i} className="text-sm my-3 text-gray-600">
                   {cont}
                 </div>
