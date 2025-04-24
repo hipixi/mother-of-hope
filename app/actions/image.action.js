@@ -69,7 +69,7 @@ export const getImagesSlider = unstable_cache(
       // Only select the fields we need (url and _id)
       const images = await Image.find({}, { url: 1 })
         .sort({ updatedAt: -1 })
-        .limit(5)
+        .limit(10)
         .lean();
 
       const convertedImages = images.map((image) => ({
